@@ -61,8 +61,12 @@ public abstract class View implements VisualModule{
     }
 
     public void displayWelcomeMessage(){
+        joutDivider();
         jout("--------------WELCOME--------------");
+        joutDivider();
     }
 
-    public void displayGoodByeMessage(){jout("-------------------------BYE-------------------------");}
+    public void displayGoodByeMessage(){
+        joutDivider();
+        jout("-------------------------BYE-------------------------");}
 }

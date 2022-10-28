@@ -12,11 +12,9 @@ public class Main {
 	// write your code here
         View view=new MainView();
         view.displayWelcomeMessage();
-
-        GameManager gameManager=new GameManager();
-        gameManager.chooseGame();
-        gameManager.play();
-
+        GameController gameController =new GameController();
+        gameController.chooseGame();
+        gameController.play();
         view.displayGoodByeMessage();
 
 

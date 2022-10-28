@@ -1,6 +1,7 @@
 package com.ood.Views;
 
-public class LMH_GameView extends GameCliUserInterface{
+public class LMH_GameView extends AbsGameView {
+
     @Override
     public void displayGameTitle() {
         jout("--------------WELCOME TO Legends: Monsters and Heroes-------------");

@@ -6,7 +6,7 @@ import java.util.Scanner;
 /**
  * An abstract class used for displaying
  */
-public abstract class GameCliUserInterface extends View{
+public abstract class AbsGameView extends View{
 
     public void displayInvalidInputMessage(){
         jout("Your Input is Invalid Please Input Again!");
