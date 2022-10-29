@@ -28,8 +28,17 @@ public abstract class View implements VisualModule{
 
     @Override
     public int jin_Int() {
-        int num=getScanner().nextInt();
-        inputReprint(Integer.toString(num));
+        int num=0;
+        try {
+            num=getScanner().nextInt();
+            inputReprint(Integer.toString(num));
+            return num;
+        }
+        catch (Exception E)
+        {
+            displayInvalidInputMessage();
+            jin_Int();
+        }
         return num;
     }
 
@@ -69,4 +78,8 @@ public abstract class View implements VisualModule{
     public void displayGoodByeMessage(){
         joutDivider();
         jout("-------------------------BYE-------------------------");}
+
+    public void displayInvalidInputMessage(){
+        jout("Your Input is Invalid Please Input Again!");
+    }
 }

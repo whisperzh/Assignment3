@@ -1,8 +1,17 @@
 package com.ood.Team;
 
-public class Team implements ITeam {
+import com.ood.Players.IPlayer;
+import com.ood.Players.PlayerCollection;
+
+public class Team<T extends IPlayer> implements ITeam {
     private String name;
+    private PlayerCollection playerCollection;
     private int points;
+
+    public Team(String name) {
+        this.name = name;
+        playerCollection =new PlayerCollection();
+    }
 
     @Override
     public String getName() {
@@ -22,6 +31,16 @@ public class Team implements ITeam {
     @Override
     public void setPoints(int points) {
         this.points=points;
+    }
+
+    @Override
+    public void addPlayer() {
+
+    }
+
+    @Override
+    public IPlayer getPlayerAt(int index) {
+        return null;
     }
 
     @Override

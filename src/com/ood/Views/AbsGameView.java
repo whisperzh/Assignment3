@@ -8,16 +8,7 @@ import java.util.Scanner;
  */
 public abstract class AbsGameView extends View{
 
-    public void displayInvalidInputMessage(){
-        jout("Your Input is Invalid Please Input Again!");
-    }
-
     abstract public void displayGameTitle();
-
-    public void displayGameChoose(){
-        joutDivider();
-        jout("Press [1] to play <Legends: Monsters and Heroes>");
-    }
 
     public void displayGameOver(){
         joutDivider();

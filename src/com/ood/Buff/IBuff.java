@@ -1,4 +1,7 @@
 package com.ood.Buff;
 
-public interface IBuff {
+import com.ood.Players.IPlayer;
+
+public interface IBuff<T extends IPlayer> {
+    void doEffect(T player);
 }

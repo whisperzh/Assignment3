@@ -2,9 +2,10 @@ package com.ood.Characters;
 
 import com.ood.AttributesItems.Wallet;
 import com.ood.Inventory.IInventory;
+import com.ood.Item.IItem;
 
 /**
- * an abstract heros
+ * an abstract hero
  */
 public abstract class GeneralHero implements ICharacter{
     private String name;
@@ -114,6 +115,23 @@ public abstract class GeneralHero implements ICharacter{
 
     public void setInventory(IInventory inventory) {
         this.inventory = inventory;
+    }
+
+    public void buyItem(IItem item){
+        int price=item.getPrice();
+        boolean transactionSuccess = getMyWallet().pay(price);
+        if(transactionSuccess)
+        {
+            getInventory().Add(item);
+        }
+    }
+
+    /**
+     * trade an item in Inventory, increase money in wallet
+     */
+    public void tradeItem()
+    {
+
     }
 
     abstract void attack();
