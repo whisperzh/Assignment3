@@ -1,43 +1,73 @@
 package com.ood.Grid;
 
+import com.ood.Game.IGame;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class GridCollections <T>  {
+public abstract class GridCollections <T extends GridSpace>  {
 
-    private List<List<T>> grids;
+    protected List<List<T>> grids;
 
-    private int hor_size=8;
+    private int row=8;
 
-    private int vert_size=8;
+    private int col=8;
 
     public GridCollections() {
         grids=new ArrayList<>();
     }
 
-    public void gridInit(int size)
-    {
-        hor_size=size;
-        vert_size=size;
-        for(int i=0;i<size;i++)
+    public GridCollections(int size) {
+        grids=new ArrayList<>();
+        row=size;
+        col=size;
+        for(int i=0;i<row;i++)
         {
-            List<T> row=new ArrayList<>();
-            for (int j=0;j<size;j++)
-            {
-                row.add((T) new LMH_Grid(i,j));
-            }
-            grids.add(row);
+            grids.add(new ArrayList<T>());
         }
     }
 
-    public void gridInit(int xSize,int ySize)
-    {
-        hor_size=xSize;
-        vert_size=ySize;
+    public GridCollections(int sizeX,int sizeY) {
+        grids=new ArrayList<>();
+        row=sizeY;
+        col=sizeX;
+        for(int i=0;i<row;i++)
+        {
+            grids.add(new ArrayList<T>());
+        }
     }
+
+    abstract public void setGridAt(T grid, int x,int y);
 
     public T getGrid(int x, int y) {
         return grids.get(x).get(y);
     }
+
+    public List<List<T>> getGrids() {
+        return grids;
+    }
+
+    public void setGrids(List<List<T>> grids) {
+        this.grids = grids;
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    public void setRow(int row) {
+        this.row = row;
+    }
+
+    public int getCol() {
+        return col;
+    }
+
+    public void setCol(int col) {
+        this.col = col;
+    }
+
+    public abstract void reset();
+
 }
