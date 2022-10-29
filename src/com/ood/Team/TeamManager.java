@@ -1,9 +1,15 @@
 package com.ood.Team;
 
+import com.ood.Players.IPlayer;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class TeamManager<T extends ITeam> {
+/**
+ * Used for manage the team
+ * @param <T>
+ */
+public class TeamManager<T extends ITeam<? extends IPlayer>> {
     private List<T> teamList;
 
     public TeamManager() {

@@ -2,6 +2,9 @@ package com.ood.Views;
 
 import java.util.Scanner;
 
+/**
+ * Universal visual module, can be used in any of my program
+ */
 public abstract class View implements VisualModule{
     private Scanner scanner;
 
@@ -28,15 +31,14 @@ public abstract class View implements VisualModule{
 
     @Override
     public int jin_Int() {
-        try {
-            int num=getScanner().nextInt();
-            inputReprint(Integer.toString(num));
-            return num;
-        }catch (Exception E)
+        while (!getScanner().hasNextInt())
         {
             displayInvalidInputMessage();
+            getScanner().next(); // remove and ignore next token
         }
-        return 0;
+        int userInput=getScanner().nextInt();
+        inputReprint(Integer.toString(userInput));
+        return userInput;
     }
 
     public int jin_Int(String messagetoUser) {
@@ -46,9 +48,14 @@ public abstract class View implements VisualModule{
 
     @Override
     public double jin_double() {
-        double num=getScanner().nextDouble();
-        inputReprint(Double.toString(num));
-        return num;
+        while (!getScanner().hasNextDouble())
+        {
+            displayInvalidInputMessage();
+            getScanner().next(); // remove and ignore next token
+        }
+        double userInput=getScanner().nextDouble();
+        inputReprint(Double.toString(userInput));
+        return userInput;
     }
 
     public double jin_double(String messagetoUser) {

@@ -3,14 +3,18 @@ package com.ood.Team;
 import com.ood.Players.IPlayer;
 import com.ood.Players.PlayerCollection;
 
+/**
+ * Team Concrete class
+ * @param <T>
+ */
 public class Team<T extends IPlayer> implements ITeam {
     private String name;
-    private PlayerCollection playerCollection;
+    private PlayerCollection<T> playerCollection;
     private int points;
 
     public Team(String name) {
         this.name = name;
-        playerCollection =new PlayerCollection();
+        playerCollection =new PlayerCollection<>();
     }
 
     @Override
@@ -35,9 +39,8 @@ public class Team<T extends IPlayer> implements ITeam {
 
     @Override
     public void addPlayer(IPlayer player) {
-        playerCollection.addPlayer(player);
+        playerCollection.addPlayer((T) player);
     }
-
 
     @Override
     public IPlayer getPlayerAt(int index) {

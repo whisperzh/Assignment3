@@ -10,7 +10,7 @@ public abstract class UnwearableItem implements IItem{
 
     private String name;
 
-    public UnwearableItem(int price, int level, String name) {
+    public UnwearableItem(String name, int price, int level ) {
         this.price = price;
         this.level = level;
         this.name = name;

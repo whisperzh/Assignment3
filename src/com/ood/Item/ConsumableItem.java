@@ -12,7 +12,7 @@ public abstract class ConsumableItem implements IItem{
 
     private String name;
 
-    public ConsumableItem(int price, int timeOfUse, int level, String name) {
+    public ConsumableItem( String name,int price, int level, int timeOfUse) {
         this.price = price;
         this.timeOfUse = timeOfUse;
         this.level = level;

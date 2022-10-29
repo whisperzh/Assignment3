@@ -9,8 +9,9 @@ public class Armor extends UnwearableItem{
 
     private int damageReductionVal;
 
-    public Armor(int price, int level, String name) {
-        super(price, level, name);
+    public Armor(String name, int price, int level, int damageReductionVal) {
+        super(name, price, level);
+        this.damageReductionVal = damageReductionVal;
     }
 
     public int getDamageReductionVal() {

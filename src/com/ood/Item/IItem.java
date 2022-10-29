@@ -2,6 +2,9 @@ package com.ood.Item;
 
 import com.ood.Players.IPlayer;
 
+/**
+ * interface of Item
+ */
 public interface IItem {
     int getPrice();
     int getLevel();

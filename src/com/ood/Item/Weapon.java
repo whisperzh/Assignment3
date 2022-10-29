@@ -5,11 +5,11 @@ package com.ood.Item;
  */
 public class Weapon extends UnwearableItem {
 
-
     private int damageVal;
 
-    public Weapon(int price, int level, String name) {
-        super(price, level, name);
+    public Weapon(String name, int price, int level, int damageVal) {
+        super(name, price, level);
+        this.damageVal = damageVal;
     }
 
     public int getDamageVal() {

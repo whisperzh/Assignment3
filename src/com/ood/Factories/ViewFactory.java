@@ -9,7 +9,7 @@ import com.ood.Enums.ViewEnum;
  */
 public class ViewFactory {
 
-    public static <T extends View> T getView(ViewEnum viewEnum) {
+    public static <T extends View> T createView(ViewEnum viewEnum) {
         View v=null;
         switch (viewEnum)
         {
@@ -23,7 +23,7 @@ public class ViewFactory {
         return (T) v;
     }
 
-    public static <T extends AbsGameView> T getGameView(GameEnum gameEnum){
+    public static <T extends AbsGameView> T createGameView(GameEnum gameEnum){
         View v=null;
         switch (gameEnum)
         {

@@ -1,46 +1,55 @@
 package com.ood.Game;
 
-import com.ood.Board.IBoard;
-import com.ood.Views.View;
+import com.ood.Board.LMH_board;
+import com.ood.Enums.GameEnum;
+import com.ood.Factories.GameBoardFactory;
+import com.ood.Factories.ViewFactory;
+import com.ood.Players.LMH_Player;
+import com.ood.Views.AbsGameView;
 
-public class LMH_Game extends BoardGame{
+/**
+ * concrete class of LMH game
+ */
+public class LMH_Game extends BoardGame<LMH_Player>{
+
+    private AbsGameView view;
+
+    private final GameEnum type=GameEnum.LMH;
+
+    public LMH_Game() {
+        super();
+        setView(ViewFactory.createGameView(type));
+        setBoard(GameBoardFactory.createGameBoard(type));
+    }
+
     @Override
     public void initConfiguration() {
 
     }
 
     @Override
-    public void initPlayer() {
-
+    public void initPlayers() {
+        //no players Here
     }
 
     @Override
-    public void initTeam() {
-
+    public void setView(AbsGameView view) {
+        this.view=view;
     }
+
 
     @Override
-    public void setView(View view) {
-
+    public AbsGameView getView() {
+        return view;
     }
 
-    @Override
-    public void setBoard(IBoard board) {
-
-    }
-
-    @Override
-    public IBoard getBoard() {
-        return null;
-    }
-
-    @Override
-    public View getView() {
-        return null;
-    }
 
     @Override
     public void start() {
 
+    }
+
+    public GameEnum getType() {
+        return type;
     }
 }

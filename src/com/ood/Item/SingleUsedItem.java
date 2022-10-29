@@ -1,8 +1,12 @@
 package com.ood.Item;
 
+/**
+ * Item that can only use once
+ */
 public abstract class SingleUsedItem extends ConsumableItem {
 
-    public SingleUsedItem(int price, int timeOfUse, int level, String name) {
-        super(price, timeOfUse, level, name);
+    public SingleUsedItem(String name, int price, int level, int timeOfUse) {
+        super(name, price, level, timeOfUse);
+        setTimeOfUse(1);
     }
 }

@@ -1,7 +1,12 @@
 package com.ood.Buff;
 
+import com.ood.Characters.ICharacter;
 import com.ood.Players.IPlayer;
 
-public interface IBuff<T extends IPlayer> {
-    void doEffect(T player);
+/**
+ * buff interface
+ * @param <T>
+ */
+public interface IBuff<T extends ICharacter> {
+    void doEffect(T character);
 }

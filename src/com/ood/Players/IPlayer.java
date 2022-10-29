@@ -1,5 +1,7 @@
 package com.ood.Players;
 
+import com.ood.Team.ITeam;
+
 /**
  * player interface
  */
@@ -11,4 +13,5 @@ public interface IPlayer {
     boolean isActive();//whether the player can control the game
     void setActive(boolean status);
     void reset();
+    ITeam getTeam();
 }
