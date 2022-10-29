@@ -14,4 +14,5 @@ public class LMH_Player extends BoardGamePlayer{
     public ITeam getTeam() {
         return team;
     }
+
 }

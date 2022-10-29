@@ -5,6 +5,7 @@ import com.ood.Enums.GameEnum;
 import com.ood.Factories.GameBoardFactory;
 import com.ood.Factories.ViewFactory;
 import com.ood.Players.LMH_Player;
+import com.ood.Team.Team;
 import com.ood.Views.AbsGameView;
 
 /**
@@ -16,10 +17,16 @@ public class LMH_Game extends BoardGame<LMH_Player>{
 
     private final GameEnum type=GameEnum.LMH;
 
+    private int teamSize=4;
+
     public LMH_Game() {
         super();
         setView(ViewFactory.createGameView(type));
         setBoard(GameBoardFactory.createGameBoard(type));
+        //set team size of this specific game here
+        getTeamCollection().addTeam(new Team<LMH_Player>("Player Team",teamSize));
+        //getTeamCollection().addTeam(new Team<ComputerPLayer>("Monster Team"));
+
     }
 
     @Override
@@ -30,6 +37,7 @@ public class LMH_Game extends BoardGame<LMH_Player>{
     @Override
     public void initPlayers() {
         //no players Here
+
     }
 
     @Override
@@ -46,7 +54,10 @@ public class LMH_Game extends BoardGame<LMH_Player>{
 
     @Override
     public void start() {
+        while (true)
+        {
 
+        }
     }
 
     public GameEnum getType() {

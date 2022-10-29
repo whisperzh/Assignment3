@@ -1,15 +1,12 @@
 package com.ood.Characters;
 
-import com.ood.AttributesItems.Wallet;
-import com.ood.Inventory.IInventory;
-
 /**
  * an abstract monster class
  */
 public abstract class GeneralMonster implements ICharacter{
     private String name;
     private int level;
-    private int HP;
+    private float HP;
     private int strength;   //damage value
     private int defense;
 
@@ -34,12 +31,12 @@ public abstract class GeneralMonster implements ICharacter{
     }
 
     @Override
-    public int getHP() {
+    public float getHP() {
         return HP;
     }
 
     @Override
-    public void setHP(int HP) {
+    public void setHP(float HP) {
         this.HP = HP;
     }
 
@@ -78,5 +75,13 @@ public abstract class GeneralMonster implements ICharacter{
     @Override
     public void setDamageVal(int damageVal) {
         strength=damageVal;
+    }
+
+    /**
+     * monster cannot get HP back
+     */
+    @Override
+    public void refillHP() {
+        return;
     }
 }

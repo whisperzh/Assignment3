@@ -5,14 +5,17 @@ import com.ood.Players.PlayerCollection;
 
 /**
  * Team Concrete class
- * @param <T>
+ * @param <T> player
  */
 public class Team<T extends IPlayer> implements ITeam {
+
     private String name;
+
     private PlayerCollection<T> playerCollection;
+
     private int points;
 
-    public Team(String name) {
+    public Team(String name, int size) {
         this.name = name;
         playerCollection =new PlayerCollection<>();
     }

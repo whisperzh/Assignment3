@@ -25,10 +25,8 @@ public class GameController {
     }
 
     public void play() {
-
+        game.start();
     }
-
-
 
     public void endGame(){
 

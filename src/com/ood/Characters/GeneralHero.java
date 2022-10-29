@@ -10,8 +10,8 @@ import com.ood.Item.IItem;
 public abstract class GeneralHero implements ICharacter{
     private String name;
     private int experience;
-    private int HP;
-    private int MP;
+    private float HP;
+    private float MP;
     private int strength;
     private int level;
     private int dexterity;
@@ -21,6 +21,7 @@ public abstract class GeneralHero implements ICharacter{
 
     @Override
     public void levelUp() {
+        MP*=1.1;
         level++;
     }
 
@@ -63,16 +64,16 @@ public abstract class GeneralHero implements ICharacter{
     }
 
     @Override
-    public int getHP() {
+    public float getHP() {
         return HP;
     }
 
     @Override
-    public void setHP(int HP) {
+    public void setHP(float HP) {
         this.HP = HP;
     }
 
-    public int getMP() {
+    public float getMP() {
         return MP;
     }
 
@@ -132,6 +133,12 @@ public abstract class GeneralHero implements ICharacter{
     public void tradeItem()
     {
 
+    }
+
+    @Override
+    public void refillHP(){
+        float targetVal=getLevel()*100;
+        setHP(Math.max(targetVal,getHP()));
     }
 
     abstract void attack();

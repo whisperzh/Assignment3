@@ -9,6 +9,7 @@ public class TeamCollection<T> {
 
     public TeamCollection() {
         this.teamList = new ArrayList<>();
+        //need to set team size and add teams into teamCollection Now
     }
 
     public void addTeam(T t) {
