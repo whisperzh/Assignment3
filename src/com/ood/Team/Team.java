@@ -34,9 +34,10 @@ public class Team<T extends IPlayer> implements ITeam {
     }
 
     @Override
-    public void addPlayer() {
-
+    public void addPlayer(IPlayer player) {
+        playerCollection.addPlayer(player);
     }
+
 
     @Override
     public IPlayer getPlayerAt(int index) {

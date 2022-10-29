@@ -15,12 +15,23 @@ public class GameControllerView extends View{
 
     public int collectUsersGameChoice(){
         int range=gameList.length;
-        int choice=jin_Int();
-        while(choice<0||choice>=range)
+        int choice=0;
+        do
         {
-            displayInvalidInputMessage();
-            jin_Int();
-        }
+            try {
+                choice=jin_Int();
+                if(choice>=0&&choice<range)
+                    break;
+                else
+                    displayInvalidInputMessage();
+            }catch (Exception e)
+            {
+                displayInvalidInputMessage();
+            }
+
+
+        }while(choice<0||choice>=range);
+
         return choice;
     }
 

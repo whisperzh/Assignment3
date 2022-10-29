@@ -28,25 +28,20 @@ public abstract class View implements VisualModule{
 
     @Override
     public int jin_Int() {
-        int num=0;
         try {
-            num=getScanner().nextInt();
+            int num=getScanner().nextInt();
             inputReprint(Integer.toString(num));
             return num;
-        }
-        catch (Exception E)
+        }catch (Exception E)
         {
             displayInvalidInputMessage();
-            jin_Int();
         }
-        return num;
+        return 0;
     }
 
     public int jin_Int(String messagetoUser) {
         jout(messagetoUser);
-        int num=getScanner().nextInt();
-        inputReprint(Integer.toString(num));
-        return num;
+        return jin_Int();
     }
 
     @Override
@@ -58,15 +53,13 @@ public abstract class View implements VisualModule{
 
     public double jin_double(String messagetoUser) {
         jout(messagetoUser);
-        double num=getScanner().nextDouble();
-        inputReprint(Double.toString(num));
-        return num;
+        return jin_double();
     }
 
 
     @Override
     public void inputReprint(String userInput) {
-        jout(userInput);
+        jout("your input: "+userInput);
     }
 
     public void displayWelcomeMessage(){
