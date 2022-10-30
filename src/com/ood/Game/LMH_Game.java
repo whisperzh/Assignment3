@@ -11,15 +11,13 @@ import com.ood.Views.AbsGameView;
 /**
  * concrete class of LMH game
  */
-public class LMH_Game extends BoardGame<LMH_Player>{
+public class LMH_Game extends BoardGame{
 
     private AbsGameView view;
 
     private final GameEnum type=GameEnum.LMH;
 
     private int teamSize=4;
-
-
 
 
     public LMH_Game() {

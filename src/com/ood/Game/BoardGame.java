@@ -9,14 +9,14 @@ import com.ood.Views.AbsGameView;
 /**
  * abstract  board game class
  */
-public abstract class BoardGame<TP extends IPlayer> implements IGame{
+public abstract class BoardGame implements IGame{
     private int playerNums;
 
     private int teamNums;
 
     private IBoard board;
 
-    private TeamCollection<TP> teamCollection;
+    private TeamCollection teamCollection;
 
     private IGameJudge judge;
 
