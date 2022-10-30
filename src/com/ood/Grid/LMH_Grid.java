@@ -8,6 +8,7 @@ public class LMH_Grid implements GridSpace{
     private Vector2 position;
 
     public LMH_Grid(int x, int y) {
+        position=new Vector2();
         position.setX(x);
         position.setY(y);
     }

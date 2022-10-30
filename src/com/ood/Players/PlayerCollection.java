@@ -4,11 +4,22 @@ import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlayerCollection <T extends IPlayer>{
-    private List<T> playerList;
+public abstract class PlayerCollection <T extends IPlayer>{
+    protected List<T> playerList;
 
-    public PlayerCollection() {
+    private int playersize;
+
+    public PlayerCollection(int size) {
         this.playerList = new ArrayList<>();
+        playersize=size;
+    }
+
+    public int getPlayersize() {
+        return playersize;
+    }
+
+    public void setPlayersize(int playersize) {
+        this.playersize = playersize;
     }
 
     public void addPlayer(T p){
@@ -22,4 +33,8 @@ public class PlayerCollection <T extends IPlayer>{
     public void setPlayerList(List<T> playerList) {
         this.playerList = playerList;
     }
+
+    abstract void initPlayerList();
+
+
 }

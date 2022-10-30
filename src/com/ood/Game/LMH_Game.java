@@ -1,9 +1,9 @@
 package com.ood.Game;
 
-import com.ood.Board.LMH_board;
 import com.ood.Enums.GameEnum;
 import com.ood.Factories.GameBoardFactory;
 import com.ood.Factories.ViewFactory;
+import com.ood.Judge.IGameJudge;
 import com.ood.Players.LMH_Player;
 import com.ood.Team.Team;
 import com.ood.Views.AbsGameView;
@@ -18,6 +18,9 @@ public class LMH_Game extends BoardGame<LMH_Player>{
     private final GameEnum type=GameEnum.LMH;
 
     private int teamSize=4;
+
+
+
 
     public LMH_Game() {
         super();
@@ -34,6 +37,9 @@ public class LMH_Game extends BoardGame<LMH_Player>{
 
     }
 
+    /**
+     * do Nothing for LMH_Game
+     */
     @Override
     public void initPlayers() {
         //no players Here
@@ -57,7 +63,9 @@ public class LMH_Game extends BoardGame<LMH_Player>{
         while (true)
         {
 
+            break;
         }
+        getView().displayerPlayerScoreTable();
     }
 
     public GameEnum getType() {

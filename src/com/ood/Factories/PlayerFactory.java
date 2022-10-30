@@ -4,7 +4,7 @@ import com.ood.Enums.GameEnum;
 import com.ood.Players.IPlayer;
 import com.ood.Players.LMH_Player;
 
-public class PlayerFactory <T>{
+public class PlayerFactory {
     public static IPlayer spawnPlayer(GameEnum game,String playerName){
         IPlayer player;
         switch (game)

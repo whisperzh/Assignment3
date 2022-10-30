@@ -1,6 +1,7 @@
 package com.ood.Views;
 
 import java.security.PublicKey;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -16,7 +17,9 @@ public abstract class AbsGameView extends View{
         joutDivider();
     }
 
-    abstract public void displayerPlayerScore(int score);
+    abstract public void displayerPlayerScoreTable();
 
     abstract public void joutHelp();
+
+    public abstract List<String> collectPlayersName(int size);
 }

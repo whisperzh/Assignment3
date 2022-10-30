@@ -16,6 +16,10 @@ public abstract class GridCollections <T extends GridSpace>  {
 
     public GridCollections() {
         grids=new ArrayList<>();
+        for(int i=0;i<row;i++)
+        {
+            grids.add(new ArrayList<T>());
+        }
     }
 
     public GridCollections(int size) {

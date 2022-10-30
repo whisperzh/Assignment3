@@ -1,6 +1,8 @@
 package com.ood.Team;
 
 import com.ood.Players.IPlayer;
+import com.ood.Players.LMH_Player;
+import com.ood.Players.LMH_PlayerCollection;
 import com.ood.Players.PlayerCollection;
 
 /**
@@ -11,13 +13,32 @@ public class Team<T extends IPlayer> implements ITeam {
 
     private String name;
 
+    private int playerSize;
+
     private PlayerCollection<T> playerCollection;
 
     private int points;
 
     public Team(String name, int size) {
         this.name = name;
-        playerCollection =new PlayerCollection<>();
+        playerSize=size;
+        playerCollection = (PlayerCollection<T>) new LMH_PlayerCollection(playerSize);
+    }
+
+    public PlayerCollection<T> getPlayerCollection() {
+        return playerCollection;
+    }
+
+    public void setPlayerCollection(PlayerCollection<T> playerCollection) {
+        this.playerCollection = playerCollection;
+    }
+
+    public int getPlayerSize() {
+        return playerSize;
+    }
+
+    public void setPlayerSize(int playerSize) {
+        this.playerSize = playerSize;
     }
 
     @Override

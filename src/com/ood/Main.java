@@ -23,7 +23,6 @@ public class Main {
         gameController.play();
         view.displayGoodByeMessage();
 
-
     }
 
 

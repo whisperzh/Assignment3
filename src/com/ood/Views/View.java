@@ -17,6 +17,12 @@ public abstract class View implements VisualModule{
 
     @Override
     public String jin_Str() {
+        while (!getScanner().hasNext())
+        {
+            displayInvalidInputMessage();
+            getScanner().next(); // remove and ignore next token
+        }
+
         String str=getScanner().next();
         inputReprint(str);
         return str;
@@ -81,5 +87,9 @@ public abstract class View implements VisualModule{
 
     public void displayInvalidInputMessage(){
         jout("Your Input is Invalid Please Input Again!");
+    }
+
+    public void displayInvalidInputMessage(String message){
+        jout(message);
     }
 }

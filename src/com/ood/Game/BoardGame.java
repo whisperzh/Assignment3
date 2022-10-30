@@ -1,6 +1,7 @@
 package com.ood.Game;
 
 import com.ood.Board.IBoard;
+import com.ood.Judge.IGameJudge;
 import com.ood.Players.IPlayer;
 import com.ood.Team.TeamCollection;
 import com.ood.Views.AbsGameView;
@@ -16,6 +17,8 @@ public abstract class BoardGame<TP extends IPlayer> implements IGame{
     private IBoard board;
 
     private TeamCollection<TP> teamCollection;
+
+    private IGameJudge judge;
 
     public BoardGame() {
         initTeams();
@@ -33,6 +36,14 @@ public abstract class BoardGame<TP extends IPlayer> implements IGame{
     @Override
     public void initTeams() {
         teamCollection=new TeamCollection<>();
+    }
+
+    public IGameJudge getJudge() {
+        return judge;
+    }
+
+    public void setJudge(IGameJudge judge) {
+        this.judge = judge;
     }
 
     @Override
