@@ -1,9 +1,11 @@
 package com.ood.Item;
 
+/**
+ * spell concrete class
+ */
 public class Spell extends ConsumableItem {
 
-
-    public Spell(int price, int timeOfUse, int level, String name) {
-        super(price, timeOfUse, level, name);
+    public Spell(String name, int price, int level, int timeOfUse) {
+        super(name, price, level, timeOfUse);
     }
 }
