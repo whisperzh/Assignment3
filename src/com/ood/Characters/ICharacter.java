@@ -9,8 +9,10 @@ public interface ICharacter {
     float getHP();
     void setHP(float HP);
     int getDamageVal();
-    void setDamageVal(int damageVal);
     void refillHP();
+    int getStrength();
+    void setStrength(int strength);
+
 //    • A name
 //    • A level with an amount of experience points
 //    • HP (hit points, the hero’s in battle)

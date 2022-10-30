@@ -1,6 +1,7 @@
 package com.ood.Characters;
 
 import com.ood.AttributesItems.Wallet;
+import com.ood.Enums.HeroEnum;
 import com.ood.Inventory.IInventory;
 import com.ood.Item.IItem;
 
@@ -19,6 +20,16 @@ public abstract class GeneralHero implements ICharacter{
     private Wallet myWallet;
     private IInventory inventory;
 
+    public HeroEnum getType() {
+        return type;
+    }
+
+    public void setType(HeroEnum type) {
+        this.type = type;
+    }
+
+    private HeroEnum type;
+
     @Override
     public void levelUp() {
         MP*=1.1;
@@ -31,9 +42,15 @@ public abstract class GeneralHero implements ICharacter{
     }
 
     @Override
-    public void setDamageVal(int damageVal) {
-        strength=damageVal;
+    public int getStrength() {
+        return strength;
     }
+
+    @Override
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+
 
     @Override
     public int getLevel() {

@@ -15,15 +15,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-        IConfigParser parser=new AttributeParser("Legends_Monsters_and_Heroes/Armory.txt");
-        try {
-            parser.readFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        parser.reset();
-
-
         // write your code here
         View view=new MainView();
         view.displayWelcomeMessage();

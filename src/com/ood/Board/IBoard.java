@@ -1,6 +1,7 @@
 package com.ood.Board;
 
 import com.ood.Grid.GridSpace;
+import com.ood.Views.View;
 
 /**
  * board interface

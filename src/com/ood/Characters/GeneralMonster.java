@@ -1,5 +1,7 @@
 package com.ood.Characters;
 
+import com.ood.Enums.MonsterEnum;
+
 /**
  * an abstract monster class
  */
@@ -9,6 +11,9 @@ public abstract class GeneralMonster implements ICharacter{
     private float HP;
     private int strength;   //damage value
     private int defense;
+
+    private MonsterEnum type;
+
 
     @Override
     public String getName() {
@@ -73,8 +78,13 @@ public abstract class GeneralMonster implements ICharacter{
     }
 
     @Override
-    public void setDamageVal(int damageVal) {
-        strength=damageVal;
+    public int getStrength() {
+        return strength;
+    }
+
+    @Override
+    public void setStrength(int strength) {
+        this.strength = strength;
     }
 
     /**
@@ -83,5 +93,13 @@ public abstract class GeneralMonster implements ICharacter{
     @Override
     public void refillHP() {
         return;
+    }
+
+    public MonsterEnum getType() {
+        return type;
+    }
+
+    public void setType(MonsterEnum type) {
+        this.type = type;
     }
 }
