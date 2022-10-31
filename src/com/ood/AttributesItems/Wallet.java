@@ -5,13 +5,13 @@ package com.ood.AttributesItems;
  */
 public class Wallet {
 
-    private int amount;
+    private float amount;
 
     public Wallet() {
         this.amount = 0;
     }
 
-    public int getAmount() {
+    public float getAmount() {
         return amount;
     }
 
@@ -19,7 +19,7 @@ public class Wallet {
         this.amount = amount;
     }
 
-    public boolean pay(int price){
+    public boolean pay(float price){
         if(price<=amount)
         {
             amount-=price;

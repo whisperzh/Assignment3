@@ -132,7 +132,7 @@ public abstract class GeneralHero implements ICharacter{
     }
 
     public void buyItem(IItem item){
-        int price=item.getPrice();
+        float price=item.getOriginalPrice();
         boolean transactionSuccess = getMyWallet().pay(price);
         if(transactionSuccess)
         {
@@ -154,6 +154,10 @@ public abstract class GeneralHero implements ICharacter{
     public void refillHP(){
         float targetVal=getLevel()*100;
         setHP(Math.max(targetVal,getHP()));
+    }
+
+    public float getSpellDamage(float spellBaseDamage){
+        return spellBaseDamage+spellBaseDamage*dexterity/10000f;
     }
 
     abstract void attack();

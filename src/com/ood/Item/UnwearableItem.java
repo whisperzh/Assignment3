@@ -37,12 +37,12 @@ public abstract class UnwearableItem implements IItem{
     }
 
     @Override
-    public int getPrice() {
+    public float getOriginalPrice() {
         return price;
     }
 
     @Override
-    public void setPrice(int price) {
+    public void setOriginalPrice(int price) {
         this.price=price;
     }
 }

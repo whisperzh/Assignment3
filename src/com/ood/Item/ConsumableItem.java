@@ -40,11 +40,11 @@ public abstract class ConsumableItem implements IItem{
     }
 
     @Override
-    public int getPrice() {
+    public float getOriginalPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setOriginalPrice(int price) {
         this.price = price;
     }
 
