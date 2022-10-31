@@ -15,6 +15,8 @@ public class LMH_Grid implements GridSpace<LMHGridEnum>{
 
     private boolean canPass;
 
+    private int gridWidth =LMH_Constant.GRID_WIDTH;
+
     private IMarket<IItem> market=null;
 
     private String icon;
@@ -26,7 +28,7 @@ public class LMH_Grid implements GridSpace<LMHGridEnum>{
         position.setX(x);
         position.setY(y);
         canPass=true;
-        setIcon("  ");
+        setDefaultIcon();
         type=LMHGridEnum.VACANT;
     }
 
@@ -84,6 +86,14 @@ public class LMH_Grid implements GridSpace<LMHGridEnum>{
         position.setY(pos.getY());
     }
 
+    public void setDefaultIcon(){
+        String space="";
+        for(int i = 0; i< gridWidth; i++)
+        {
+            space+=" ";
+        }
+        setIcon(space);
+    }
 
     @Override
     public String getIcon() {

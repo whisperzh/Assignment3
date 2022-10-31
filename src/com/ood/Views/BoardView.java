@@ -1,5 +1,6 @@
 package com.ood.Views;
 
+import com.ood.AttributesItems.LMH_Constant;
 import com.ood.Grid.GridCollections;
 import com.ood.Grid.GridSpace;
 
@@ -12,7 +13,7 @@ public class BoardView extends View{
 
     private int logicalSizeY;
 
-    private int widthOfVisualGrid=4;
+    private int widthOfVisualGrid= LMH_Constant.GRID_WIDTH;
 
     public char[][] getBoardGraphicalGrid() {
         return boardGraphicalGrid;
@@ -90,9 +91,10 @@ public class BoardView extends View{
     public void updateGraphicalGridAt(int i,int j, String tgt) {
         int row=2*i+1;
         int col=(1+widthOfVisualGrid)*j+1;
-        boardGraphicalGrid[row][col]=tgt.charAt(0);
-        if(tgt.length()>1)
-            boardGraphicalGrid[row][col+1]=tgt.charAt(1);
+        for(int k=0;k<tgt.length();k++)
+        {
+            boardGraphicalGrid[row][col+k]=tgt.charAt(k);
+        }
     }
 
     public void updateGraphicalGrid(GridCollections gridCollections){

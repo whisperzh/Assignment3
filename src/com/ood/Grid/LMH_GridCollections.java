@@ -7,6 +7,8 @@ import com.ood.Enums.LMHGridEnum;
  */
 public class LMH_GridCollections extends GridCollections<LMH_Grid>{
 
+    private int widthOfGridIcon;
+
     public LMH_GridCollections() {
         super();
         initGrids();

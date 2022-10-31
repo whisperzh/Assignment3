@@ -77,6 +77,7 @@ public class LMH_board extends MovableBoard{
 
     @Override
     public void show() {
+        getView().updateGraphicalGrid(getGridCollections());
         getView().displayBoard();
     }
 
