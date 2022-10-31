@@ -1,5 +1,6 @@
 package com.ood.Players;
 
+import com.ood.AttributesItems.Dice;
 import com.ood.Team.ITeam;
 
 /**
@@ -15,4 +16,6 @@ public interface IPlayer {
     void reset();
     ITeam getTeam();
     void setTeam(ITeam team);
+    void setDice(Dice dice);
+    Dice getDice();
 }

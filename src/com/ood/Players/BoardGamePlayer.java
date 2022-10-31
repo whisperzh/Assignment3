@@ -1,6 +1,9 @@
 package com.ood.Players;
 
+import com.ood.AttributesItems.Dice;
 import com.ood.Team.ITeam;
+
+import java.util.List;
 
 /**
  * abstract class of players
@@ -13,6 +16,22 @@ public abstract class BoardGamePlayer implements IPlayer{
     private int points;
 
     private ITeam team;
+
+    private Dice dice;
+
+    public BoardGamePlayer() {
+        dice=new Dice();
+    }
+
+    @Override
+    public Dice getDice() {
+        return dice;
+    }
+
+    @Override
+    public void setDice(Dice dice) {
+        this.dice = dice;
+    }
 
     @Override
     public String getName() {
@@ -51,4 +70,9 @@ public abstract class BoardGamePlayer implements IPlayer{
     public ITeam getTeam() {
         return team;
     }
+
+    public List<Integer> rollDice(){
+        return getDice().roll();
+    }
+
 }

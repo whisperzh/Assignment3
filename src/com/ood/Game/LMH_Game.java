@@ -27,8 +27,10 @@ public class LMH_Game extends BoardGame{
         //get how many players
         sizeOfATeam=getView().collectPlayersCount(LMH_Constant.PLAYER_COUNT_LOWER_BOUND, LMH_Constant.PLAYER_COUNT_UPPER_BOUND);
         ((LMH_board)getBoard()).setMonsterCount(sizeOfATeam);
-        getTeamCollection().addTeam(new LMH_Team("Player Team", sizeOfATeam));
-        getTeamCollection().addTeam(new LMH_Team("Monster Team",sizeOfATeam));
+
+        getTeamCollection().addTeam(new LMH_Team("PLAYER_TEAM", sizeOfATeam,false));
+        getTeamCollection().addTeam(new LMH_Team("MONSTER_TEAM",sizeOfATeam,true));//Computer Player
+
         getBoard().show();
 
     }

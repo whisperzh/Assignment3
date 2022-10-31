@@ -3,7 +3,7 @@ package com.ood.Team;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TeamCollection<T> {
+public class TeamCollection<T extends ITeam> {
 
     private List<T> teamList;
 
@@ -14,6 +14,18 @@ public class TeamCollection<T> {
 
     public T getTeamAt(int index){
         return teamList.get(index);
+    }
+
+    public T getTeamByName(String name){
+        T ans=null;
+        for(int i=0;i<teamList.size();i++)
+        {
+            if(teamList.get(i).getName().equals(name)){
+                ans=teamList.get(i);
+                return ans;
+            }
+        }
+        return ans;
     }
 
     public void addTeam(T t) {

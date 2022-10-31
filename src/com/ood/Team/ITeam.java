@@ -14,5 +14,7 @@ public interface ITeam<T extends IPlayer>{
     void addPlayer(T player);
     IPlayer getPlayerAt(int index);
     void move();
+    void setIsActive(boolean isActive);
+    boolean getIsActive();
     void reset();
 }

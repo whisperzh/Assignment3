@@ -1,5 +1,7 @@
 package com.ood.Views;
 
+import com.ood.Characters.GeneralHero;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,12 +27,12 @@ public class LMH_GameView extends AbsGameView {
         List<String> names=new ArrayList<>();
         for(int i=0;i<size;i++)
         {
-            String name=jin_Str("Please give yourself a name");
+            String name=jin_Str("Please enter a name for the player");
 
             while(name.equals(""))
             {
                 displayInvalidInputMessage("You cannot input an empty name.");
-                name=jin_Str("Please give yourself a name");
+                name=jin_Str("Please enter a name for the player");
             }
 
             names.add(name);
@@ -47,6 +49,11 @@ public class LMH_GameView extends AbsGameView {
             pc=jin_Int("Please input Player Size");
         }
         return pc;
+    }
+
+    public void displayAllHeroAttributes(List<String> schema, List<GeneralHero> heros){
+
+
     }
 
     @Override

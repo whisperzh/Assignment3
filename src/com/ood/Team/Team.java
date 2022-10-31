@@ -17,10 +17,12 @@ public abstract class Team<T extends IPlayer> implements ITeam<IPlayer> {
 
     private int points;
 
+    private boolean isActive=true;
+
+
     public Team(String name, int size) {
         this.name = name;
         playerSize=size;
-//        playerCollection = (PlayerCollection<T>) new LMH_PlayerCollection(playerSize);
     }
 
     public PlayerCollection<T> getPlayerCollection() {
@@ -72,5 +74,15 @@ public abstract class Team<T extends IPlayer> implements ITeam<IPlayer> {
     @Override
     public void reset() {
 
+    }
+
+    @Override
+    public boolean getIsActive() {
+        return isActive;
+    }
+
+    @Override
+    public void setIsActive(boolean active) {
+        isActive = active;
     }
 }
