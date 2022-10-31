@@ -8,9 +8,11 @@ public interface ICharacter {
     void levelUp();
     float getHP();
     void setHP(float HP);
-    int getDamageVal();
+    float getDamageVal();
     void refillHP();
-    int getStrength();
+    float getDefense();
+    void setDefense(float defense);
+    float getStrength();
     void setStrength(int strength);
 
 //    • A name

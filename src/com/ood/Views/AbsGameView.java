@@ -22,4 +22,9 @@ public abstract class AbsGameView extends View{
     abstract public void joutHelp();
 
     public abstract List<String> collectPlayersName(int size);
+
+    public abstract int collectPlayersCount();
+
+    public abstract int collectPlayersCount(int lowerBound,int upperBound);
+
 }

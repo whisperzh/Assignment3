@@ -37,4 +37,26 @@ public class LMH_GameView extends AbsGameView {
         }
         return names;
     }
+
+    @Override
+    public int collectPlayersCount() {
+        int pc=jin_Int("Please input Player Size");
+        while(pc<=0)
+        {
+            displayInvalidInputMessage();
+            pc=jin_Int("Please input Player Size");
+        }
+        return pc;
+    }
+
+    @Override
+    public int collectPlayersCount(int lowerBound, int upperBound) {
+        int pc=jin_Int("Please input Player Size [ "+lowerBound+ " ~ "+upperBound +"] ");
+        while(pc>=1&&pc<=3)
+        {
+            displayInvalidInputMessage();
+            pc=jin_Int("Please input Player Size [ "+lowerBound+ " ~ "+upperBound +"] ");
+        }
+        return pc;
+    }
 }

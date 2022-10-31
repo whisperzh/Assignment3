@@ -9,8 +9,8 @@ public abstract class GeneralMonster implements ICharacter{
     private String name;
     private int level;
     private float HP;
-    private int strength;   //damage value
-    private int defense;
+    private float strength;   //damage value
+    private float defense;
 
     private MonsterEnum type;
 
@@ -45,7 +45,7 @@ public abstract class GeneralMonster implements ICharacter{
         this.HP = HP;
     }
 
-    public int getDefense() {
+    public float getDefense() {
         return defense;
     }
 
@@ -73,12 +73,12 @@ public abstract class GeneralMonster implements ICharacter{
     }
 
     @Override
-    public int getDamageVal() {
+    public float getDamageVal() {
         return strength;
     }
 
     @Override
-    public int getStrength() {
+    public float getStrength() {
         return strength;
     }
 
@@ -102,4 +102,10 @@ public abstract class GeneralMonster implements ICharacter{
     public void setType(MonsterEnum type) {
         this.type = type;
     }
+
+    @Override
+    public void setDefense(float defense) {
+        this.defense=defense;
+    }
+
 }

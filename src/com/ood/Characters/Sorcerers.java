@@ -4,6 +4,7 @@ package com.ood.Characters;
  * hero Sorcerers
  */
 public class Sorcerers extends GeneralHero{
+
     @Override
     void attack() {
 
@@ -13,4 +14,6 @@ public class Sorcerers extends GeneralHero{
     void faint() {
 
     }
+
+
 }

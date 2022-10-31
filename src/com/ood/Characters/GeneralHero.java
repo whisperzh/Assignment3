@@ -10,13 +10,14 @@ import com.ood.Item.IItem;
  */
 public abstract class GeneralHero implements ICharacter{
     private String name;
-    private int experience;
+    private float experience;
     private float HP;
     private float MP;
-    private int strength;
+    private float strength;
     private int level;
-    private int dexterity;
-    private int agility;
+    private float dexterity;
+    private float defense;
+    private float agility;
     private Wallet myWallet;
     private IInventory inventory;
 
@@ -37,12 +38,12 @@ public abstract class GeneralHero implements ICharacter{
     }
 
     @Override
-    public int getDamageVal() {
+    public float getDamageVal() {
         return strength;
     }
 
     @Override
-    public int getStrength() {
+    public float getStrength() {
         return strength;
     }
 
@@ -72,11 +73,11 @@ public abstract class GeneralHero implements ICharacter{
         this.name = name;
     }
 
-    public int getExperience() {
+    public float getExperience() {
         return experience;
     }
 
-    public void setExperience(int experience) {
+    public void setExperience(float experience) {
         this.experience = experience;
     }
 
@@ -94,16 +95,11 @@ public abstract class GeneralHero implements ICharacter{
         return MP;
     }
 
-    public void getExp(int val)
-    {
-        experience+=val;
-    }
-
     public void setMP(int MP) {
         this.MP = MP;
     }
 
-    public int getDexterity() {
+    public float getDexterity() {
         return dexterity;
     }
 
@@ -111,7 +107,7 @@ public abstract class GeneralHero implements ICharacter{
         this.dexterity = dexterity;
     }
 
-    public int getAgility() {
+    public float getAgility() {
         return agility;
     }
 
@@ -144,12 +140,14 @@ public abstract class GeneralHero implements ICharacter{
         }
     }
 
-    /**
-     * trade an item in Inventory, increase money in wallet
-     */
-    public void tradeItem()
-    {
+    @Override
+    public float getDefense() {
+        return defense;
+    }
 
+    @Override
+    public void setDefense(float defense) {
+        this.defense=defense;
     }
 
     @Override
