@@ -5,7 +5,6 @@ import com.ood.Factories.GameBoardFactory;
 import com.ood.Factories.ViewFactory;
 import com.ood.Players.LMH_Player;
 import com.ood.Team.Team;
-import com.ood.Views.AbsGameView;
 
 /**
  * concrete class of LMH game
@@ -51,7 +50,7 @@ public class LMH_Game extends BoardGame{
 
             break;
         }
-        getView().displayerPlayerScoreTable();
+        getView().displayPlayerScoreTable();
     }
 
     public GameEnum getType() {

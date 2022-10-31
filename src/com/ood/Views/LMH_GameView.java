@@ -11,7 +11,7 @@ public class LMH_GameView extends AbsGameView {
     }
 
     @Override
-    public void displayerPlayerScoreTable() {
+    public void displayPlayerScoreTable() {
 
     }
 
@@ -51,12 +51,7 @@ public class LMH_GameView extends AbsGameView {
 
     @Override
     public int collectPlayersCount(int lowerBound, int upperBound) {
-        int pc=jin_Int("Please input Player Size [ "+lowerBound+ " ~ "+upperBound +"] ");
-        while(pc>=1&&pc<=3)
-        {
-            displayInvalidInputMessage();
-            pc=jin_Int("Please input Player Size [ "+lowerBound+ " ~ "+upperBound +"] ");
-        }
-        return pc;
+        jout("Please input count of players");
+        return jin_BorderedInt(lowerBound,upperBound);
     }
 }

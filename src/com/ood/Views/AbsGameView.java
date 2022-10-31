@@ -17,7 +17,7 @@ public abstract class AbsGameView extends View{
         joutDivider();
     }
 
-    abstract public void displayerPlayerScoreTable();
+    abstract public void displayPlayerScoreTable();
 
     abstract public void joutHelp();
 

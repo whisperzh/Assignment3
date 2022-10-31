@@ -52,6 +52,16 @@ public abstract class View implements VisualModule{
         return jin_Int();
     }
 
+    public int jin_BorderedInt(int lowerBound,int upperBound){
+        int pc=jin_Int("Please input a number between [ "+lowerBound+ " ~ "+upperBound +"] ");
+        while(pc>=1&&pc<=3)
+        {
+            displayInvalidInputMessage();
+            pc=jin_Int("Please input a number between [ "+lowerBound+ " ~ "+upperBound +"] ");
+        }
+        return pc;
+    }
+
     @Override
     public double jin_double() {
         while (!getScanner().hasNextDouble())
@@ -68,7 +78,6 @@ public abstract class View implements VisualModule{
         jout(messagetoUser);
         return jin_double();
     }
-
 
     @Override
     public void inputReprint(String userInput) {

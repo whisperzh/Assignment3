@@ -17,6 +17,8 @@ public class LMH_board extends MovableBoard{
 
     private LMH_BoardView view;
 
+    private int monsterCount=1;
+
     private List<Vector2> obstacleList=new ArrayList<>(Arrays.asList(
             new Vector2(0,1),new Vector2(0,2),new Vector2(1,6),new Vector2(2,5),new Vector2(5,4),
             new Vector2(0,2),new Vector2(1,2),new Vector2(2,6),new Vector2(4,5),new Vector2(5,5),
@@ -33,6 +35,7 @@ public class LMH_board extends MovableBoard{
         view=new LMH_BoardView();
         generateObstacles();
         generateMarkets();
+        setMonsterCount(view.jin_BorderedInt(1,3));
     }
 
     public LMH_BoardView getView() {
@@ -68,5 +71,11 @@ public class LMH_board extends MovableBoard{
         }
     }
 
+    public int getMonsterCount() {
+        return monsterCount;
+    }
 
+    public void setMonsterCount(int monsterCount) {
+        this.monsterCount = monsterCount;
+    }
 }
