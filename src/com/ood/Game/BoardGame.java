@@ -20,6 +20,8 @@ public abstract class BoardGame implements IGame{
 
     private IGameJudge judge;
 
+    private AbsGameView view;
+
     public BoardGame() {
         initTeams();
     }
@@ -36,6 +38,17 @@ public abstract class BoardGame implements IGame{
     @Override
     public void initTeams() {
         teamCollection=new TeamCollection<>();
+    }
+
+    @Override
+    public void setView(AbsGameView view) {
+        this.view=view;
+    }
+
+
+    @Override
+    public AbsGameView getView() {
+        return view;
     }
 
     public IGameJudge getJudge() {

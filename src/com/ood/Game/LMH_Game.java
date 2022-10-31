@@ -12,8 +12,6 @@ import com.ood.Views.AbsGameView;
  */
 public class LMH_Game extends BoardGame{
 
-    private AbsGameView view;
-
     private final GameEnum type=GameEnum.LMH;
 
     private int sizeOfATeam =3;
@@ -27,7 +25,7 @@ public class LMH_Game extends BoardGame{
         setView(ViewFactory.createGameView(type));
         setBoard(GameBoardFactory.createGameBoard(type));
         //set team size of this specific game here
-        sizeOfATeam=view.collectPlayersCount(lowerBound,upperBound);
+        sizeOfATeam=getView().collectPlayersCount(lowerBound,upperBound);
         getTeamCollection().addTeam(new Team<LMH_Player>("Player Team", sizeOfATeam));
         //getTeamCollection().addTeam(new Team<ComputerPLayer>("Monster Team"));
 
@@ -45,18 +43,6 @@ public class LMH_Game extends BoardGame{
     public void initPlayers() {
         //no players Here
     }
-
-    @Override
-    public void setView(AbsGameView view) {
-        this.view=view;
-    }
-
-
-    @Override
-    public AbsGameView getView() {
-        return view;
-    }
-
 
     @Override
     public void start() {
