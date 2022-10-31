@@ -9,6 +9,10 @@ import com.ood.Views.View;
  */
 public interface IBoard {
     GridSpace getGrid(int x,int y);
+    int getRowNum();
+    int getColNum();
     void show();
+    void setRowNum(int rowNum);
+    void setColNum(int colNum);
     BoardView getView();
 }

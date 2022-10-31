@@ -17,11 +17,19 @@ public class LMH_board extends MovableBoard{
     private int monsterCount=1;
 
     public LMH_board() {
+        super();
         generateObstacles();
         generateMarkets();
         setView(new LMH_BoardView());
+        getView().initBoardView(getRowNum(),getColNum());
+    }
 
-//        setMonsterCount(view.jin_BorderedInt(LMH_Constant.MONSTER_COUNT_LOWER_BOUND, LMH_Constant.MONSTER_COUNT_UPPER_BOUND));
+    public LMH_board(int row, int col) {
+        super(row, col);
+        generateObstacles();
+        generateMarkets();
+        setView(new LMH_BoardView());
+        getView().initBoardView(row,col);
     }
 
     public void generateObstacles(){
@@ -71,4 +79,5 @@ public class LMH_board extends MovableBoard{
     public void show() {
         getView().displayBoard();
     }
+
 }

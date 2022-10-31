@@ -21,8 +21,14 @@ public abstract class MovableBoard implements IBoard{
 
     public MovableBoard() {
         gridCollections = new LMH_GridCollections(rowNum,colNum);
+
     }
 
+    public MovableBoard(int row,int col){
+        rowNum=row;
+        colNum=col;
+        gridCollections = new LMH_GridCollections(rowNum,colNum);
+    }
     public GridCollections<LMH_Grid> getGridCollections() {
         return gridCollections;
     }
@@ -38,6 +44,23 @@ public abstract class MovableBoard implements IBoard{
     @Override
     public GridSpace getGrid(int x, int y) {
         return gridCollections.getGrid(x,y);
+    }
+
+    @Override
+    public int getRowNum() {
+        return rowNum;
+    }
+    @Override
+    public void setRowNum(int rowNum) {
+        this.rowNum = rowNum;
+    }
+    @Override
+    public int getColNum() {
+        return colNum;
+    }
+    @Override
+    public void setColNum(int colNum) {
+        this.colNum = colNum;
     }
 
     public void setView(BoardView view) {

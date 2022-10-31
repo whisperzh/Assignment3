@@ -12,6 +12,8 @@ public class BoardView extends View{
 
     private int logicalSizeY;
 
+    private int widthOfVisualGrid=4;
+
     public char[][] getBoardGraphicalGrid() {
         return boardGraphicalGrid;
     }
@@ -20,15 +22,17 @@ public class BoardView extends View{
         this.boardGraphicalGrid = boardGraphicalGrid;
     }
 
-    public void setBoardGraphicalGridAt(int x, int y, char tgt) {
-        this.boardGraphicalGrid[x][y] = tgt;
+    public void setBoardGraphicalGridAt(int logicRow, int logicCol, char tgt) {
+        int mappedRow=logicRow*2+1;
+        int mappedCol=logicCol*(1+widthOfVisualGrid)+1;
+        this.boardGraphicalGrid[mappedRow][mappedCol] = tgt;
     }
 
     public void initBoardView(int rowSize,int colSize){
         logicalSizeX = colSize;
         logicalSizeY = rowSize;
         int row=1+rowSize*2;
-        int col=1+colSize*3;
+        int col=1+colSize*(1+widthOfVisualGrid);
         boardGraphicalGrid =new char[row][col];
         for (int i=0;i<row;i++)
         {
@@ -38,20 +42,24 @@ public class BoardView extends View{
             }
         }
         for(int r=0;r<row-1;r+=2) {
-            for (int i = 0; i < col-1; i += 3) {
+            for (int i = 0; i < col-1; i += (1+widthOfVisualGrid)) {
+                if(i+widthOfVisualGrid>=col)
+                    break;
                 boardGraphicalGrid[r][i] = '+';
                 boardGraphicalGrid[r+2][i] = '+';
-                boardGraphicalGrid[r][i+3] = '+';
-                boardGraphicalGrid[r+2][i+3] = '+';
+                boardGraphicalGrid[r][i+(1+widthOfVisualGrid)] = '+';
+                boardGraphicalGrid[r+2][i+(1+widthOfVisualGrid)] = '+';
 
                 boardGraphicalGrid[r+1][i] = '|';
-                boardGraphicalGrid[r+1][i+3] = '|';
+                boardGraphicalGrid[r+1][i+(1+widthOfVisualGrid)] = '|';
 
-                boardGraphicalGrid[r][i+1] = '-';
-                boardGraphicalGrid[r][i+2] = '-';
+                for(int k=1;k<=widthOfVisualGrid;k++)
+                {
+                    boardGraphicalGrid[r][i+k] = '-';
+                    boardGraphicalGrid[r+2][i+k] = '-';
 
-                boardGraphicalGrid[r+2][i+1] = '-';
-                boardGraphicalGrid[r+2][i+2] = '-';
+                }
+
             }
         }
 
@@ -61,11 +69,11 @@ public class BoardView extends View{
     public void displayBoard()
     {
         int row=1+logicalSizeY*2;
-        int col=1+logicalSizeX*3;
+        int col=1+logicalSizeX*(1+widthOfVisualGrid);
         String horIdx="";
         for (int i=0;i<logicalSizeX;i++)
         {
-            horIdx+=" "+i+" ";
+            horIdx+="  "+i+"  ";
         }
         jout(horIdx);
         for(int i=0;i<row;i++)
@@ -81,7 +89,7 @@ public class BoardView extends View{
 
     public void updateGraphicalGridAt(int i,int j, String tgt) {
         int row=2*i+1;
-        int col=3*j+1;
+        int col=(1+widthOfVisualGrid)*j+1;
         boardGraphicalGrid[row][col]=tgt.charAt(0);
         if(tgt.length()>1)
             boardGraphicalGrid[row][col+1]=tgt.charAt(1);

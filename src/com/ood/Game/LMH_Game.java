@@ -23,11 +23,10 @@ public class LMH_Game extends BoardGame{
         super();
         setView(ViewFactory.createGameView(type));
         setBoard(GameBoardFactory.createGameBoard(type));
-        getBoard().getView().initBoardView(LMH_Constant.BOARD_ROW,LMH_Constant.BOARD_COL);
-        getBoard().show();
-        //set team size of this specific game here
+        //get how many players
         sizeOfATeam=getView().collectPlayersCount(LMH_Constant.PLAYER_COUNT_LOWER_BOUND, LMH_Constant.PLAYER_COUNT_UPPER_BOUND);
         ((LMH_board)getBoard()).setMonsterCount(sizeOfATeam);
+        getBoard().show();
         getTeamCollection().addTeam(new Team<LMH_Player>("Player Team", sizeOfATeam));
         //getTeamCollection().addTeam(new Team<ComputerPLayer>("Monster Team"));
 
