@@ -19,7 +19,7 @@ public abstract class GeneralHero implements ICharacter{
     private float defense;
     private float agility;
     private Wallet myWallet;
-    private IInventory inventory;
+    private IInventory<IItem> inventory;
 
     public HeroEnum getType() {
         return type;

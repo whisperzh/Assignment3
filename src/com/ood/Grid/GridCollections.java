@@ -1,5 +1,6 @@
 package com.ood.Grid;
 
+import com.ood.AttributesItems.Vector2;
 import com.ood.Game.IGame;
 
 import java.util.ArrayList;
@@ -47,6 +48,8 @@ public abstract class GridCollections <T extends GridSpace>  {
     public T getGrid(int x, int y) {
         return grids.get(x).get(y);
     }
+
+    public T getGrid(Vector2 pos){return grids.get(pos.getX()).get(pos.getY());}
 
     public List<List<T>> getGrids() {
         return grids;

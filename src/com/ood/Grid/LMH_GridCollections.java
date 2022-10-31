@@ -1,5 +1,7 @@
 package com.ood.Grid;
 
+import com.ood.Enums.LMHGridEnum;
+
 /**
  * concrete grid collections
  */
@@ -23,6 +25,10 @@ public class LMH_GridCollections extends GridCollections<LMH_Grid>{
     @Override
     public void setGridAt(LMH_Grid grid,int x,int y) {
         getGrids().get(y).set(x,grid);
+    }
+
+    public void setGridTypeAt(int x, int y, LMHGridEnum type){
+        getGrid(x,y).setType(type);
     }
 
     @Override
