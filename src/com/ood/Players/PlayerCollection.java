@@ -1,25 +1,24 @@
 package com.ood.Players;
 
-import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class PlayerCollection <T extends IPlayer>{
     protected List<T> playerList;
 
-    private int playersize;
+    private int playerSize;
 
     public PlayerCollection(int size) {
         this.playerList = new ArrayList<>();
-        playersize=size;
+        playerSize =size;
     }
 
-    public int getPlayersize() {
-        return playersize;
+    public int getPlayerSize() {
+        return playerSize;
     }
 
-    public void setPlayersize(int playersize) {
-        this.playersize = playersize;
+    public void setPlayerSize(int playerSize) {
+        this.playerSize = playerSize;
     }
 
     public void addPlayer(T p){

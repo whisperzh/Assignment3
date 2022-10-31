@@ -14,4 +14,5 @@ public interface IPlayer {
     void setActive(boolean status);
     void reset();
     ITeam getTeam();
+    void setTeam(ITeam team);
 }

@@ -1,14 +1,18 @@
 package com.ood.Players;
 
+import com.ood.Team.ITeam;
+
 /**
  * abstract class of players
  */
 public abstract class BoardGamePlayer implements IPlayer{
     private String name;
 
-    private boolean isActive;
+    private boolean isActive;// whether player can move in next/current round
 
     private int points;
+
+    private ITeam team;
 
     @Override
     public String getName() {
@@ -38,5 +42,13 @@ public abstract class BoardGamePlayer implements IPlayer{
     @Override
     public void setPoints(int points) {
         this.points = points;
+    }
+
+    public void setTeam(ITeam team) {
+        this.team = team;
+    }
+
+    public ITeam getTeam() {
+        return team;
     }
 }

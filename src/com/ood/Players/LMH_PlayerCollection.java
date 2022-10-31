@@ -17,14 +17,14 @@ public class LMH_PlayerCollection extends PlayerCollection<LMH_Player>{
     public LMH_PlayerCollection(int size) {
         super(size);
         view= ViewFactory.createGameView(GameEnum.LMH);
-        playersName=view.collectPlayersName(getPlayersize());
+        playersName=view.collectPlayersName(getPlayerSize());
         initPlayerList();
     }
 
     @Override
     void initPlayerList() {
         playerList=new ArrayList<>();
-        for(int i=0;i<getPlayersize();i++)
+        for(int i = 0; i< getPlayerSize(); i++)
         {
             String playerName=playersName.get(i);
             playerList.add((LMH_Player) PlayerFactory.spawnPlayer(GameEnum.LMH,playerName));
