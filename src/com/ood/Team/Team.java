@@ -7,7 +7,7 @@ import com.ood.Players.PlayerCollection;
  * Team Concrete class
  * @param <T> player
  */
-public class Team<T extends IPlayer> implements ITeam<IPlayer> {
+public abstract class Team<T extends IPlayer> implements ITeam<IPlayer> {
 
     private String name;
 

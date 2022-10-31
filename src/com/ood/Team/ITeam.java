@@ -13,5 +13,6 @@ public interface ITeam<T extends IPlayer>{
     void setPoints(int points);
     void addPlayer(T player);
     IPlayer getPlayerAt(int index);
+    void move();
     void reset();
 }

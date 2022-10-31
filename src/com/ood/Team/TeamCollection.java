@@ -12,6 +12,10 @@ public class TeamCollection<T> {
         //need to set team size and add teams into teamCollection Now
     }
 
+    public T getTeamAt(int index){
+        return teamList.get(index);
+    }
+
     public void addTeam(T t) {
         teamList.add(t);
     }

@@ -3,6 +3,7 @@ package com.ood.Game;
 import com.ood.Board.IBoard;
 import com.ood.Judge.IGameJudge;
 import com.ood.Players.IPlayer;
+import com.ood.Team.LMH_Team;
 import com.ood.Team.TeamCollection;
 import com.ood.Views.AbsGameView;
 
@@ -16,7 +17,7 @@ public abstract class BoardGame implements IGame{
 
     private IBoard board;
 
-    private TeamCollection teamCollection;
+    private TeamCollection<LMH_Team> teamCollection;
 
     private IGameJudge judge;
 
@@ -26,7 +27,7 @@ public abstract class BoardGame implements IGame{
         initTeams();
     }
 
-    public TeamCollection getTeamCollection() {
+    public TeamCollection<LMH_Team> getTeamCollection() {
         return teamCollection;
     }
 

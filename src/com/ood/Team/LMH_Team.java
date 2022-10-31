@@ -8,4 +8,9 @@ public class LMH_Team extends Team<LMH_Player>{
         super(name, size);
         setPlayerCollection(new LMH_PlayerCollection(getPlayerSize()));
     }
+
+    @Override
+    public void move() {
+
+    }
 }

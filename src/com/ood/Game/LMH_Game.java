@@ -51,6 +51,8 @@ public class LMH_Game extends BoardGame{
     public void start() {
         while (true)
         {
+            getTeamCollection().getTeamAt(0).move();
+            getTeamCollection().getTeamAt(1).move();
 
             break;
         }
