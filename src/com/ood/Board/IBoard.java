@@ -8,4 +8,5 @@ import com.ood.Views.View;
  */
 public interface IBoard {
     GridSpace getGrid(int x,int y);
+    void show();
 }

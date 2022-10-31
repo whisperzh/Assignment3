@@ -22,7 +22,7 @@ public class LMH_board extends MovableBoard{
         view=new LMH_BoardView();
         generateObstacles();
         generateMarkets();
-        setMonsterCount(view.jin_BorderedInt(LMH_Constant.MONSTER_COUNT_LOWER_BOUND, LMH_Constant.MONSTER_COUNT_UPPER_BOUND));
+//        setMonsterCount(view.jin_BorderedInt(LMH_Constant.MONSTER_COUNT_LOWER_BOUND, LMH_Constant.MONSTER_COUNT_UPPER_BOUND));
     }
 
     public LMH_BoardView getView() {
@@ -74,5 +74,10 @@ public class LMH_board extends MovableBoard{
                 }
             }
         }
+    }
+
+    @Override
+    public void show() {
+        getView().displayBoard();
     }
 }

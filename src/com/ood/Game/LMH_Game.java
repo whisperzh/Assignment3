@@ -22,6 +22,7 @@ public class LMH_Game extends BoardGame{
         super();
         setView(ViewFactory.createGameView(type));
         setBoard(GameBoardFactory.createGameBoard(type));
+        getBoard().show();
         //set team size of this specific game here
         sizeOfATeam=getView().collectPlayersCount(LMH_Constant.PLAYER_COUNT_LOWER_BOUND, LMH_Constant.PLAYER_COUNT_UPPER_BOUND);
         getTeamCollection().addTeam(new Team<LMH_Player>("Player Team", sizeOfATeam));
