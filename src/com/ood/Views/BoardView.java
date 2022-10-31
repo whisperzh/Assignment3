@@ -24,11 +24,11 @@ public class BoardView extends View{
         this.boardGraphicalGrid[x][y] = tgt;
     }
 
-    public void initBoardView(int xsize,int ysize){
-        logicalSizeX = xsize;
-        logicalSizeY = ysize;
-        int row=1+ysize*2;
-        int col=1+xsize*3;
+    public void initBoardView(int rowSize,int colSize){
+        logicalSizeX = colSize;
+        logicalSizeY = rowSize;
+        int row=1+rowSize*2;
+        int col=1+colSize*3;
         boardGraphicalGrid =new char[row][col];
         for (int i=0;i<row;i++)
         {
@@ -63,15 +63,19 @@ public class BoardView extends View{
         int row=1+logicalSizeY*2;
         int col=1+logicalSizeX*3;
         String horIdx="";
-        for (int i=0;i<col;i++)
+        for (int i=0;i<logicalSizeX;i++)
         {
             horIdx+=" "+i+" ";
         }
         jout(horIdx);
         for(int i=0;i<row;i++)
         {
-            String line= Arrays.toString(boardGraphicalGrid[i]);
-            jout(line+"\t"+i);
+//            String line= Arrays.toString(boardGraphicalGrid[i]);
+            String line=new String(boardGraphicalGrid[i]);
+            if (i>0&&i%2!=0)
+                line+="\t"+(i-1)/2;
+            jout(line);
+
         }
     }
 

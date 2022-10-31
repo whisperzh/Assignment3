@@ -9,6 +9,8 @@ public class LMH_Constant {
     public static final int MONSTER_COUNT_UPPER_BOUND=3;
     public static final int PLAYER_COUNT_LOWER_BOUND=1;
     public static final int PLAYER_COUNT_UPPER_BOUND=3;
+    public static final int BOARD_ROW=8;
+    public static final int BOARD_COL=8;
     public static String DRAGON="\uD83D\uDC09";
     public static String SKELETON="\uD83D\uDC80";
     public static String SPIRIT="\uD83D\uDC7B";

@@ -1,6 +1,7 @@
 package com.ood.Board;
 
 import com.ood.Grid.GridSpace;
+import com.ood.Views.BoardView;
 import com.ood.Views.View;
 
 /**
@@ -9,4 +10,5 @@ import com.ood.Views.View;
 public interface IBoard {
     GridSpace getGrid(int x,int y);
     void show();
+    BoardView getView();
 }

@@ -17,8 +17,8 @@ public class LMH_GridCollections extends GridCollections<LMH_Grid>{
         initGrids();
     }
 
-    public LMH_GridCollections(int sizeX, int sizeY) {
-        super(sizeX, sizeY);
+    public LMH_GridCollections(int row, int col) {
+        super(row, col);
         initGrids();
     }
 

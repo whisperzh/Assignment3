@@ -33,10 +33,10 @@ public abstract class GridCollections <T extends GridSpace>  {
         }
     }
 
-    public GridCollections(int sizeX,int sizeY) {
+    public GridCollections(int rowSize,int colSize) {
         grids=new ArrayList<>();
-        row=sizeY;
-        col=sizeX;
+        row=rowSize;
+        col=colSize;
         for(int i=0;i<row;i++)
         {
             grids.add(new ArrayList<T>());

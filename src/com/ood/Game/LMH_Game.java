@@ -1,6 +1,7 @@
 package com.ood.Game;
 
 import com.ood.AttributesItems.LMH_Constant;
+import com.ood.Board.LMH_board;
 import com.ood.Enums.GameEnum;
 import com.ood.Factories.GameBoardFactory;
 import com.ood.Factories.ViewFactory;
@@ -22,9 +23,11 @@ public class LMH_Game extends BoardGame{
         super();
         setView(ViewFactory.createGameView(type));
         setBoard(GameBoardFactory.createGameBoard(type));
+        getBoard().getView().initBoardView(LMH_Constant.BOARD_ROW,LMH_Constant.BOARD_COL);
         getBoard().show();
         //set team size of this specific game here
         sizeOfATeam=getView().collectPlayersCount(LMH_Constant.PLAYER_COUNT_LOWER_BOUND, LMH_Constant.PLAYER_COUNT_UPPER_BOUND);
+        ((LMH_board)getBoard()).setMonsterCount(sizeOfATeam);
         getTeamCollection().addTeam(new Team<LMH_Player>("Player Team", sizeOfATeam));
         //getTeamCollection().addTeam(new Team<ComputerPLayer>("Monster Team"));
 

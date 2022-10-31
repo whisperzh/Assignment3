@@ -14,23 +14,14 @@ import java.util.Random;
  */
 public class LMH_board extends MovableBoard{
 
-    private LMH_BoardView view;
-
     private int monsterCount=1;
 
     public LMH_board() {
-        view=new LMH_BoardView();
         generateObstacles();
         generateMarkets();
+        setView(new LMH_BoardView());
+
 //        setMonsterCount(view.jin_BorderedInt(LMH_Constant.MONSTER_COUNT_LOWER_BOUND, LMH_Constant.MONSTER_COUNT_UPPER_BOUND));
-    }
-
-    public LMH_BoardView getView() {
-        return view;
-    }
-
-    public void setView(LMH_BoardView view) {
-        this.view = view;
     }
 
     public void generateObstacles(){
