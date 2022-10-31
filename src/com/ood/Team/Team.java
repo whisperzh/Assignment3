@@ -1,15 +1,13 @@
 package com.ood.Team;
 
 import com.ood.Players.IPlayer;
-import com.ood.Players.LMH_Player;
-import com.ood.Players.LMH_PlayerCollection;
 import com.ood.Players.PlayerCollection;
 
 /**
  * Team Concrete class
  * @param <T> player
  */
-public class Team<T extends IPlayer> implements ITeam {
+public class Team<T extends IPlayer> implements ITeam<IPlayer> {
 
     private String name;
 
@@ -22,7 +20,7 @@ public class Team<T extends IPlayer> implements ITeam {
     public Team(String name, int size) {
         this.name = name;
         playerSize=size;
-        playerCollection = (PlayerCollection<T>) new LMH_PlayerCollection(playerSize);
+//        playerCollection = (PlayerCollection<T>) new LMH_PlayerCollection(playerSize);
     }
 
     public PlayerCollection<T> getPlayerCollection() {
