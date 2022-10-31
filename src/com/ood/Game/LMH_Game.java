@@ -15,6 +15,7 @@ public class LMH_Game extends BoardGame{
     private final GameEnum type=GameEnum.LMH;
 
     private int sizeOfATeam =3;
+    //by default is 3
 
 
     public LMH_Game() {

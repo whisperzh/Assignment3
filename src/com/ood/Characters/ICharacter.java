@@ -1,5 +1,7 @@
 package com.ood.Characters;
 
+import com.ood.AttributesItems.Vector2;
+
 public interface ICharacter {
     String getName();
     void setName(String name);
@@ -14,6 +16,10 @@ public interface ICharacter {
     void setDefense(float defense);
     float getStrength();
     void setStrength(int strength);
+    void leave(Vector2 position);
+    void leave(int x,int y);
+    String getIcon();
+    void setIcon(String icon);
 
 //    • A name
 //    • A level with an amount of experience points

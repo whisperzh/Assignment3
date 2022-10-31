@@ -15,4 +15,6 @@ public interface GridSpace<T extends Enum> {
     void setMarket();
     void setObstacle();
     ICharacter getCharacter();
+    String getIcon();
+    void setIcon(String icon);
 }

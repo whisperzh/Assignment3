@@ -1,5 +1,6 @@
 package com.ood.Grid;
 
+import com.ood.AttributesItems.LMH_Constant;
 import com.ood.AttributesItems.Vector2;
 import com.ood.Characters.ICharacter;
 import com.ood.Enums.LMHGridEnum;
@@ -16,6 +17,8 @@ public class LMH_Grid implements GridSpace<LMHGridEnum>{
 
     private IMarket<IItem> market=null;
 
+    private String icon;
+
     private ICharacter character=null;
 
     public LMH_Grid(int x, int y) {
@@ -23,6 +26,7 @@ public class LMH_Grid implements GridSpace<LMHGridEnum>{
         position.setX(x);
         position.setY(y);
         canPass=true;
+        setIcon("  ");
         type=LMHGridEnum.VACANT;
     }
 
@@ -41,13 +45,15 @@ public class LMH_Grid implements GridSpace<LMHGridEnum>{
 
     @Override
     public void setMarket() {
-        setType(LMHGridEnum.MARKET);
         market=new LMH_Market();
+        setType(LMHGridEnum.MARKET);
+        setIcon(LMH_Constant.MARKET);
     }
 
     @Override
     public void setObstacle() {
         canPass=false;
+        setIcon(LMH_Constant.OBSTACLE);
         setType(LMHGridEnum.OBSTACLE);
     }
 
@@ -68,7 +74,7 @@ public class LMH_Grid implements GridSpace<LMHGridEnum>{
         this.canPass = canPass;
     }
 
-    public IMarket getMarket() {
+    public IMarket<IItem> getMarket() {
         return market;
     }
 
@@ -79,5 +85,13 @@ public class LMH_Grid implements GridSpace<LMHGridEnum>{
     }
 
 
+    @Override
+    public String getIcon() {
+        return icon;
+    }
 
+    @Override
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
 }

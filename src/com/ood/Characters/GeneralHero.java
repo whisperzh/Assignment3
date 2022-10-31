@@ -1,5 +1,6 @@
 package com.ood.Characters;
 
+import com.ood.AttributesItems.Vector2;
 import com.ood.AttributesItems.Wallet;
 import com.ood.Enums.HeroEnum;
 import com.ood.Inventory.IInventory;
@@ -18,8 +19,11 @@ public abstract class GeneralHero implements ICharacter{
     private float dexterity;
     private float defense;
     private float agility;
+    private String icon;
     private Wallet myWallet;
     private IInventory<IItem> inventory;
+
+
 
     public HeroEnum getType() {
         return type;
@@ -164,4 +168,23 @@ public abstract class GeneralHero implements ICharacter{
 
     abstract void faint();
 
+    @Override
+    public void leave(Vector2 position) {
+
+    }
+
+    @Override
+    public void leave(int x, int y) {
+
+    }
+
+    @Override
+    public String getIcon() {
+        return icon;
+    }
+
+    @Override
+    public void setIcon(String icon) {
+        this.icon=icon;
+    }
 }

@@ -12,6 +12,8 @@ public class LMH_Constant {
     public static String DRAGON="\uD83D\uDC09";
     public static String SKELETON="\uD83D\uDC80";
     public static String SPIRIT="\uD83D\uDC7B";
+    public static String OBSTACLE="⛰";
+    public static String MARKET="\uD83D\uDED2";
     public static final List<Vector2> OBSTACLE_LIST=new ArrayList<>(Arrays.asList(
             new Vector2(0,1),new Vector2(0,2),new Vector2(1,6),new Vector2(2,5),new Vector2(5,4),
             new Vector2(0,2),new Vector2(1,2),new Vector2(2,6),new Vector2(4,5),new Vector2(5,5),

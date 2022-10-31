@@ -1,5 +1,6 @@
 package com.ood.Characters;
 
+import com.ood.AttributesItems.Vector2;
 import com.ood.Enums.MonsterEnum;
 
 /**
@@ -11,7 +12,7 @@ public abstract class GeneralMonster implements ICharacter{
     private float HP;
     private float strength;   //damage value
     private float defense;
-
+    private String icon;
     private MonsterEnum type;
 
 
@@ -108,4 +109,23 @@ public abstract class GeneralMonster implements ICharacter{
         this.defense=defense;
     }
 
+    @Override
+    public void leave(Vector2 position) {
+        //DO NOTHING
+    }
+
+    @Override
+    public void leave(int x, int y) {
+        //DO NOTHING
+    }
+
+    @Override
+    public String getIcon() {
+        return icon;
+    }
+
+    @Override
+    public void setIcon(String icon) {
+        this.icon=icon;
+    }
 }
