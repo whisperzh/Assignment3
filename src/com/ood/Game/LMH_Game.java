@@ -1,5 +1,6 @@
 package com.ood.Game;
 
+import com.ood.AttributesItems.LMH_Constant;
 import com.ood.Enums.GameEnum;
 import com.ood.Factories.GameBoardFactory;
 import com.ood.Factories.ViewFactory;
@@ -15,16 +16,13 @@ public class LMH_Game extends BoardGame{
 
     private int sizeOfATeam =3;
 
-    private final int lowerBound=1;
-
-    private final int upperBound=3;
 
     public LMH_Game() {
         super();
         setView(ViewFactory.createGameView(type));
         setBoard(GameBoardFactory.createGameBoard(type));
         //set team size of this specific game here
-        sizeOfATeam=getView().collectPlayersCount(lowerBound,upperBound);
+        sizeOfATeam=getView().collectPlayersCount(LMH_Constant.PLAYER_COUNT_LOWER_BOUND, LMH_Constant.PLAYER_COUNT_UPPER_BOUND);
         getTeamCollection().addTeam(new Team<LMH_Player>("Player Team", sizeOfATeam));
         //getTeamCollection().addTeam(new Team<ComputerPLayer>("Monster Team"));
 

@@ -12,13 +12,9 @@ public class LMH_Player extends BoardGamePlayer{
 
     }
 
-
-
     @Override
     public void reset() {
 
     }
-
-
 
 }

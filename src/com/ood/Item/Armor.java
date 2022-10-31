@@ -21,4 +21,5 @@ public class Armor extends UnwearableItem{
     public void setDamageReductionVal(int damageReductionVal) {
         this.damageReductionVal = damageReductionVal;
     }
+
 }

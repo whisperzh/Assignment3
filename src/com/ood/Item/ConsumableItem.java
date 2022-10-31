@@ -56,4 +56,8 @@ public abstract class ConsumableItem implements IItem{
         this.timeOfUse = timeOfUse;
     }
 
+    @Override
+    public float getSellPrice() {
+        return getOriginalPrice()/2;
+    }
 }
