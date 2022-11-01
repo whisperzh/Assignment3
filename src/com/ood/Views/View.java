@@ -1,5 +1,7 @@
 package com.ood.Views;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -100,5 +102,33 @@ public abstract class View implements VisualModule{
 
     public void displayInvalidInputMessage(String message){
         jout(message);
+    }
+
+    /**
+     * include title
+     * @param data
+     */
+    public void joutAsTable(List<List<String>> data)
+    {
+        int[] len=new int[data.get(0).size()];
+        for(int i=0;i<len.length;i++)
+        {
+            for(int j=0;j<data.size();j++)
+            {
+                len[i]=Math.max(len[i],data.get(j).get(i).length());
+            }
+        }
+        String format="";
+        for(int i=0;i<len.length;i++)
+        {
+            format+="%-"+Integer.toString((int)(len[i]+3))+"s";
+        }
+
+        for (List<String> d : data)
+        {
+            String line=String.format(format,d.toArray());
+            jout(line);
+        }
+
     }
 }

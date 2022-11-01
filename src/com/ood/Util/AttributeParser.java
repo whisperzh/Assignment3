@@ -16,6 +16,11 @@ public class AttributeParser implements IConfigParser{
     public AttributeParser(String filePath) {
         this.filePath = filePath;
         attributeDataBase=new HashMap<>();
+        try {
+            readFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void readFile() throws IOException {
@@ -33,6 +38,28 @@ public class AttributeParser implements IConfigParser{
         }
         bufferedReader.close();
     }
+
+    @Override
+    public String getFileName() {
+        String[] names=filePath.split("/");
+        return names[names.length-1];
+    }
+
+    @Override
+    public String getFilePath() {
+        return filePath;
+    }
+
+    @Override
+    public Map<String, List<String>> getAttributeDataBase() {
+        return attributeDataBase;
+    }
+
+    @Override
+    public List<String> getOrderedSchema() {
+        return orderedSchema;
+    }
+
 
     @Override
     public void reset() {

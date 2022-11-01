@@ -1,5 +1,7 @@
 package com.ood.Views;
 
+import com.ood.Util.IConfigParser;
+
 import java.security.PublicKey;
 import java.util.List;
 import java.util.Scanner;
@@ -26,5 +28,9 @@ public abstract class AbsGameView extends View{
     public abstract int collectPlayersCount();
 
     public abstract int collectPlayersCount(int lowerBound,int upperBound);
+
+    public abstract void displayParserInfo(IConfigParser parser);
+
+    public abstract void displayParserInfo(List<IConfigParser> l);
 
 }

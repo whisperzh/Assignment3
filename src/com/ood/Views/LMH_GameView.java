@@ -1,7 +1,10 @@
 package com.ood.Views;
 
 import com.ood.Characters.GeneralHero;
+import com.ood.Util.IConfigParser;
 
+import javax.swing.text.html.parser.Entity;
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,9 +54,30 @@ public class LMH_GameView extends AbsGameView {
         return pc;
     }
 
-    public void displayAllHeroAttributes(List<String> schema, List<GeneralHero> heros){
+    @Override
+    public void displayParserInfo(IConfigParser parser){
+        joutDivider();
+        String fileName=parser.getFileName();
+        jout(fileName);
+        List<List<String >> rows=new ArrayList<>();
+        rows.add(parser.getOrderedSchema());
 
 
+        for(var e :parser.getAttributeDataBase().keySet())
+        {
+            List<String> attr=parser.getAttributeDataBase().get(e);
+            rows.add(attr);
+        }
+        joutAsTable(rows);
+        joutDivider();
+        jout("\n");
+
+    }
+
+    public void displayParserInfo(List<IConfigParser> l)
+    {
+        for(var i :l)
+            displayParserInfo(i);
     }
 
     @Override
@@ -61,4 +85,5 @@ public class LMH_GameView extends AbsGameView {
         jout("Please input count of players");
         return jin_BorderedInt(lowerBound,upperBound);
     }
+
 }
