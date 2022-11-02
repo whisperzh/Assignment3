@@ -187,4 +187,24 @@ public abstract class GeneralHero implements ICharacter{
     public void setIcon(String icon) {
         this.icon=icon;
     }
+
+    @Override
+    public boolean isHero() {
+        return true;
+    }
+
+    @Override
+    public boolean isMonster() {
+        return false;
+    }
+
+    @Override
+    public boolean isObstacle() {
+        return false;
+    }
+
+    @Override
+    public boolean isMarket() {
+        return false;
+    }
 }
