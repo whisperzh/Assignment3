@@ -1,7 +1,9 @@
 package com.ood.Players;
 
 import com.ood.AttributesItems.Dice;
+import com.ood.Enums.GameEnum;
 import com.ood.Team.ITeam;
+import com.ood.Views.AbsGameView;
 
 import java.util.List;
 
@@ -17,10 +19,20 @@ public abstract class BoardGamePlayer implements IPlayer{
 
     private ITeam team;
 
-    private Dice dice;
+    protected AbsGameView view;
+
+    private boolean isPCPlayer;
+
+    protected GameEnum gameType;
+
+    protected Dice dice;
 
     public BoardGamePlayer() {
-        dice=new Dice();
+        isPCPlayer=false;
+    }
+
+    public BoardGamePlayer(boolean isPCPlayer) {
+        this.isPCPlayer = isPCPlayer;
     }
 
     @Override
@@ -74,5 +86,33 @@ public abstract class BoardGamePlayer implements IPlayer{
     public List<Integer> rollDice(){
         return getDice().roll();
     }
+
+    public AbsGameView getView() {
+        return view;
+    }
+
+    public void setView(AbsGameView view) {
+        this.view = view;
+    }
+
+    public GameEnum getGameType() {
+        return gameType;
+    }
+
+    public void setGameType(GameEnum gameType) {
+        this.gameType = gameType;
+    }
+
+    @Override
+    public boolean getIsPCPlayer(){
+        return isPCPlayer;
+    }
+
+    @Override
+    public void setIsPCPlayer(boolean isPCPlayer)
+    {
+        this.isPCPlayer=isPCPlayer;
+    }
+
 
 }

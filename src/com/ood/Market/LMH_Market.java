@@ -14,22 +14,21 @@ public class LMH_Market implements IMarket<IItem> {
 
     @Override
     public void removeItem(IItem item) {
-
+        marketInventory.remove(item);
     }
 
     @Override
-    public void setInventory() {
-
+    public void setInventory(IInventory<IItem> inventory) {
+        this.marketInventory=inventory;
     }
 
     @Override
     public IInventory getInventory() {
-        return null;
+        return marketInventory;
     }
 
     @Override
     public void trade(IItem item) {
-
     }
 
 }

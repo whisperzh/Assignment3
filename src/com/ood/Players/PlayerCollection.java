@@ -8,7 +8,10 @@ public abstract class PlayerCollection <T extends IPlayer>{
 
     private int playerSize;
 
-    public PlayerCollection(int size) {
+    private boolean isPCPlayer;
+
+    public PlayerCollection(int size,boolean isPCPlayer) {
+        this.isPCPlayer=isPCPlayer;
         this.playerList = new ArrayList<>();
         playerSize =size;
     }
@@ -31,6 +34,14 @@ public abstract class PlayerCollection <T extends IPlayer>{
 
     public void setPlayerList(List<T> playerList) {
         this.playerList = playerList;
+    }
+
+    public boolean getIsPCPlayer() {
+        return isPCPlayer;
+    }
+
+    public void setPCPlayer(boolean PCPlayer) {
+        isPCPlayer = PCPlayer;
     }
 
     abstract void initPlayerList();

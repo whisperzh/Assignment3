@@ -19,10 +19,18 @@ public abstract class Team<T extends IPlayer> implements ITeam<IPlayer> {
 
     private boolean isActive=true;
 
+    protected boolean isPCPlayer =false;
 
     public Team(String name, int size) {
         this.name = name;
         playerSize=size;
+    }
+
+    public Team(String name,int size, boolean isPCPlayer)
+    {
+        this.name = name;
+        playerSize=size;
+        this.isPCPlayer=isPCPlayer;
     }
 
     public PlayerCollection<T> getPlayerCollection() {

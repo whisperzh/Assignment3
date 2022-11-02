@@ -18,4 +18,6 @@ public interface IPlayer {
     void setTeam(ITeam team);
     void setDice(Dice dice);
     Dice getDice();
+    boolean getIsPCPlayer();
+    void setIsPCPlayer(boolean isPCPlayer);
 }

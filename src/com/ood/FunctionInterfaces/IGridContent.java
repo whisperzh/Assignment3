@@ -1,4 +1,4 @@
-package com.ood.GridContent;
+package com.ood.FunctionInterfaces;
 
 public interface IGridContent {
     boolean isHero();

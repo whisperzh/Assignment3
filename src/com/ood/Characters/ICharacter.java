@@ -1,6 +1,6 @@
 package com.ood.Characters;
 
-import com.ood.GridContent.IGridContent;
+import com.ood.FunctionInterfaces.IGridContent;
 import com.ood.AttributesItems.Vector2;
 
 public interface ICharacter extends IGridContent {

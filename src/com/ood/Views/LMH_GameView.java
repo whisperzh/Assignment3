@@ -1,10 +1,7 @@
 package com.ood.Views;
 
-import com.ood.Characters.GeneralHero;
 import com.ood.Util.IConfigParser;
 
-import javax.swing.text.html.parser.Entity;
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -86,4 +83,9 @@ public class LMH_GameView extends AbsGameView {
         return jin_BorderedInt(lowerBound,upperBound);
     }
 
+    @Override
+    public int displayPlayerChooseCharacter() {
+        int ans= jin_BorderedInt(0,10);
+        return ans;
+    }
 }
