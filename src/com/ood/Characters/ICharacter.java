@@ -1,8 +1,9 @@
 package com.ood.Characters;
 
+import com.ood.AttributesItems.IGridContent;
 import com.ood.AttributesItems.Vector2;
 
-public interface ICharacter {
+public interface ICharacter extends IGridContent {
     String getName();
     void setName(String name);
     int getLevel();
