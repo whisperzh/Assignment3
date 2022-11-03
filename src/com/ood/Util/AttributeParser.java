@@ -3,18 +3,20 @@ package com.ood.Util;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.security.PublicKey;
 import java.util.*;
 
 public class AttributeParser implements IConfigParser{
     private String filePath;
 
-    private Map<String, List<String>> attributeDataBase;
+    private Map<Integer, List<String>> attributeDataBase;
 
     private List<String> orderedSchema;
 
-    public AttributeParser(String filePath) {
+    private int startIndex;
+
+    public AttributeParser(String filePath,int startIndex) {
         this.filePath = filePath;
+        this.startIndex = startIndex;
         attributeDataBase=new HashMap<>();
         try {
             readFile();
@@ -51,7 +53,7 @@ public class AttributeParser implements IConfigParser{
     }
 
     @Override
-    public Map<String, List<String>> getAttributeDataBase() {
+    public Map<Integer, List<String>> getAttributeDataBase() {
         return attributeDataBase;
     }
 
@@ -70,18 +72,30 @@ public class AttributeParser implements IConfigParser{
         attributeDataBase.clear();
     }
 
+//    @Override
+//    public int setIndexForData(int startIndex) {
+//        orderedSchema.add("index");
+//        for (var l : attributeDataBase.keySet()) {
+//            attributeDataBase.get(l).add(Integer.toString(startIndex));
+//            startIndex++;
+//        }
+//        return startIndex;
+//    }
+
+    @Override
+    public int getLineOfData() {
+        return attributeDataBase.size();
+    }
+
     public void createSchema(String s){
         String[] titles=s.split("/");
-        orderedSchema= (List<String>)Arrays.asList(titles);
+        orderedSchema=new ArrayList<>();
+        orderedSchema.addAll((List<String>)Arrays.asList(titles));
     }
 
     public void createActualData(String s){
         String[] titles=s.split("\\s+");
-        for(int i=0;i<titles.length;i++)
-        {
-            attributeDataBase.put(titles[0],Arrays.asList(titles));
-        }
-
+        attributeDataBase.put(startIndex++,Arrays.asList(titles));
     }
 
 

@@ -2,9 +2,8 @@ package com.ood.Views;
 
 import com.ood.AttributesItems.LMH_Constant;
 import com.ood.Characters.ICharacter;
-import com.ood.Util.IConfigParser;
+import com.ood.Util.ParseCollection;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -32,9 +31,7 @@ public abstract class AbsGameView extends View{
 
     public abstract int collectPlayersCount(int lowerBound,int upperBound);
 
-    public abstract void displayParserInfo(IConfigParser parser);
-
-    public abstract void displayParserInfo(List<IConfigParser> l);
+    public abstract void displayParserInfo(ParseCollection parseCollection, boolean showIndex);
 
     public abstract int displayPlayerChooseCharacter();
 

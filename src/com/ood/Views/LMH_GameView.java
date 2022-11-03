@@ -1,7 +1,7 @@
 package com.ood.Views;
 
 import com.ood.Characters.ICharacter;
-import com.ood.Util.IConfigParser;
+import com.ood.Util.ParseCollection;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,30 +54,35 @@ public class LMH_GameView extends AbsGameView {
     }
 
     @Override
-    public void displayParserInfo(IConfigParser parser){
+    public void displayParserInfo(ParseCollection parseCollection, boolean showIndex){
         joutDivider();
-        String fileName=parser.getFileName();
-        jout(fileName);
-        List<List<String >> rows=new ArrayList<>();
-        rows.add(parser.getOrderedSchema());
-
-
-        for(var e :parser.getAttributeDataBase().keySet())
+        for(int i=0;i<parseCollection.getParserSize();i++)
         {
-            List<String> attr=parser.getAttributeDataBase().get(e);
-            rows.add(attr);
+            var parser=parseCollection.getParserAt(i);
+            String fileName=parser.getFileName();
+            jout(fileName);
+
+            List<List<String >> rows=new ArrayList<>();
+            List<String> schema = new ArrayList<>(parser.getOrderedSchema());
+
+            if (showIndex)
+                schema.add(0,"index");
+            rows.add(schema);
+
+            for(int e :parser.getAttributeDataBase().keySet())
+            {
+                List<String> attr=new ArrayList<>(parser.getAttributeDataBase().get(e));
+                if(showIndex)
+                    attr.add(0,new String("["+Integer.toString(e)+"]"));
+                rows.add(attr);
+            }
+            joutAsTable(rows);
+            jout("\n");
         }
-        joutAsTable(rows);
         joutDivider();
-        jout("\n");
 
     }
 
-    public void displayParserInfo(List<IConfigParser> l)
-    {
-        for(var i :l)
-            displayParserInfo(i);
-    }
 
     @Override
     public int collectPlayersCount(int lowerBound, int upperBound) {

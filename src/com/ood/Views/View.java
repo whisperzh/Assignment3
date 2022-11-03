@@ -113,6 +113,7 @@ public abstract class View implements VisualModule{
      */
     public void joutAsTable(List<List<String>> data)
     {
+        joutDivider();
         int[] len=new int[data.get(0).size()];
         for(int i=0;i<len.length;i++)
         {

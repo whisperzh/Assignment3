@@ -8,11 +8,9 @@ import com.ood.Factories.ViewFactory;
 import com.ood.Judge.IGameJudge;
 import com.ood.Judge.LMH_Judge;
 import com.ood.Team.LMH_Team;
-import com.ood.Util.AttributeParser;
-import com.ood.Util.IConfigParser;
+import com.ood.Util.ParseCollection;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
 /**
  * concrete class of LMH game
@@ -23,7 +21,7 @@ public class LMH_Game extends BoardGame{
 
     private int sizeOfATeam =3;
     //by default is 3
-    private List<IConfigParser> iConfigParsers;
+    private ParseCollection parseCollection;
 
     private static IGameJudge  judge;
 
@@ -37,7 +35,7 @@ public class LMH_Game extends BoardGame{
 
         initConfiguration();
 
-        getView().displayParserInfo(iConfigParsers);
+        getView().displayParserInfo(parseCollection,true);
 
         getTeamCollection().addTeam(new LMH_Team("PLAYER_TEAM", sizeOfATeam,false));
         getTeamCollection().addTeam(new LMH_Team("MONSTER_TEAM",sizeOfATeam,true));//Computer Player
@@ -54,12 +52,20 @@ public class LMH_Game extends BoardGame{
 
     @Override
     public void initConfiguration() {
-        iConfigParsers =new ArrayList<>();
-        iConfigParsers.add(new AttributeParser(LMH_Constant.WARRIORS_Path));
-        iConfigParsers.add(new AttributeParser(LMH_Constant.PALADINS_Path));
-        iConfigParsers.add(new AttributeParser(LMH_Constant.SORCERERS_Path));
-
+        parseCollection=new ParseCollection();
+        String[] parsePaths=new String[]{LMH_Constant.PALADINS_Path,LMH_Constant.SORCERERS_Path,LMH_Constant.WARRIORS_Path};
+        parseCollection.AddParsers(Arrays.asList(parsePaths));
+//        iConfigParsers.add(new AttributeParser(LMH_Constant.WARRIORS_Path));
+//        iConfigParsers.add(new AttributeParser(LMH_Constant.PALADINS_Path));
+//        iConfigParsers.add(new AttributeParser(LMH_Constant.SORCERERS_Path));
+//        int startIndex=0;
+//        for(var par: iConfigParsers)
+//        {
+//            startIndex=par.setIndexForData(startIndex);
+//        }
     }
+
+
 
 
     /**

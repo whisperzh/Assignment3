@@ -8,7 +8,9 @@ public interface IConfigParser {
     void readFile() throws IOException;
     String getFileName();
     String getFilePath();
-    public Map<String, List<String>> getAttributeDataBase();
+    public Map<Integer, List<String>> getAttributeDataBase();
     List<String> getOrderedSchema();
     void reset();
+//    int setIndexForData(int startIndex);
+    int getLineOfData();
 }
