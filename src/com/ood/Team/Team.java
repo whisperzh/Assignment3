@@ -81,7 +81,6 @@ public abstract class Team<T extends IPlayer> implements ITeam<IPlayer> {
 
     @Override
     public void reset() {
-
     }
 
     @Override
