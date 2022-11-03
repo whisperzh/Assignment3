@@ -27,13 +27,15 @@ public abstract class View implements VisualModule{
 
         String str=getScanner().next();
         inputReprint(str);
+        joutDivider();
         return str;
     }
 
     public String jin_Str(String messagetoUser) {
         jout(messagetoUser);
-        String str=getScanner().nextLine();
+        String str=getScanner().next();
         inputReprint(str);
+        joutDivider();
         return str;
     }
 
@@ -46,6 +48,7 @@ public abstract class View implements VisualModule{
         }
         int userInput=getScanner().nextInt();
         inputReprint(Integer.toString(userInput));
+        joutDivider();
         return userInput;
     }
 
@@ -129,6 +132,7 @@ public abstract class View implements VisualModule{
             String line=String.format(format,d.toArray());
             jout(line);
         }
+        joutDivider();
 
     }
 }

@@ -1,9 +1,11 @@
 package com.ood.Views;
 
+import com.ood.Characters.ICharacter;
 import com.ood.Util.IConfigParser;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class LMH_GameView extends AbsGameView {
 
@@ -87,5 +89,26 @@ public class LMH_GameView extends AbsGameView {
     public int displayPlayerChooseCharacter() {
         int ans= jin_BorderedInt(0,10);
         return ans;
+    }
+
+    @Override
+    public void displayCharacterInfo(ICharacter hero) {
+        Map<String ,String> attri=hero.getAllAttribute();
+        jout("This is your hero's info:");
+        joutDivider();
+        List<List<String>> row=new ArrayList();
+        for(String key : attri.keySet())
+        {
+            List<String> l=new ArrayList<>();
+            l.add(key);
+            l.add(attri.get(key));
+            row.add(l);
+        }
+        joutAsTable(row);
+    }
+
+    @Override
+    public void showMarketView() {
+
     }
 }

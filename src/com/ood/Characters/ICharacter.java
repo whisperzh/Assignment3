@@ -3,6 +3,8 @@ package com.ood.Characters;
 import com.ood.FunctionInterfaces.IGridContent;
 import com.ood.AttributesItems.Vector2;
 
+import java.util.Map;
+
 public interface ICharacter extends IGridContent {
     String getName();
     void setName(String name);
@@ -21,6 +23,9 @@ public interface ICharacter extends IGridContent {
     void leave(int x,int y);
     String getIcon();
     void setIcon(String icon);
+    void move(int col,int row);
+    Vector2 getCurrentPosition();
+    Map<String, String> getAllAttribute();
 
 //    • A name
 //    • A level with an amount of experience points

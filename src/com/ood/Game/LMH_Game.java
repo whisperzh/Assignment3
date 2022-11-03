@@ -5,6 +5,8 @@ import com.ood.Board.LMH_board;
 import com.ood.Enums.GameEnum;
 import com.ood.Factories.GameBoardFactory;
 import com.ood.Factories.ViewFactory;
+import com.ood.Judge.IGameJudge;
+import com.ood.Judge.LMH_Judge;
 import com.ood.Team.LMH_Team;
 import com.ood.Util.AttributeParser;
 import com.ood.Util.IConfigParser;
@@ -23,6 +25,8 @@ public class LMH_Game extends BoardGame{
     //by default is 3
     private List<IConfigParser> iConfigParsers;
 
+    private static IGameJudge  judge;
+
     public LMH_Game() {
         super();
         setView(ViewFactory.createGameView(type));
@@ -40,6 +44,12 @@ public class LMH_Game extends BoardGame{
 
         getBoard().show();
 
+    }
+
+    public static IGameJudge getJudgeInstance() {
+        if(judge==null)
+            judge=new LMH_Judge();
+        return judge;
     }
 
     @Override

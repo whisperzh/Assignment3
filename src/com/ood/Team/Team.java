@@ -76,7 +76,7 @@ public abstract class Team<T extends IPlayer> implements ITeam<IPlayer> {
 
     @Override
     public IPlayer getPlayerAt(int index) {
-        return null;
+        return getPlayerCollection().getPlayerList().get(index);
     }
 
     @Override

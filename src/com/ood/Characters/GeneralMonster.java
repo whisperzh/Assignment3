@@ -3,6 +3,8 @@ package com.ood.Characters;
 import com.ood.AttributesItems.Vector2;
 import com.ood.Enums.MonsterEnum;
 
+import java.util.Map;
+
 /**
  * an abstract monster class
  */
@@ -148,5 +150,29 @@ public abstract class GeneralMonster implements ICharacter{
     @Override
     public boolean isMarket() {
         return false;
+    }
+
+    /**
+     * monster cannot move
+     * @param col
+     * @param row
+     */
+    @Override
+    public void move(int col, int row) {
+        return;
+    }
+
+    /**
+     * monster don't need position!
+     * @return
+     */
+    @Override
+    public Vector2 getCurrentPosition() {
+        return null;
+    }
+
+    @Override
+    public Map<String, String> getAllAttribute() {
+        return null;
     }
 }

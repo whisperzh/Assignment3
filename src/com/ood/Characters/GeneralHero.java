@@ -6,6 +6,9 @@ import com.ood.Enums.HeroEnum;
 import com.ood.Inventory.IInventory;
 import com.ood.Item.IItem;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * an abstract hero
  */
@@ -18,6 +21,7 @@ public abstract class GeneralHero implements ICharacter{
     private int level;
     private float dexterity;
     private float defense;
+    private Vector2 currentPosition;
     private float agility;
     private String icon;
     private Wallet myWallet;
@@ -127,6 +131,10 @@ public abstract class GeneralHero implements ICharacter{
         this.myWallet = myWallet;
     }
 
+    public void setCurrentPosition(Vector2 currentPosition) {
+        this.currentPosition = currentPosition;
+    }
+
     public IInventory getInventory() {
         return inventory;
     }
@@ -207,4 +215,27 @@ public abstract class GeneralHero implements ICharacter{
     public boolean isMarket() {
         return false;
     }
+
+    @Override
+    public void move(int col, int row) {
+
+    }
+
+    @Override
+    public Vector2 getCurrentPosition() {
+        return currentPosition;
+    }
+
+    @Override
+    public Map<String, String> getAllAttribute() {
+        Map<String ,String > ans=new HashMap<>();
+        ans.put("level",Integer.toString(getLevel()));
+        ans.put("hp",String.format("%.2f",getHP()));
+        ans.put("mana",String.format("%.2f",getMP()));
+        ans.put("experience",String.format("%.2f",getExperience()));
+        ans.put("money",String.format("%.2f",myWallet.getAmount()));
+        ans.put("skill_level","");
+        return ans;
+    }
+
 }

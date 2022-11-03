@@ -4,6 +4,8 @@ import com.ood.Characters.*;
 import com.ood.Enums.HeroEnum;
 import com.ood.Enums.MonsterEnum;
 
+import java.util.Random;
+
 public class CharacterFactory {
     public static GeneralMonster createMonster(MonsterEnum monsteType){
         GeneralMonster monster=null;
@@ -16,6 +18,27 @@ public class CharacterFactory {
                 monster=new Spirit();
                 break;
             case EXOSKELETON:
+                monster=new ExoSkeleton();
+                break;
+        }
+        return monster;
+    }
+
+    public static GeneralMonster createMonster()
+    {
+        Random r=new Random();
+        int type=r.nextInt(3);
+
+        GeneralMonster monster=null;
+        switch (type)
+        {
+            case 0:
+                monster=new Dragon();
+                break;
+            case 1:
+                monster=new Spirit();
+                break;
+            case 2:
                 monster=new ExoSkeleton();
                 break;
         }

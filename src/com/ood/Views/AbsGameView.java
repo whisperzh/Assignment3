@@ -1,9 +1,9 @@
 package com.ood.Views;
 
 import com.ood.AttributesItems.LMH_Constant;
+import com.ood.Characters.ICharacter;
 import com.ood.Util.IConfigParser;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -38,10 +38,14 @@ public abstract class AbsGameView extends View{
 
     public abstract int displayPlayerChooseCharacter();
 
+    public abstract void displayCharacterInfo(ICharacter hero);
+
     public char collectPlayersAction() {
         char action=' ';
         String reminder="Please input an action\n";
-        Set<Character> validSet=new HashSet(Arrays.asList(LMH_Constant.VALID_ACTIONS));
+        Set<Character> validSet=new HashSet();
+        for(var v : LMH_Constant.VALID_ACTIONS)
+            validSet.add(v);
         do {
             String act = jin_Str(reminder+ LMH_Constant.ACTION_HELP);
             if (act.length()==1&&validSet.contains(act.charAt(0))) {
@@ -52,4 +56,7 @@ public abstract class AbsGameView extends View{
         }while (true);
         return action;
     }
+
+
+    public abstract void showMarketView();
 }

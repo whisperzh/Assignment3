@@ -27,7 +27,11 @@ public class LMH_PlayerCollection extends PlayerCollection<LMH_Player>{
         playerList=new ArrayList<>();
         for(int i = 0; i< getPlayerSize(); i++)
         {
-            String playerName=playersName.get(i);
+            String playerName="";
+            if(getIsPCPlayer())
+                playerName="PC Player";
+            else
+                playersName.get(i);
             playerList.add((LMH_Player) PlayerFactory.spawnPlayer(GameEnum.LMH,playerName,getIsPCPlayer()));
         }
     }
