@@ -10,7 +10,7 @@ import com.ood.Views.View;
 public interface IGame <T1 extends IBoard,T2 extends AbsGameView>{
     void initConfiguration();
     void initPlayers();
-    void initTeams();
+    void initTeamCollection();
     void setView(T2 view);
     void setBoard(T1 board);
     T1 getBoard();

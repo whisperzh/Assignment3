@@ -131,17 +131,6 @@ public abstract class GeneralMonster implements ICharacter{
         this.icon=icon;
     }
 
-
-    @Override
-    public boolean isHero() {
-        return false;
-    }
-
-    @Override
-    public boolean isMonster() {
-        return true;
-    }
-
     @Override
     public boolean isObstacle() {
         return false;

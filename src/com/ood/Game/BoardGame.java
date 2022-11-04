@@ -2,7 +2,6 @@ package com.ood.Game;
 
 import com.ood.Board.IBoard;
 import com.ood.Judge.IGameJudge;
-import com.ood.Players.IPlayer;
 import com.ood.Team.LMH_Team;
 import com.ood.Team.TeamCollection;
 import com.ood.Views.AbsGameView;
@@ -24,7 +23,7 @@ public abstract class BoardGame implements IGame{
     private AbsGameView view;
 
     public BoardGame() {
-        initTeams();
+        initTeamCollection();
     }
 
     public TeamCollection<LMH_Team> getTeamCollection() {
@@ -37,7 +36,7 @@ public abstract class BoardGame implements IGame{
     }
 
     @Override
-    public void initTeams() {
+    public void initTeamCollection() {
         teamCollection=new TeamCollection<>();
     }
 

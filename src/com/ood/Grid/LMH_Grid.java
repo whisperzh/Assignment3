@@ -8,6 +8,9 @@ import com.ood.Item.IItem;
 import com.ood.Market.IMarket;
 import com.ood.Market.LMH_Market;
 
+/**
+ * concrete class of grid, used for LMH
+ */
 public class LMH_Grid implements GridSpace<LMHGridEnum>{
     private Vector2 position;
 

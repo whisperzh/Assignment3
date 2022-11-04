@@ -2,6 +2,7 @@ package com.ood.Players;
 
 import com.ood.AttributesItems.Dice;
 import com.ood.Enums.GameEnum;
+import com.ood.Game.IGame;
 import com.ood.Judge.IGameJudge;
 import com.ood.Team.ITeam;
 import com.ood.Views.AbsGameView;
@@ -27,6 +28,8 @@ public abstract class BoardGamePlayer implements IPlayer{
     protected GameEnum gameType;
 
     protected Dice dice;
+
+    private IGame game;
 
     public BoardGamePlayer() {
         isPCPlayer=false;
@@ -115,5 +118,12 @@ public abstract class BoardGamePlayer implements IPlayer{
         this.isPCPlayer=isPCPlayer;
     }
 
+    public IGame getGame() {
+        return game;
+    }
 
+    @Override
+    public void setGame(IGame game) {
+        this.game=game;
+    }
 }

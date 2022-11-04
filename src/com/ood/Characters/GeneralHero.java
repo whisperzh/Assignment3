@@ -209,16 +209,6 @@ public abstract class GeneralHero implements ICharacter{
     }
 
     @Override
-    public boolean isHero() {
-        return true;
-    }
-
-    @Override
-    public boolean isMonster() {
-        return false;
-    }
-
-    @Override
     public boolean isObstacle() {
         return false;
     }

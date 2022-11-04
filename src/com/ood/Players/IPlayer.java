@@ -1,6 +1,7 @@
 package com.ood.Players;
 
 import com.ood.AttributesItems.Dice;
+import com.ood.Game.IGame;
 import com.ood.Team.ITeam;
 
 /**
@@ -20,4 +21,6 @@ public interface IPlayer {
     Dice getDice();
     boolean getIsPCPlayer();
     void setIsPCPlayer(boolean isPCPlayer);
+    void setGame(IGame game);
+    IGame getGame();
 }

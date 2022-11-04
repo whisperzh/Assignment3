@@ -41,8 +41,8 @@ public class LMH_Game extends BoardGame{
 
         getView().displayParserInfo(heroParseCollection,true);
 
-        getTeamCollection().addTeam(new LMH_Team("PLAYER_TEAM", sizeOfATeam,false));
-        getTeamCollection().addTeam(new LMH_Team("MONSTER_TEAM",sizeOfATeam,true));//Computer Player
+        getTeamCollection().addTeam(new LMH_Team("PLAYER_TEAM", sizeOfATeam,false,this));
+        getTeamCollection().addTeam(new LMH_Team("MONSTER_TEAM",sizeOfATeam,true,this));//Computer Player
 
         getBoard().show();
 

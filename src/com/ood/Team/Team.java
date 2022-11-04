@@ -1,5 +1,6 @@
 package com.ood.Team;
 
+import com.ood.Game.IGame;
 import com.ood.Players.IPlayer;
 import com.ood.Players.PlayerCollection;
 
@@ -13,6 +14,8 @@ public abstract class Team<T extends IPlayer> implements ITeam<IPlayer> {
 
     private int playerSize;
 
+    private IGame game;
+
     private PlayerCollection<T> playerCollection;
 
     private int points;
@@ -21,13 +24,9 @@ public abstract class Team<T extends IPlayer> implements ITeam<IPlayer> {
 
     protected boolean isPCPlayer =false;
 
-    public Team(String name, int size) {
-        this.name = name;
-        playerSize=size;
-    }
-
-    public Team(String name,int size, boolean isPCPlayer)
+    public Team(String name,int size, boolean isPCPlayer,IGame game)
     {
+        this.game=game;
         this.name = name;
         playerSize=size;
         this.isPCPlayer=isPCPlayer;
@@ -91,5 +90,14 @@ public abstract class Team<T extends IPlayer> implements ITeam<IPlayer> {
     @Override
     public void setIsActive(boolean active) {
         isActive = active;
+    }
+
+    public IGame getGame() {
+        return game;
+    }
+
+    public void setGame(IGame game) {
+        this.game = game;
+        playerCollection.setGame(game);
     }
 }

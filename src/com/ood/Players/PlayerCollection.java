@@ -1,8 +1,14 @@
 package com.ood.Players;
 
+import com.ood.Game.IGame;
+
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * abstract class of player collection
+ * @param <T>
+ */
 public abstract class PlayerCollection <T extends IPlayer>{
     protected List<T> playerList;
 
@@ -10,7 +16,10 @@ public abstract class PlayerCollection <T extends IPlayer>{
 
     private boolean isPCPlayer;
 
-    public PlayerCollection(int size,boolean isPCPlayer) {
+    private IGame game;
+
+    public PlayerCollection(int size,boolean isPCPlayer,IGame game) {
+        this.game=game;
         this.isPCPlayer=isPCPlayer;
         this.playerList = new ArrayList<>();
         playerSize =size;
@@ -46,5 +55,12 @@ public abstract class PlayerCollection <T extends IPlayer>{
 
     abstract void initPlayerList();
 
+    public void setGame(IGame game)
+    {
+        this.game=game;
+    }
 
+    public IGame getGame(){
+        return game;
+    }
 }
