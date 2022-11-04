@@ -3,6 +3,8 @@ package com.ood.Game;
 import com.ood.AttributesItems.LMH_Constant;
 import com.ood.Board.LMH_board;
 import com.ood.Enums.GameEnum;
+import com.ood.Enums.HeroEnum;
+import com.ood.Enums.MonsterEnum;
 import com.ood.Factories.GameBoardFactory;
 import com.ood.Factories.ViewFactory;
 import com.ood.Judge.IGameJudge;
@@ -21,7 +23,9 @@ public class LMH_Game extends BoardGame{
 
     private int sizeOfATeam =3;
     //by default is 3
-    private ParseCollection parseCollection;
+    private ParseCollection heroParseCollection;
+
+    private ParseCollection monsterParseCollection;
 
     private static IGameJudge  judge;
 
@@ -35,7 +39,7 @@ public class LMH_Game extends BoardGame{
 
         initConfiguration();
 
-        getView().displayParserInfo(parseCollection,true);
+        getView().displayParserInfo(heroParseCollection,true);
 
         getTeamCollection().addTeam(new LMH_Team("PLAYER_TEAM", sizeOfATeam,false));
         getTeamCollection().addTeam(new LMH_Team("MONSTER_TEAM",sizeOfATeam,true));//Computer Player
@@ -52,9 +56,16 @@ public class LMH_Game extends BoardGame{
 
     @Override
     public void initConfiguration() {
-        parseCollection=new ParseCollection();
-        String[] parsePaths=new String[]{LMH_Constant.PALADINS_Path,LMH_Constant.SORCERERS_Path,LMH_Constant.WARRIORS_Path};
-        parseCollection.AddParsers(Arrays.asList(parsePaths));
+        heroParseCollection =new ParseCollection(true);
+        String[] hparsePaths=new String[]{LMH_Constant.PALADINS_Path,LMH_Constant.SORCERERS_Path,LMH_Constant.WARRIORS_Path};
+        HeroEnum[] heroEnums=new HeroEnum[]{HeroEnum.PALADIN,HeroEnum.SORCERER,HeroEnum.WARRIOR};
+        heroParseCollection.AddParsers(Arrays.asList(hparsePaths),Arrays.asList(heroEnums));
+
+        monsterParseCollection=new ParseCollection(false);
+        String[] mparsePaths=new String[]{LMH_Constant.SPIRITS_Path,LMH_Constant.EXOSKELETONS_Path,LMH_Constant.DRAGONS_Path};
+        MonsterEnum[] monsterEnums=new MonsterEnum[]{MonsterEnum.SPIRIT,MonsterEnum.EXOSKELETON,MonsterEnum.DRAGON};
+
+        monsterParseCollection.AddParsers(Arrays.asList(mparsePaths),Arrays.asList(monsterEnums));
 //        iConfigParsers.add(new AttributeParser(LMH_Constant.WARRIORS_Path));
 //        iConfigParsers.add(new AttributeParser(LMH_Constant.PALADINS_Path));
 //        iConfigParsers.add(new AttributeParser(LMH_Constant.SORCERERS_Path));

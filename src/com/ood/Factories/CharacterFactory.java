@@ -4,6 +4,7 @@ import com.ood.Characters.*;
 import com.ood.Enums.HeroEnum;
 import com.ood.Enums.MonsterEnum;
 
+import java.util.List;
 import java.util.Random;
 
 public class CharacterFactory {
@@ -45,18 +46,18 @@ public class CharacterFactory {
         return monster;
     }
 
-    public static GeneralHero createHero(HeroEnum heroType) throws Exception {
+    public static GeneralHero createHero(HeroEnum heroType, List<String> attributes) throws Exception {
         GeneralHero hero=null;
         switch (heroType)
         {
             case WARRIOR:
-                hero=new Warriors();
+                hero=new Warriors(attributes);
                 break;
             case SORCERER:
-                hero=new Sorcerers();
+                hero=new Sorcerers(attributes);
                 break;
             case PALADIN:
-                hero=new Paladins();
+                hero=new Paladins(attributes);
                 break;
             default: throw new Exception();
         }

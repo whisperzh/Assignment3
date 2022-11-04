@@ -1,10 +1,15 @@
 package com.ood.Util;
 
+import com.ood.AttributesItems.LMH_DataCenter;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ *  Character Attribute FileReader
+ */
 public class AttributeParser implements IConfigParser{
     private String filePath;
 
@@ -14,7 +19,13 @@ public class AttributeParser implements IConfigParser{
 
     private int startIndex;
 
-    public AttributeParser(String filePath,int startIndex) {
+    private boolean heroData;
+
+    private Enum characterEnum=null;
+
+    public AttributeParser(String filePath, int startIndex, boolean heroData, Enum anEnum) {
+        this.characterEnum=anEnum;
+        this.heroData=heroData;
         this.filePath = filePath;
         this.startIndex = startIndex;
         attributeDataBase=new HashMap<>();
@@ -39,6 +50,12 @@ public class AttributeParser implements IConfigParser{
             line++;
         }
         bufferedReader.close();
+        if(heroData)
+        {
+            LMH_DataCenter.addAllHero(attributeDataBase.values());
+        }else {
+            LMH_DataCenter.addAllMonster(attributeDataBase.values());
+        }
     }
 
     @Override
@@ -91,11 +108,16 @@ public class AttributeParser implements IConfigParser{
         String[] titles=s.split("/");
         orderedSchema=new ArrayList<>();
         orderedSchema.addAll((List<String>)Arrays.asList(titles));
+        orderedSchema.add("Character type");
     }
 
     public void createActualData(String s){
         String[] titles=s.split("\\s+");
-        attributeDataBase.put(startIndex++,Arrays.asList(titles));
+        List<String > l=new ArrayList<>();
+        for(var st: titles)
+            l.add(st);
+        l.add(characterEnum.toString());
+        attributeDataBase.put(startIndex++,l);
     }
 
 

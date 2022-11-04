@@ -1,6 +1,7 @@
 package com.ood.Players;
 
 import com.ood.AttributesItems.Dice;
+import com.ood.AttributesItems.LMH_DataCenter;
 import com.ood.AttributesItems.Vector2;
 import com.ood.Characters.ICharacter;
 import com.ood.Enums.GameEnum;
@@ -56,10 +57,10 @@ public class LMH_Player extends BoardGamePlayer{
     }
 
     private void chooseHero(){
-        int heroNum=view.displayPlayerChooseCharacter();
-        HeroEnum h=HeroEnum.PALADIN;//to be implemented
+        int heroNum=view.displayPlayerChooseCharacter(LMH_DataCenter.getHeroData().size()-1);
+        HeroEnum h = LMH_DataCenter.getHeroType(heroNum);
         try {
-            myHero = CharacterFactory.createHero(h);
+            myHero = CharacterFactory.createHero(h,LMH_DataCenter.getHeroData().get(heroNum));
         }
         catch (Exception e){
             e.printStackTrace();

@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * the concrete game view class for LMH
+ */
 public class LMH_GameView extends AbsGameView {
 
     @Override
@@ -91,8 +94,8 @@ public class LMH_GameView extends AbsGameView {
     }
 
     @Override
-    public int displayPlayerChooseCharacter() {
-        int ans= jin_BorderedInt(0,10);
+    public int displayPlayerChooseCharacter(int bound) {
+        int ans= jin_BorderedInt(0,bound);
         return ans;
     }
 

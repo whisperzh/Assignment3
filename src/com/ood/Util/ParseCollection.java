@@ -4,26 +4,32 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * collection for all same type parse(ENCAPSULATION)
+ */
 public class ParseCollection {
     private List<IConfigParser> parsers;
 
     private int totalDataCount=0;
 
-    public ParseCollection() {
+    private boolean isHeroParser;
+
+    public ParseCollection(boolean isHeroParser) {
         parsers=new ArrayList<>();
+        this.isHeroParser=isHeroParser;
     }
-    public void AddParser(String parserPath){
-        IConfigParser p=new AttributeParser(parserPath,totalDataCount);
+    public void AddParser(String parserPath, Enum anEnum){
+        IConfigParser p=new AttributeParser(parserPath,totalDataCount,isHeroParser,anEnum);
         parsers.add(p);
         totalDataCount+=p.getLineOfData();
     }
 
-    public void AddParsers(List<String> parserPaths)
+    public void AddParsers(List<String> parserPaths,List<Enum> characterEnum)
     {
-        Iterator<String> iterator =parserPaths.iterator();
-        for ( ; iterator.hasNext();)
+
+        for (int i=0;i<parserPaths.size();i++)
         {
-            AddParser(iterator.next());
+            AddParser(parserPaths.get(i),characterEnum.get(i));
         }
     }
 
@@ -50,4 +56,6 @@ public class ParseCollection {
     public void setTotalDataCount(int totalDataCount) {
         this.totalDataCount = totalDataCount;
     }
+
+
 }

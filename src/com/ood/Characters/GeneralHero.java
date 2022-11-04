@@ -7,6 +7,7 @@ import com.ood.Inventory.IInventory;
 import com.ood.Item.IItem;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -38,6 +39,17 @@ public abstract class GeneralHero implements ICharacter{
     }
 
     private HeroEnum type;
+
+    public GeneralHero(List<String> attributes) {
+        name=attributes.get(0);
+        MP=Float.valueOf(attributes.get(1));
+        strength=Float.valueOf(attributes.get(2));
+        agility=Float.valueOf(attributes.get(3));
+        dexterity=Float.valueOf(attributes.get(4));
+        myWallet=new Wallet();
+        myWallet.setAmount(Float.valueOf(attributes.get(5)));
+        experience=Float.valueOf(attributes.get(6));
+    }
 
     @Override
     public void levelUp() {
