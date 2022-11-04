@@ -11,16 +11,6 @@ public interface IMarket<T> extends IGridContent {
     void trade(T item);
 
     @Override
-    default boolean isHero() {
-        return false;
-    }
-
-    @Override
-    default boolean isMonster() {
-        return false;
-    }
-
-    @Override
     default boolean isObstacle() {
         return false;
     }

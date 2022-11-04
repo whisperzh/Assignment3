@@ -7,26 +7,48 @@ import com.ood.Characters.GeneralMonster;
 import com.ood.Characters.Spirit;
 import com.ood.Enums.MonsterEnum;
 
+import java.util.Random;
+
+/**
+ * Factory which produce monsters
+ */
 public class MonsterFactory {
-    public static GeneralMonster spawnPlayer(MonsterEnum monsterType, String monsterName){
-        GeneralMonster monster;
-        switch (monsterType)
+    public static GeneralMonster createMonster(MonsterEnum monsteType){
+        GeneralMonster monster=null;
+        switch (monsteType)
         {
             case DRAGON:
                 monster=new Dragon();
-                monster.setName(monsterName);
-                break;
-            case EXOSKELETON:
-                monster=new ExoSkeleton();
-                monster.setName(monsterName);
                 break;
             case SPIRIT:
                 monster=new Spirit();
-                monster.setName(monsterName);
                 break;
-            default:
-                monster=null;
+            case EXOSKELETON:
+                monster=new ExoSkeleton();
+                break;
         }
         return monster;
     }
+
+    public static GeneralMonster createMonster()
+    {
+        Random r=new Random();
+        int type=r.nextInt(3);
+
+        GeneralMonster monster=null;
+        switch (type)
+        {
+            case 0:
+                monster=new Dragon();
+                break;
+            case 1:
+                monster=new Spirit();
+                break;
+            case 2:
+                monster=new ExoSkeleton();
+                break;
+        }
+        return monster;
+    }
+
 }

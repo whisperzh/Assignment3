@@ -7,7 +7,9 @@ import com.ood.Enums.GameEnum;
 import com.ood.Game.IGame;
 import com.ood.Game.LMH_Game;
 import com.ood.Views.LMH_GameView;
-
+/**
+ * Factory which produce Game Board
+ */
 public class GameBoardFactory {
     public static MovableBoard createGameBoard(GameEnum gameEnum) {
         MovableBoard board=null;

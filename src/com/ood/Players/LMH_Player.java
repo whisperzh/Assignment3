@@ -7,7 +7,8 @@ import com.ood.Characters.ICharacter;
 import com.ood.Enums.GameEnum;
 import com.ood.Enums.HeroEnum;
 import com.ood.Enums.MonsterEnum;
-import com.ood.Factories.CharacterFactory;
+import com.ood.Factories.HeroFactory;
+import com.ood.Factories.MonsterFactory;
 import com.ood.Factories.ViewFactory;
 import com.ood.Game.LMH_Game;
 import com.ood.Judge.IGameJudge;
@@ -44,7 +45,7 @@ public class LMH_Player extends BoardGamePlayer{
 //        int monNum=view.displayPlayerChooseCharacter();
 //        MonsterEnum m=null;
 //        try {
-            myHero = CharacterFactory.createMonster();
+            myHero = MonsterFactory.createMonster();
 //        }
 //        catch (Exception e){
 //            e.printStackTrace();
@@ -60,7 +61,7 @@ public class LMH_Player extends BoardGamePlayer{
         int heroNum=view.displayPlayerChooseCharacter(LMH_DataCenter.getHeroData().size()-1);
         HeroEnum h = LMH_DataCenter.getHeroType(heroNum);
         try {
-            myHero = CharacterFactory.createHero(h,LMH_DataCenter.getHeroData().get(heroNum));
+            myHero = HeroFactory.createHero(h,LMH_DataCenter.getHeroData().get(heroNum));
         }
         catch (Exception e){
             e.printStackTrace();

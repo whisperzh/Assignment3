@@ -1,5 +1,8 @@
 package com.ood.Enums;
 
+/**
+ * type of heros
+ */
 public enum HeroEnum {
     PALADIN,
     WARRIOR,
