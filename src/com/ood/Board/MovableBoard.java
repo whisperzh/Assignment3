@@ -1,6 +1,8 @@
 package com.ood.Board;
 
 import com.ood.AttributesItems.LMH_Constant;
+import com.ood.AttributesItems.Vector2;
+import com.ood.Characters.ICharacter;
 import com.ood.Grid.GridCollections;
 import com.ood.Grid.GridSpace;
 import com.ood.Grid.LMH_Grid;
@@ -42,8 +44,8 @@ public abstract class MovableBoard implements IBoard{
     }
 
     @Override
-    public GridSpace getGrid(int x, int y) {
-        return gridCollections.getGrid(x,y);
+    public GridSpace getGrid(int row, int col) {
+        return gridCollections.getGrid(row,col);
     }
 
     @Override
@@ -65,5 +67,17 @@ public abstract class MovableBoard implements IBoard{
 
     public void setView(BoardView view) {
         this.view = view;
+    }
+
+    @Override
+    public GridSpace getGrid(Vector2 position) {
+        return getGrid(position.getRow(),position.getCol());
+    }
+
+    public void movePiece(ICharacter character,int row,int col){
+        Vector2 originalPos=character.getCurrentPosition();
+        getGrid(originalPos).setDefaultIcon();
+        character.move(row,col);
+        getGrid(row,col).setCharacter(character);
     }
 }

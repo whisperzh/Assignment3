@@ -43,7 +43,7 @@ public class LMH_GridCollections extends GridCollections<LMH_Grid>{
         {
             for(int j=0;j<getCol();j++)
             {
-                grids.get(i).add(new LMH_Grid(i,j));
+                grids.get(i).add(new LMH_Grid());
             }
         }
 

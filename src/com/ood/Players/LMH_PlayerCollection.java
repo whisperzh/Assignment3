@@ -35,9 +35,8 @@ public class LMH_PlayerCollection extends PlayerCollection<LMH_Player>{
             if(getIsPCPlayer())
                 playerName="PC Player";
             else
-                playersName.get(i);
-            playerList.add((LMH_Player) PlayerFactory.spawnPlayer(GameEnum.LMH,playerName,getIsPCPlayer()));
-            playerList.get(i).setGame(getGame());
+                playerName=playersName.get(i);
+            playerList.add((LMH_Player) PlayerFactory.spawnPlayer(GameEnum.LMH,playerName,getIsPCPlayer(),getGame()));
         }
     }
 

@@ -3,6 +3,7 @@ package com.ood.Characters;
 import com.ood.AttributesItems.Vector2;
 import com.ood.Enums.MonsterEnum;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -112,16 +113,6 @@ public abstract class GeneralMonster implements ICharacter{
     }
 
     @Override
-    public void leave(Vector2 position) {
-        //DO NOTHING
-    }
-
-    @Override
-    public void leave(int x, int y) {
-        //DO NOTHING
-    }
-
-    @Override
     public String getIcon() {
         return icon;
     }
@@ -143,11 +134,11 @@ public abstract class GeneralMonster implements ICharacter{
 
     /**
      * monster cannot move
-     * @param col
      * @param row
+     * @param col
      */
     @Override
-    public void move(int col, int row) {
+    public void move(int row, int col) {
         return;
     }
 
@@ -162,6 +153,13 @@ public abstract class GeneralMonster implements ICharacter{
 
     @Override
     public Map<String, String> getAllAttribute() {
-        return null;
+        Map<String,String > map=new HashMap<>();
+        map.put("level",Integer.toString(level));
+        map.put("hp",String.format("%.2f",getHP()));
+        map.put("damage",String.format("%.2f",strength));
+        map.put("defense",String.format("%.2f",strength));
+        map.put("dodge",String.format("%.2f",strength));
+        return map;
+        //their level, their hp, their damage, their defense, and their dodge chance
     }
 }

@@ -36,6 +36,7 @@ public class AttributeParser implements IConfigParser{
         }
     }
 
+    @Override
     public void readFile() throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath));
         String curLine;
@@ -118,6 +119,11 @@ public class AttributeParser implements IConfigParser{
             l.add(st);
         l.add(characterEnum.toString());
         attributeDataBase.put(startIndex++,l);
+    }
+
+    @Override
+    public String getPattern(){
+        return "";
     }
 
 

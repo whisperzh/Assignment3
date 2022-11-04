@@ -4,6 +4,7 @@ import com.ood.AttributesItems.LMH_Constant;
 import com.ood.AttributesItems.Vector2;
 import com.ood.Characters.ICharacter;
 import com.ood.Enums.LMHGridEnum;
+import com.ood.FunctionInterfaces.IGridContent;
 import com.ood.Item.IItem;
 import com.ood.Market.IMarket;
 import com.ood.Market.LMH_Market;
@@ -12,7 +13,6 @@ import com.ood.Market.LMH_Market;
  * concrete class of grid, used for LMH
  */
 public class LMH_Grid implements GridSpace<LMHGridEnum>{
-    private Vector2 position;
 
     private LMHGridEnum type;
 
@@ -20,16 +20,13 @@ public class LMH_Grid implements GridSpace<LMHGridEnum>{
 
     private int gridWidth =LMH_Constant.GRID_WIDTH;
 
-    private IMarket<IItem> market=null;
+    private IGridContent content =null;
 
     private String icon;
 
     private ICharacter character=null;
 
-    public LMH_Grid(int x, int y) {
-        position=new Vector2();
-        position.setX(x);
-        position.setY(y);
+    public LMH_Grid() {
         canPass=true;
         setDefaultIcon();
         type=LMHGridEnum.VACANT;
@@ -42,6 +39,7 @@ public class LMH_Grid implements GridSpace<LMHGridEnum>{
     @Override
     public void setCharacter(ICharacter character) {
         this.character=character;
+        setIcon(LMH_Constant.HERO_ICON);
     }
 
     public ICharacter getCharacter(){
@@ -50,7 +48,7 @@ public class LMH_Grid implements GridSpace<LMHGridEnum>{
 
     @Override
     public void setMarket() {
-        market=new LMH_Market();
+        content =new LMH_Market();
         setType(LMHGridEnum.MARKET);
         setIcon(LMH_Constant.MARKET);
     }
@@ -66,36 +64,46 @@ public class LMH_Grid implements GridSpace<LMHGridEnum>{
         this.type = type;
     }
 
-    @Override
-    public Vector2 getPosition() {
-        return null;
-    }
-
     public boolean isCanPass() {
-        return canPass;
+        return canPass&&character==null;
     }
 
     public void setCanPass(boolean canPass) {
         this.canPass = canPass;
     }
 
-    public IMarket<IItem> getMarket() {
-        return market;
-    }
-
     @Override
-    public void setPosition(Vector2 pos) {
-        position.setX(pos.getX());
-        position.setY(pos.getY());
+    public IMarket<IItem> getMarket() {
+        return (IMarket<IItem>)content;
     }
 
     public void setDefaultIcon(){
-        String space="";
-        for(int i = 0; i< gridWidth; i++)
+        if(type==null)
         {
-            space+=" ";
+            String space="";
+            for(int i = 0; i< gridWidth; i++)
+            {
+                space+=" ";
+            }
+            setIcon(space);
+            return;
         }
-        setIcon(space);
+        if(type.equals(LMHGridEnum.OBSTACLE))
+        {
+            setIcon(LMH_Constant.OBSTACLE);
+        }else if(type.equals(LMHGridEnum.MARKET))
+        {
+            setIcon(LMH_Constant.MARKET);
+        }else
+        {
+            String space="";
+            for(int i = 0; i< gridWidth; i++)
+            {
+                space+=" ";
+            }
+            setIcon(space);
+        }
+
     }
 
     @Override
@@ -107,4 +115,11 @@ public class LMH_Grid implements GridSpace<LMHGridEnum>{
     public void setIcon(String icon) {
         this.icon = icon;
     }
+
+    @Override
+    public IGridContent getGridContent() {
+        return content;
+    }
+
+
 }

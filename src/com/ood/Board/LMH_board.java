@@ -31,16 +31,16 @@ public class LMH_board extends MovableBoard{
     public void generateObstacles(){
         for(int i = 0; i< LMH_Constant.OBSTACLE_LIST.size(); i++)
         {
-            GridSpace gridSpace = getGridCollections().getGrid(LMH_Constant.OBSTACLE_LIST.get(i));
+            GridSpace gridSpace = getGrid(LMH_Constant.OBSTACLE_LIST.get(i));
             gridSpace.setObstacle();
         }
 
     }
 
-    public void generateMarkets(){
+    private void generateMarkets(){
         for(int i = 0; i< LMH_Constant.MARKET_LIST.size(); i++)
         {
-            GridSpace gridSpace = getGridCollections().getGrid(LMH_Constant.MARKET_LIST.get(i));
+            GridSpace gridSpace = getGrid(LMH_Constant.MARKET_LIST.get(i));
             gridSpace.setMarket();
         }
     }

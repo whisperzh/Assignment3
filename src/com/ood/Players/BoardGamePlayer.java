@@ -35,8 +35,9 @@ public abstract class BoardGamePlayer implements IPlayer{
         isPCPlayer=false;
     }
 
-    public BoardGamePlayer(boolean isPCPlayer) {
+    public BoardGamePlayer(boolean isPCPlayer,IGame game) {
         this.isPCPlayer = isPCPlayer;
+        this.game=game;
     }
 
     @Override

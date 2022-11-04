@@ -13,4 +13,5 @@ public interface IConfigParser {
     void reset();
 //    int setIndexForData(int startIndex);
     int getLineOfData();
+    String getPattern();
 }

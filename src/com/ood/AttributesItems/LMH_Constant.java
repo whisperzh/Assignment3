@@ -26,6 +26,7 @@ public class LMH_Constant {
     public static final String SPIRIT=" \uD83D\uDC7B";
     public static final String OBSTACLE=" ⛰";
     public static final String MARKET=" \uD83D\uDED2";
+    public static final String HERO_ICON=" \uD83E\uDDD4";
 
     //Paths
     public static final String ARMORY_Path= "Legends_Monsters_and_Heroes/Armory.txt";
@@ -40,14 +41,23 @@ public class LMH_Constant {
     public static final String SPIRITS_Path= "Legends_Monsters_and_Heroes/Spirits.txt";
     public static final String WARRIORS_Path= "Legends_Monsters_and_Heroes/Warriors.txt";
     public static final String WEAPONRY_Path= "Legends_Monsters_and_Heroes/Weaponry.txt";
-    public static char[] VALID_ACTIONS=new char[]{'w','a','s','d','W','A','S','D','Q','q','I','i','m','M'};
-    public static final String ACTION_HELP="W/w: move up\n" +
+    public static final String LMH_PATTERN_Path= "Legends_Monsters_and_Heroes/dragonAscii.txt";
+    public static final float SHOP_DEFAULT_GOLD = 10000;
+    public static char[] VALID_ACTIONS_ONMAP =new char[]{'w','a','s','d','W','A','S','D','Q','q','I','i','m','M'};
+    public static char[] VALID_ACTIONS_INMARKET =new char[]{'B','S','V','E','Q','b','s','v','q','e'};
+    public static final String ACTION_HELP_ONMAP ="W/w: move up\n" +
             "A/a: move left\n" +
             "S/s: move down\n" +
             "D/d: move right\n" +
             "Q/q: quit game\n" +
             "I/i: show information\n" +
             "M/m: enter market";
+    public static final String ACTION_HELP_INMARKET =
+            "B/B: enter buy mode\n" +
+            "S/s: enter sell mode\n" +
+            "V/v: enter view items detail mode\n" +
+            "Q/q: quit game\n" +
+            "E/e: exit market";
 
     //Maps
     public static final List<Vector2> OBSTACLE_LIST=new ArrayList<>(Arrays.asList(

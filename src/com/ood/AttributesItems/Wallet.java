@@ -11,6 +11,10 @@ public class Wallet {
         this.amount = 0;
     }
 
+    public Wallet(float amount) {
+        this.amount = amount;
+    }
+
     public float getAmount() {
         return amount;
     }

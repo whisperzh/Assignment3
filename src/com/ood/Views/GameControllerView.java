@@ -1,5 +1,9 @@
 package com.ood.Views;
 
+import com.ood.AttributesItems.LMH_Constant;
+import com.ood.Util.ACSII_PatternParser;
+import com.ood.Util.IConfigParser;
+
 import java.util.List;
 
 /**
@@ -33,6 +37,13 @@ public class GameControllerView extends View{
         for (int i=0;i<gameList.length;i++)
         {
             jout("Press ["+Integer.toString(i)+"] to play "+gameList[i]);
+            switch (i)
+            {
+                case 0:
+                    IConfigParser parser=new ACSII_PatternParser(LMH_Constant.LMH_PATTERN_Path);
+                    jout(parser.getPattern());
+                    break;
+            }
         }
 
     }

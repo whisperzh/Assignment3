@@ -95,6 +95,7 @@ public class LMH_GameView extends AbsGameView {
 
     @Override
     public int displayPlayerChooseCharacter(int bound) {
+        jout("Please choose your hero!");
         int ans= jin_BorderedInt(0,bound);
         return ans;
     }

@@ -1,10 +1,12 @@
 package com.ood.Item;
 
+import java.util.Map;
+
 /**
  * item cannot be used out
  */
 public abstract class UnwearableItem implements IItem{
-    private int price;
+    private float price;
 
     private int level;
 
@@ -14,6 +16,13 @@ public abstract class UnwearableItem implements IItem{
         this.price = price;
         this.level = level;
         this.name = name;
+    }
+
+    public UnwearableItem(Map<String,String> attributes)
+    {
+        this.level=Integer.valueOf(attributes.get("required level"));
+        this.price=Float.valueOf(attributes.get("cost"));
+        this.name=attributes.get("Name");
     }
 
     @Override

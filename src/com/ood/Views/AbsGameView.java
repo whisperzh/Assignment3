@@ -1,6 +1,7 @@
 package com.ood.Views;
 
 import com.ood.AttributesItems.LMH_Constant;
+import com.ood.AttributesItems.Vector2;
 import com.ood.Characters.ICharacter;
 import com.ood.Util.ParseCollection;
 
@@ -37,14 +38,14 @@ public abstract class AbsGameView extends View{
 
     public abstract void displayCharacterInfo(ICharacter hero);
 
-    public char collectPlayersAction() {
+    public char collectPlayersAction(char[] validActions,String  correspondentHelp) {
         char action=' ';
         String reminder="Please input an action\n";
         Set<Character> validSet=new HashSet();
-        for(var v : LMH_Constant.VALID_ACTIONS)
+        for(var v : validActions)
             validSet.add(v);
         do {
-            String act = jin_Str(reminder+ LMH_Constant.ACTION_HELP);
+            String act = jin_Str(reminder+correspondentHelp);
             if (act.length()==1&&validSet.contains(act.charAt(0))) {
                 action=act.charAt(0);
                 break;
@@ -56,4 +57,15 @@ public abstract class AbsGameView extends View{
 
 
     public abstract void showMarketView();
+
+    public void displayYourLocation(Vector2 currentPosition){
+        jout("You are at : row "+currentPosition.getRow()+" col "+currentPosition.getCol());
+    }
+
+    public void displayPlayersTurn(String name)
+    {
+        joutDivider();
+        jout(name+", It's your turn!");
+        joutDivider();
+    }
 }

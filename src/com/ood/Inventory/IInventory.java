@@ -10,4 +10,5 @@ public interface IInventory<T extends IItem> {
     T consume();
     void remove(T t);
     void Add(T t);
+    int getSize();
 }

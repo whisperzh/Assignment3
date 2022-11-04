@@ -19,11 +19,9 @@ public interface ICharacter extends IGridContent {
     void setDefense(float defense);
     float getStrength();
     void setStrength(int strength);
-    void leave(Vector2 position);
-    void leave(int x,int y);
     String getIcon();
     void setIcon(String icon);
-    void move(int col,int row);
+    void move(int row, int col);
     Vector2 getCurrentPosition();
     Map<String, String> getAllAttribute();
 

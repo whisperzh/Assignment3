@@ -18,7 +18,7 @@ public abstract class BoardGame implements IGame{
 
     private TeamCollection<LMH_Team> teamCollection;
 
-    private IGameJudge judge;
+    protected static IGameJudge judge;
 
     private AbsGameView view;
 
@@ -70,6 +70,10 @@ public abstract class BoardGame implements IGame{
 
     public int getTeamNums() {
         return teamNums;
+    }
+
+    public void setTeamCollection(TeamCollection<LMH_Team> teamCollection) {
+        this.teamCollection = teamCollection;
     }
 
     public void setTeamNums(int teamNums) {

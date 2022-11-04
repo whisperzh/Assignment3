@@ -1,10 +1,8 @@
 package com.ood.Grid;
 
 import com.ood.AttributesItems.Vector2;
-import com.ood.Game.IGame;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public abstract class GridCollections <T extends GridSpace>  {
@@ -45,11 +43,11 @@ public abstract class GridCollections <T extends GridSpace>  {
 
     abstract public void setGridAt(T grid, int x,int y);
 
-    public T getGrid(int x, int y) {
-        return grids.get(x).get(y);
+    public T getGrid(int row, int col) {
+        return grids.get(row).get(col);
     }
 
-    public T getGrid(Vector2 pos){return grids.get(pos.getX()).get(pos.getY());}
+    public T getGrid(Vector2 pos){return grids.get(pos.getCol()).get(pos.getRow());}
 
     public List<List<T>> getGrids() {
         return grids;

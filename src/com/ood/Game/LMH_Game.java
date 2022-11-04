@@ -27,10 +27,9 @@ public class LMH_Game extends BoardGame{
 
     private ParseCollection monsterParseCollection;
 
-    private static IGameJudge  judge;
-
     public LMH_Game() {
         super();
+        judge=new LMH_Judge(this);
         setView(ViewFactory.createGameView(type));
         setBoard(GameBoardFactory.createGameBoard(type));
         //get how many players
@@ -46,12 +45,6 @@ public class LMH_Game extends BoardGame{
 
         getBoard().show();
 
-    }
-
-    public static IGameJudge getJudgeInstance() {
-        if(judge==null)
-            judge=new LMH_Judge();
-        return judge;
     }
 
     @Override
@@ -89,12 +82,11 @@ public class LMH_Game extends BoardGame{
 
     @Override
     public void start() {
-        while (true)
+        while (!judge.judgeGameOver())
         {
             getTeamCollection().getTeamAt(0).move();
-            getTeamCollection().getTeamAt(1).move();
+//            getTeamCollection().getTeamAt(1).move();
 
-            break;
         }
         getView().displayPlayerScoreTable();
     }

@@ -189,16 +189,6 @@ public abstract class GeneralHero implements ICharacter{
     abstract void faint();
 
     @Override
-    public void leave(Vector2 position) {
-
-    }
-
-    @Override
-    public void leave(int x, int y) {
-
-    }
-
-    @Override
     public String getIcon() {
         return icon;
     }
@@ -219,8 +209,8 @@ public abstract class GeneralHero implements ICharacter{
     }
 
     @Override
-    public void move(int col, int row) {
-
+    public void move(int row, int col) {
+        currentPosition=new Vector2(row,col);
     }
 
     @Override

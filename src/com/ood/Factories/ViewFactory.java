@@ -16,6 +16,9 @@ public class ViewFactory {
             case CONTROLLER:
                 v=new GameControllerView();
                 break;
+            case MARKET:
+                v=new MarketView();
+                break;
             default:
                 v=new MainView();
                 break;

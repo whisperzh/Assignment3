@@ -20,6 +20,7 @@ public class ParseCollection {
     }
     public void AddParser(String parserPath, Enum anEnum){
         IConfigParser p=new AttributeParser(parserPath,totalDataCount,isHeroParser,anEnum);
+        parsers=new ArrayList<>();
         parsers.add(p);
         totalDataCount+=p.getLineOfData();
     }

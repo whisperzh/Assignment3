@@ -29,4 +29,9 @@ public class CharacterInventory implements IInventory<IItem>{
     public void Add(IItem item) {
         items.add(item);
     }
+
+    @Override
+    public int getSize() {
+        return items.size();
+    }
 }
