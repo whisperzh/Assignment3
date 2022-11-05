@@ -1,14 +1,11 @@
 package com.ood.Util;
 
-import com.ood.AttributesItems.LMH_DataCenter;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 public class ItemParser implements IConfigParser{
     private String filePath;
@@ -70,7 +67,7 @@ public class ItemParser implements IConfigParser{
     }
 
     @Override
-    public Map<Integer, List<String>> getAttributeDataBase() {
+    public List<List<String>> getAttributeDataBase() {
         return null;
     }
 

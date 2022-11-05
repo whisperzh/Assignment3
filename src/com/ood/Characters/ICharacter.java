@@ -23,6 +23,7 @@ public interface ICharacter extends IGridContent {
     void setIcon(String icon);
     void move(int row, int col);
     Vector2 getCurrentPosition();
+    void addExperience(float exp);
     Map<String, String> getAllAttribute();
 
 //    • A name

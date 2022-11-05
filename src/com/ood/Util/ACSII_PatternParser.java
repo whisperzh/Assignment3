@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 
 public class ACSII_PatternParser implements IConfigParser{
     private String filePath;
@@ -49,7 +48,7 @@ public class ACSII_PatternParser implements IConfigParser{
     }
 
     @Override
-    public Map<Integer, List<String>> getAttributeDataBase() {
+    public List<List<String>> getAttributeDataBase() {
         return null;
     }
 

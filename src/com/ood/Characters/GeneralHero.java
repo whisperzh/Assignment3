@@ -41,6 +41,8 @@ public abstract class GeneralHero implements ICharacter{
     private HeroEnum type;
 
     public GeneralHero(List<String> attributes) {
+        level=1;
+        HP=100;
         name=attributes.get(0);
         MP=Float.valueOf(attributes.get(1));
         strength=Float.valueOf(attributes.get(2));
@@ -55,6 +57,7 @@ public abstract class GeneralHero implements ICharacter{
     public void levelUp() {
         MP*=1.1;
         level++;
+        HP=level*100;
     }
 
     @Override
@@ -230,4 +233,10 @@ public abstract class GeneralHero implements ICharacter{
         return ans;
     }
 
+    @Override
+    public void addExperience(float exp) {
+        experience+=exp;
+        if(experience>=level*10)
+            levelUp();
+    }
 }

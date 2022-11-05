@@ -59,6 +59,7 @@ public class LMH_GameView extends AbsGameView {
     @Override
     public void displayParserInfo(ParseCollection parseCollection, boolean showIndex){
         joutDivider();
+        int startIndex=0;
         for(int i=0;i<parseCollection.getParserSize();i++)
         {
             var parser=parseCollection.getParserAt(i);
@@ -72,13 +73,15 @@ public class LMH_GameView extends AbsGameView {
                 schema.add(0,"index");
             rows.add(schema);
 
-            for(int e :parser.getAttributeDataBase().keySet())
+            for(int j=0;j<parser.getAttributeDataBase().size();j++)
             {
-                List<String> attr=new ArrayList<>(parser.getAttributeDataBase().get(e));
+                List<String> attr=new ArrayList<>(parser.getAttributeDataBase().get(j));
                 if(showIndex)
-                    attr.add(0,new String("["+Integer.toString(e)+"]"));
+                    attr.add(0,new String("["+Integer.toString(j+startIndex)+"]"));
                 rows.add(attr);
+
             }
+            startIndex+=parser.getAttributeDataBase().size();
             joutAsTable(rows);
             jout("\n");
         }

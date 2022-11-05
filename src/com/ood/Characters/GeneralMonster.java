@@ -162,4 +162,8 @@ public abstract class GeneralMonster implements ICharacter{
         return map;
         //their level, their hp, their damage, their defense, and their dodge chance
     }
+    @Override
+    public void addExperience(float exp){
+        return;
+    }
 }

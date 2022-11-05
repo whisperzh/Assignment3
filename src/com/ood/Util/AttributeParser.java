@@ -13,7 +13,7 @@ import java.util.*;
 public class AttributeParser implements IConfigParser{
     private String filePath;
 
-    private Map<Integer, List<String>> attributeDataBase;
+    private List<List<String>> attributeDataBase;
 
     private List<String> orderedSchema;
 
@@ -28,7 +28,7 @@ public class AttributeParser implements IConfigParser{
         this.heroData=heroData;
         this.filePath = filePath;
         this.startIndex = startIndex;
-        attributeDataBase=new HashMap<>();
+        attributeDataBase=new ArrayList<>();
         try {
             readFile();
         } catch (IOException e) {
@@ -53,9 +53,9 @@ public class AttributeParser implements IConfigParser{
         bufferedReader.close();
         if(heroData)
         {
-            LMH_DataCenter.addAllHero(attributeDataBase.values());
+            LMH_DataCenter.addAllHero(attributeDataBase);
         }else {
-            LMH_DataCenter.addAllMonster(attributeDataBase.values());
+            LMH_DataCenter.addAllMonster(attributeDataBase);
         }
     }
 
@@ -71,7 +71,7 @@ public class AttributeParser implements IConfigParser{
     }
 
     @Override
-    public Map<Integer, List<String>> getAttributeDataBase() {
+    public List<List<String>> getAttributeDataBase() {
         return attributeDataBase;
     }
 
@@ -118,7 +118,7 @@ public class AttributeParser implements IConfigParser{
         for(var st: titles)
             l.add(st);
         l.add(characterEnum.toString());
-        attributeDataBase.put(startIndex++,l);
+        attributeDataBase.add(l);
     }
 
     @Override

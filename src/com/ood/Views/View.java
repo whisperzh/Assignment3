@@ -59,7 +59,7 @@ public abstract class View implements VisualModule{
 
     public int jin_BorderedInt(int lowerBound,int upperBound){
         int pc=jin_Int("Please input a number between [ "+lowerBound+ " ~ "+upperBound +"] ");
-        while(pc<lowerBound&&pc>upperBound)
+        while(pc<lowerBound||pc>upperBound)
         {
             displayInvalidInputMessage();
             pc=jin_Int("Please input a number between [ "+lowerBound+ " ~ "+upperBound +"] ");
