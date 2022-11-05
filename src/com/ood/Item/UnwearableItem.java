@@ -6,16 +6,14 @@ import java.util.Map;
  * item cannot be used out
  */
 public abstract class UnwearableItem implements IItem{
-    private float price;
+    protected float price;
 
-    private int level;
+    protected int level;
 
-    private String name;
+    protected String name;
 
-    public UnwearableItem(String name, int price, int level ) {
-        this.price = price;
-        this.level = level;
-        this.name = name;
+    public UnwearableItem() {
+
     }
 
     public UnwearableItem(Map<String,String> attributes)

@@ -16,10 +16,12 @@ public class ItemParser implements IConfigParser{
 
     private Enum itemEnum=null;
 
+
     public ItemParser(String filePath,Enum itemEnum) {
         this.items=new ArrayList<>();
         this.itemEnum=itemEnum;
         this.filePath = filePath;
+
         try {
             readFile();
         } catch (IOException e) {
@@ -93,6 +95,14 @@ public class ItemParser implements IConfigParser{
     @Override
     public String getPattern() {
         return null;
+    }
+
+    @Override
+    public List<List<String>> getItemsWithTitle() {
+        List<List<String>> ans=new ArrayList<>();
+        ans.add(orderedSchema);
+        ans.addAll(items);
+        return ans;
     }
 
     public void createSchema(String s){

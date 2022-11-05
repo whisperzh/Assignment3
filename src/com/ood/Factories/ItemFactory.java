@@ -19,12 +19,12 @@ public class ItemFactory {
             case ARMORY:
                 item=new Armor(itemAttributes);
                 break;
-//            case POTIONS:
-//                item=new Potion();
-//                break;
-//            case WEAPONRY:
-//                item=new Weapon();
-//                break;
+            case POTIONS:
+                item=new Potion(itemAttributes);
+                break;
+            case WEAPONRY:
+                item=new Weapon(itemAttributes);
+                break;
 
         }
         return item;

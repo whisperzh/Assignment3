@@ -90,15 +90,6 @@ public class AttributeParser implements IConfigParser{
         attributeDataBase.clear();
     }
 
-//    @Override
-//    public int setIndexForData(int startIndex) {
-//        orderedSchema.add("index");
-//        for (var l : attributeDataBase.keySet()) {
-//            attributeDataBase.get(l).add(Integer.toString(startIndex));
-//            startIndex++;
-//        }
-//        return startIndex;
-//    }
 
     @Override
     public int getLineOfData() {
@@ -126,6 +117,13 @@ public class AttributeParser implements IConfigParser{
         return "";
     }
 
+    @Override
+    public List<List<String>> getItemsWithTitle() {
+        List<List<String>> ans=new ArrayList<>();
+        ans.add(orderedSchema);
+        ans.addAll(attributeDataBase);
+        return ans;
+    }
 
 
 }

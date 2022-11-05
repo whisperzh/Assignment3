@@ -2,6 +2,7 @@ package com.ood.Views;
 
 import com.ood.AttributesItems.LMH_Constant;
 import com.ood.AttributesItems.Vector2;
+import com.ood.Characters.GeneralHero;
 import com.ood.Characters.ICharacter;
 import com.ood.Util.ParseCollection;
 

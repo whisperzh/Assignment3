@@ -8,6 +8,7 @@ import java.util.List;
  * collection for all same type parse(ENCAPSULATION)
  */
 public class ParseCollection {
+
     private List<IConfigParser> parsers;
 
     private int totalDataCount=0;
@@ -22,6 +23,11 @@ public class ParseCollection {
         IConfigParser p=new AttributeParser(parserPath,totalDataCount,isHeroParser,anEnum);
         parsers.add(p);
         totalDataCount+=p.getLineOfData();
+    }
+
+    public void AddParser(IConfigParser parser){
+        parsers.add(parser);
+        totalDataCount+=parser.getLineOfData();
     }
 
     public void AddParsers(List<String> parserPaths,List<Enum> characterEnum)
@@ -57,5 +63,12 @@ public class ParseCollection {
         this.totalDataCount = totalDataCount;
     }
 
-
+    public List<List<List<String>>> getAllItemsWithTitle() {
+        List<List<List<String>>> ans=new ArrayList<>();
+        for (int i=0;i<parsers.size();i++)
+        {
+            ans.add(parsers.get(i).getItemsWithTitle());
+        }
+        return ans;
+    }
 }

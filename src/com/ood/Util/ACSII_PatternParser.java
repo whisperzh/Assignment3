@@ -26,6 +26,11 @@ public class ACSII_PatternParser implements IConfigParser{
     }
 
     @Override
+    public List<List<String>> getItemsWithTitle() {
+        return null;
+    }
+
+    @Override
     public void readFile() throws IOException {
         String line=new String("\n");
         BufferedReader in = new BufferedReader(new FileReader(filePath));

@@ -1,8 +1,10 @@
 package com.ood.Characters;
 
+import com.ood.AttributesItems.LMH_HeroSkill;
 import com.ood.AttributesItems.Vector2;
 import com.ood.AttributesItems.Wallet;
 import com.ood.Enums.HeroEnum;
+import com.ood.Inventory.CharacterInventory;
 import com.ood.Inventory.IInventory;
 import com.ood.Item.IItem;
 
@@ -27,7 +29,7 @@ public abstract class GeneralHero implements ICharacter{
     private String icon;
     private Wallet myWallet;
     private IInventory<IItem> inventory;
-
+    protected LMH_HeroSkill skills;
 
 
     public HeroEnum getType() {
@@ -41,6 +43,7 @@ public abstract class GeneralHero implements ICharacter{
     private HeroEnum type;
 
     public GeneralHero(List<String> attributes) {
+        inventory=new CharacterInventory();
         level=1;
         HP=100;
         name=attributes.get(0);
@@ -58,6 +61,13 @@ public abstract class GeneralHero implements ICharacter{
         MP*=1.1;
         level++;
         HP=level*100;
+
+        strength*=1.05f;
+        dexterity*=1.05f;
+        agility*=1.05f;
+
+        skills.levelUp();
+
     }
 
     @Override
@@ -161,9 +171,11 @@ public abstract class GeneralHero implements ICharacter{
     public void buyItem(IItem item){
         float price=item.getOriginalPrice();
         boolean transactionSuccess = getMyWallet().pay(price);
+        if(inventory==null)
+            inventory=new CharacterInventory();
         if(transactionSuccess)
         {
-            getInventory().Add(item);
+            getInventory().add(item);
         }
     }
 
@@ -229,7 +241,13 @@ public abstract class GeneralHero implements ICharacter{
         ans.put("mana",String.format("%.2f",getMP()));
         ans.put("experience",String.format("%.2f",getExperience()));
         ans.put("money",String.format("%.2f",myWallet.getAmount()));
-        ans.put("skill_level","");
+        String skillLevel="";
+        for(var c:skills.keySet())
+        {
+            skillLevel+=c.toString()+" ";
+            skillLevel+=String.format("%.2f",skills.get(c))+", ";
+        }
+        ans.put("skill_level",skillLevel);
         return ans;
     }
 

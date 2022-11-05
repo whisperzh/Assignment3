@@ -10,6 +10,9 @@ import com.ood.Game.IGame;
 public abstract class BoardGameJudge implements IGameJudge{
     protected IGame game;
 
+    public BoardGameJudge() {
+    }
+
     public BoardGameJudge(IGame game) {
         this.game = game;
     }

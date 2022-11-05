@@ -1,11 +1,21 @@
 package com.ood.Item;
 
+import java.util.Map;
+
 /**
  * spell concrete class
  */
 public class Spell extends ConsumableItem {
 
-    public Spell(String name, int price, int level, int timeOfUse) {
-        super(name, price, level, timeOfUse);
+    private float damage;
+
+    private float manaCost;
+
+    public Spell(Map<String, String> attributes) {
+        super(attributes);
+        damage= Float.parseFloat(attributes.get("damage"));
+        manaCost= Float.parseFloat(attributes.get("mana cost"));
     }
+
+
 }

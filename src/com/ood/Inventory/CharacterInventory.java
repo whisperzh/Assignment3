@@ -1,6 +1,7 @@
 package com.ood.Inventory;
 
 import com.ood.Item.IItem;
+import com.ood.Util.ParseCollection;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,12 +27,22 @@ public class CharacterInventory implements IInventory<IItem>{
     }
 
     @Override
-    public void Add(IItem item) {
+    public void add(IItem item) {
         items.add(item);
+    }
+
+    @Override
+    public void addParserCollection(ParseCollection pc) {
+        //do Nothing
     }
 
     @Override
     public int getSize() {
         return items.size();
+    }
+
+    @Override
+    public IItem get(int index) {
+        return items.get(index);
     }
 }

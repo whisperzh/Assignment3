@@ -19,6 +19,7 @@ public class LMH_Constant {
     public static final int BOARD_COL=8;
     public static final int DICE_COUNT=2;
     public static final int BATTLE_CONSTRAINT=6;
+    public static final float HERO_FAVORED_SKILL_ORIGINAL_VAL=50;
 
     //Icons
     public static final String DRAGON=" \uD83D\uDC09";
@@ -44,7 +45,7 @@ public class LMH_Constant {
     public static final String LMH_PATTERN_Path= "Legends_Monsters_and_Heroes/dragonAscii.txt";
     public static final float SHOP_DEFAULT_GOLD = 10000;
     public static char[] VALID_ACTIONS_ONMAP =new char[]{'w','a','s','d','W','A','S','D','Q','q','I','i','m','M'};
-    public static char[] VALID_ACTIONS_INMARKET =new char[]{'B','S','V','E','Q','b','s','v','q','e'};
+    public static char[] VALID_ACTIONS_INMARKET =new char[]{'B','S','E','Q','b','s','q','e'};
     public static final String ACTION_HELP_ONMAP ="W/w: move up\n" +
             "A/a: move left\n" +
             "S/s: move down\n" +
@@ -55,7 +56,6 @@ public class LMH_Constant {
     public static final String ACTION_HELP_INMARKET =
             "B/B: enter buy mode\n" +
             "S/s: enter sell mode\n" +
-            "V/v: enter view items detail mode\n" +
             "Q/q: quit game\n" +
             "E/e: exit market";
 

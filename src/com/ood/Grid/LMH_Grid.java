@@ -5,6 +5,7 @@ import com.ood.AttributesItems.Vector2;
 import com.ood.Characters.ICharacter;
 import com.ood.Enums.LMHGridEnum;
 import com.ood.FunctionInterfaces.IGridContent;
+import com.ood.Game.IGame;
 import com.ood.Item.IItem;
 import com.ood.Market.IMarket;
 import com.ood.Market.LMH_Market;
@@ -78,6 +79,7 @@ public class LMH_Grid implements GridSpace<LMHGridEnum>{
     }
 
     public void setDefaultIcon(){
+        character=null;
         if(type==null)
         {
             String space="";

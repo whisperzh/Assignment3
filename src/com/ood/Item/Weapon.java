@@ -1,18 +1,26 @@
 package com.ood.Item;
 
+import java.util.Map;
+
 /**
  * General Weapons
  */
 public class Weapon extends UnwearableItem {
 
-    private int damageVal;
+    private float damageVal;
 
-    public Weapon(String name, int price, int level, int damageVal) {
-        super(name, price, level);
-        this.damageVal = damageVal;
+    private int requiredHands;
+
+    public Weapon(Map<String, String> attributes) {
+        super();
+        this.level=Integer.valueOf(attributes.get("level"));
+        this.price=Float.valueOf(attributes.get("cost"));
+        this.name=attributes.get("Name");
+        this.damageVal=Float.valueOf(attributes.get("damage"));
+        this.requiredHands=Integer.valueOf(attributes.get("required hands"));
     }
 
-    public int getDamageVal() {
+    public float getDamageVal() {
         return damageVal;
     }
 

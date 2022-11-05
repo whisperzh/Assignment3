@@ -1,10 +1,12 @@
 package com.ood.Item;
 
+import java.util.Map;
+
 /**
  * Consumable Items
  */
 public abstract class ConsumableItem implements IItem{
-    private int price;
+    private float price;
 
     private int timeOfUse;
 
@@ -12,11 +14,13 @@ public abstract class ConsumableItem implements IItem{
 
     private String name;
 
-    public ConsumableItem( String name,int price, int level, int timeOfUse) {
-        this.price = price;
-        this.timeOfUse = timeOfUse;
-        this.level = level;
-        this.name = name;
+    public ConsumableItem(Map<String,String> attributes)
+    {
+        //Name/cost/required level/attribute increase/attribute affected
+        //Name/cost/required level/damage/mana cost
+        this.level=Integer.valueOf(attributes.get("required level"));
+        this.price=Float.valueOf(attributes.get("cost"));
+        this.name=attributes.get("Name");
     }
 
     @Override

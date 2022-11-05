@@ -3,8 +3,10 @@ package com.ood.Judge;
 import com.ood.AttributesItems.LMH_Constant;
 import com.ood.AttributesItems.Vector2;
 import com.ood.Board.IBoard;
+import com.ood.Characters.GeneralHero;
 import com.ood.Enums.LMHGridEnum;
 import com.ood.Game.IGame;
+import com.ood.Item.IItem;
 
 import java.util.List;
 
@@ -12,6 +14,10 @@ import java.util.List;
  * do the judgment in LMH game
  */
 public class LMH_Judge extends BoardGameJudge{
+
+    public LMH_Judge() {
+    }
+
     public LMH_Judge(IGame game) {
         super(game);
     }
@@ -38,6 +44,12 @@ public class LMH_Judge extends BoardGameJudge{
             return false;
     }
 
+    @Override
+    public boolean transancationValid(GeneralHero customer, IItem item) {
+        if(customer.getMyWallet().getAmount()>=item.getOriginalPrice())
+            return true;
+        return false;
+    }
 
 
 }

@@ -3,12 +3,16 @@ package com.ood.Market;
 import com.ood.AttributesItems.LMH_Constant;
 import com.ood.AttributesItems.Wallet;
 import com.ood.Characters.GeneralHero;
+import com.ood.Characters.ICharacter;
 import com.ood.Enums.ItemEnum;
 import com.ood.Enums.ViewEnum;
 import com.ood.Factories.ViewFactory;
+import com.ood.Game.IGame;
 import com.ood.Inventory.IInventory;
 import com.ood.Inventory.MarketInventory;
 import com.ood.Item.IItem;
+import com.ood.Judge.IGameJudge;
+import com.ood.Judge.LMH_Judge;
 import com.ood.Util.AttributeParser;
 import com.ood.Util.IConfigParser;
 import com.ood.Util.ItemParser;
@@ -28,13 +32,24 @@ public class LMH_Market implements IMarket<IItem> {
 
     private Wallet myWallet;
 
-    private IConfigParser parser;
+    private ParseCollection parseCollection;
+
+    private GeneralHero customer;
 
     public LMH_Market() {
         marketView= ViewFactory.createView(ViewEnum.MARKET);
-        parser=new ItemParser(LMH_Constant.ARMORY_Path, ItemEnum.ARMORY);
-        marketInventory=new MarketInventory(parser);
+        initParserCollection();
+        marketInventory=new MarketInventory();
+        marketInventory.addParserCollection(parseCollection);
         myWallet=new Wallet(LMH_Constant.SHOP_DEFAULT_GOLD);
+    }
+
+    private void initParserCollection(){
+        parseCollection=new ParseCollection(false);
+
+        parseCollection.AddParser(new ItemParser(LMH_Constant.ARMORY_Path, ItemEnum.ARMORY));
+        parseCollection.AddParser(new ItemParser(LMH_Constant.WEAPONRY_Path, ItemEnum.WEAPONRY));
+        parseCollection.AddParser(new ItemParser(LMH_Constant.POTIONS_Path, ItemEnum.POTIONS));
     }
 
     @Override
@@ -63,8 +78,8 @@ public class LMH_Market implements IMarket<IItem> {
 
     @Override
     public void enterMarket(GeneralHero hero) {
-        List<List<String>> info=((ItemParser)parser).getItems();
-        marketView.showMenu(info);
+        customer=hero;
+        showMenu();
         chooseActionAndDo();
     }
 
@@ -75,21 +90,50 @@ public class LMH_Market implements IMarket<IItem> {
         {
             case 'B'|'b'://buy
                 int itemIndex=marketView.collectCustomersChoice(marketInventory.getSize()-1);
+                IItem checkoutItem = marketInventory.get(itemIndex);
+                if(getJudge().transancationValid(customer,checkoutItem)) {
+                    customer.buyItem(checkoutItem);
+                    marketInventory.remove(checkoutItem);
+                    marketView.disPlayCheckoutInfo(customer,checkoutItem);
+                }else
+                {
+                    marketView.disPlayCannotBuyInfo();
+                    chooseActionAndDo();
+                }
                 break;
             case 'S'|'s'://sell
-                break;
-            case 'V'|'v'://view
-                List<List<String>> info=((ItemParser)parser).getItems();
-                marketView.showMenu(info);
+                int customerInvSize=customer.getInventory().getSize();
+                if(customerInvSize==0) {
+                    marketView.disPlayCannotSellInfo();
+                    chooseActionAndDo();
+                }else {
+                    marketView.displayCustomerInventory(customer);
+                    int sellItemIndex = marketView.collectCustomersChoice(customerInvSize-1);
+                    IItem tobeSoldItem = customer.getInventory().get(sellItemIndex);
+                    marketInventory.add(tobeSoldItem);
+                    customer.getInventory().remove(tobeSoldItem);
+                    customer.getMyWallet().get(tobeSoldItem.getSellPrice());
+                    marketView.displayCustomerInventory(customer);
+                }
                 break;
             case 'Q'|'q'://quit
                 marketView.displayGoodByeMessage();
                 System.exit(0);
                 break;
             case 'E'|'e'://exit market
+                customer=null;
                 //we do nothing here
                 break;
         }
+    }
+    private void showMenu(){
+        List<List<List<String>>> info=parseCollection.getAllItemsWithTitle();
+        marketView.showMenu(info);
+    }
+
+    private IGameJudge getJudge(){
+        IGameJudge judge=new LMH_Judge();
+        return judge;
     }
 
 }

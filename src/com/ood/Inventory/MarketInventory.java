@@ -5,6 +5,7 @@ import com.ood.Factories.ItemFactory;
 import com.ood.Item.IItem;
 import com.ood.Util.IConfigParser;
 import com.ood.Util.ItemParser;
+import com.ood.Util.ParseCollection;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,6 +15,10 @@ import java.util.Map;
 public class MarketInventory implements IInventory<IItem> {
     private List<IItem> items;
 
+
+    public MarketInventory() {
+        this.items=new ArrayList<>();
+    }
 
     public MarketInventory(IConfigParser parser) {
         this.items=new ArrayList<>();
@@ -32,9 +37,17 @@ public class MarketInventory implements IInventory<IItem> {
     }
 
     @Override
-    public void Add(IItem item) {
+    public void add(IItem item) {
 
     }
+
+    public void addParserCollection(ParseCollection pc){
+        for(int i=0;i<pc.getParserSize();i++)
+        {
+            decodeParser(pc.getParserAt(i));
+        }
+    }
+
     public void decodeParser(IConfigParser parser){
         List<List<String>> info=((ItemParser)parser).getItems();
         List<String> keys=parser.getOrderedSchema();
@@ -55,6 +68,11 @@ public class MarketInventory implements IInventory<IItem> {
     @Override
     public int getSize() {
         return items.size();
+    }
+
+    @Override
+    public IItem get(int index) {
+        return items.get(index);
     }
 
 }
