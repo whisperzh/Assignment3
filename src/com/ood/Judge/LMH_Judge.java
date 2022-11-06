@@ -7,6 +7,7 @@ import com.ood.Characters.GeneralHero;
 import com.ood.Enums.LMHGridEnum;
 import com.ood.Game.IGame;
 import com.ood.Item.IItem;
+import com.ood.Team.TeamCollection;
 
 import java.util.List;
 
@@ -34,14 +35,13 @@ public class LMH_Judge extends BoardGameJudge{
 
     @Override
     public boolean isEncounterMonster(List<Integer> rollDice) {
-
         int sum=0;
         for(int i=0;i< rollDice.size();i++)
             sum+=rollDice.get(i);
         if(sum> LMH_Constant.BATTLE_CONSTRAINT)
             return false;
         else
-            return false;
+            return true;
     }
 
     @Override
@@ -52,4 +52,13 @@ public class LMH_Judge extends BoardGameJudge{
     }
 
 
+    public boolean allTeamAlive(TeamCollection teamCollection) {
+        for(int i=0;i<teamCollection.size();i++)
+        {
+            if(!teamCollection.getTeamAt(i).getIsActive())
+                return false;
+        }
+
+        return true;
+    }
 }

@@ -40,4 +40,8 @@ public class TeamCollection<T extends ITeam> {
         this.teamList = teamList;
     }
 
+    public int size(){
+        return teamList.size();
+    }
+
 }

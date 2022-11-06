@@ -31,7 +31,6 @@ public abstract class Team<T extends IPlayer> implements ITeam<IPlayer> {
         playerSize=size;
         this.isPCPlayer=isPCPlayer;
     }
-
     public PlayerCollection<T> getPlayerCollection() {
         return playerCollection;
     }
@@ -100,4 +99,5 @@ public abstract class Team<T extends IPlayer> implements ITeam<IPlayer> {
         this.game = game;
         playerCollection.setGame(game);
     }
+
 }

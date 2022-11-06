@@ -13,6 +13,7 @@ public interface ITeam<T extends IPlayer>{
     void setPoints(int points);
     void addPlayer(T player);
     IPlayer getPlayerAt(int index);
+    int getPlayerSize();
     void move();
     void setIsActive(boolean isActive);
     boolean getIsActive();
