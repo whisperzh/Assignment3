@@ -11,7 +11,7 @@ public class LMH_Team extends Team<LMH_Player>{
 
     public LMH_Team(String name, int size, boolean isPCPlayer, IGame game) {
         super(name, size, isPCPlayer, game);
-        setPlayerCollection(new LMH_PlayerCollection(getPlayerSize(),isPCPlayer,game));
+        setPlayerCollection(new LMH_PlayerCollection(size(),isPCPlayer,game));
 
     }
 
@@ -21,7 +21,7 @@ public class LMH_Team extends Team<LMH_Player>{
 
     @Override
     public void move() {
-        for(int i=0;i<getPlayerSize();i++)
+        for(int i = 0; i< size(); i++)
         {
             if(getGame().getJudge().judgeGameOver())
                 return;
@@ -31,7 +31,7 @@ public class LMH_Team extends Team<LMH_Player>{
 
     @Override
     public boolean getIsActive() {
-        for(int i=0;i<getPlayerSize();i++)
+        for(int i = 0; i< size(); i++)
         {
             if (getPlayerAt(i).isActive()==false)
                 return false;

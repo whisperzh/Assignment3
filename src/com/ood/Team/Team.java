@@ -39,7 +39,7 @@ public abstract class Team<T extends IPlayer> implements ITeam<IPlayer> {
         this.playerCollection = playerCollection;
     }
 
-    public int getPlayerSize() {
+    public int size() {
         return playerSize;
     }
 

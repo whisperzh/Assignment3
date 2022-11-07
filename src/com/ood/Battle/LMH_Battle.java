@@ -7,8 +7,6 @@ import com.ood.Characters.ICharacter;
 import com.ood.Enums.ViewEnum;
 import com.ood.Factories.ViewFactory;
 import com.ood.Judge.LMH_Judge;
-import com.ood.Players.IPlayer;
-import com.ood.Players.LMH_Player;
 import com.ood.Team.ITeam;
 import com.ood.Team.LMH_Team;
 import com.ood.Team.TeamCollection;
@@ -38,7 +36,7 @@ public class LMH_Battle implements IBattle{
     public LMH_Battle(TeamCollection teamCollection) {
         this.teamCollection = teamCollection;
         judge=new LMH_Judge();
-        monsterTeam=new LMH_Team("MONSTER_TEAM",teamCollection.getTeamAt(0).getPlayerSize(),true,teamCollection.getTeamAt(0).getGame());//Computer Player
+        monsterTeam=new LMH_Team("MONSTER_TEAM",teamCollection.getTeamAt(0).size(),true,teamCollection.getTeamAt(0).getGame());//Computer Player
         monsterTeam.playerChooseHero();
         view= ViewFactory.createView(ViewEnum.BATTLEFIELD);
         initPlayerCollection();
@@ -50,12 +48,12 @@ public class LMH_Battle implements IBattle{
 
         for (int i = 0; i < teamCollection.getTeamList().size(); i++) {
             ITeam team=teamCollection.getTeamAt(i);
-            for (int j=0;j<team.getPlayerSize();j++)
+            for (int j = 0; j<team.size(); j++)
             {
                 heros.add((GeneralHero) team.getPlayerAt(j).getMyCharacter());
             }
         }
-        for(int j=0;j<monsterTeam.getPlayerSize();j++)
+        for(int j = 0; j<monsterTeam.size(); j++)
         {
             monsters.add((GeneralMonster) monsterTeam.getPlayerAt(j).getMyCharacter());
         }
@@ -110,7 +108,7 @@ public class LMH_Battle implements IBattle{
         {
             case 'A'|'a':
                 view.displayAttackMonsterChoices(monsterTeam);//display choice
-                int num=view.jin_BorderedInt(0,monsterTeam.getPlayerSize()-1);
+                int num=view.jin_BorderedInt(0,monsterTeam.size()-1);
                 GeneralMonster tobeAttacked= monsters.get(num);
                 float dmg=hero.physicalAttack(tobeAttacked);
                 view.displayAttackInfo(hero, tobeAttacked, dmg);

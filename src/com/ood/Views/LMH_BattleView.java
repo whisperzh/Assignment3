@@ -81,7 +81,7 @@ public class LMH_BattleView extends AbsGameView{
         title.add("HP");
         title.add("defense");
         rows.add(title);
-        for(int i=0;i<mon_team.getPlayerSize();i++)
+        for(int i = 0; i<mon_team.size(); i++)
         {
             IPlayer player=mon_team.getPlayerAt(i);
             GeneralMonster monster=(GeneralMonster) ((LMH_Player)player).getMyCharacter();

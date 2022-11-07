@@ -1,5 +1,6 @@
 package com.ood.Team;
 
+import com.ood.Characters.ICharacter;
 import com.ood.Game.IGame;
 import com.ood.Players.IPlayer;
 
@@ -14,7 +15,7 @@ public interface ITeam<T extends IPlayer>{
     void setPoints(int points);
     void addPlayer(T player);
     IPlayer getPlayerAt(int index);
-    int getPlayerSize();
+    int size();
     void move();
     IGame getGame();
     void setIsActive(boolean isActive);
