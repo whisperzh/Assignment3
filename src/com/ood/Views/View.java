@@ -136,4 +136,18 @@ public abstract class View implements VisualModule{
         joutDivider();
 
     }
+
+    public boolean jin_YesOrNo() {
+        jout("Please input [y/n]");
+        String str=getScanner().next();
+        while(str.length()!=1||!(str.equalsIgnoreCase("y")||str.equalsIgnoreCase("n")))
+        {
+            displayInvalidInputMessage();
+            jout("Please input [y/n]");
+            str=getScanner().next();
+        }
+        if(str.equalsIgnoreCase("y"))
+            return true;
+        return false;
+    }
 }

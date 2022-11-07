@@ -4,6 +4,7 @@ import com.ood.AttributesItems.LMH_Constant;
 import com.ood.AttributesItems.Vector2;
 import com.ood.Board.IBoard;
 import com.ood.Characters.GeneralHero;
+import com.ood.Characters.GeneralMonster;
 import com.ood.Enums.LMHGridEnum;
 import com.ood.Game.IGame;
 import com.ood.Item.IItem;
@@ -16,6 +17,8 @@ import java.util.List;
  */
 public class LMH_Judge extends BoardGameJudge{
 
+    private static boolean isGameOver=false;
+
     public LMH_Judge() {
     }
 
@@ -25,7 +28,7 @@ public class LMH_Judge extends BoardGameJudge{
 
     @Override
     public boolean judgeGameOver() {
-        return false;
+        return isGameOver;
     }
 
     @Override
@@ -51,6 +54,31 @@ public class LMH_Judge extends BoardGameJudge{
         return false;
     }
 
+    public boolean battleOver(List<GeneralHero> heroes,List<GeneralMonster> monsters)
+    {
+        int herosAlive=0;
+        for(int i=0;i<heroes.size();i++)
+        {
+            if(heroes.get(i).isAlive())
+                herosAlive++;
+        }
+        if(herosAlive==0) {
+            isGameOver=true;
+            return true;
+        }
+
+        int monsterAlive=0;
+        for(int i=0;i<monsters.size();i++)
+        {
+            if(monsters.get(i).isAlive())
+                monsterAlive++;
+        }
+        if(monsterAlive==0)
+            return true;
+        return false;
+
+
+    }
 
     public boolean allTeamAlive(TeamCollection teamCollection) {
         for(int i=0;i<teamCollection.size();i++)

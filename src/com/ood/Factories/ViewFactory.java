@@ -19,6 +19,9 @@ public class ViewFactory {
             case MARKET:
                 v=new MarketView();
                 break;
+            case BATTLEFIELD:
+                v=new LMH_BattleView();
+                break;
             default:
                 v=new MainView();
                 break;

@@ -14,8 +14,7 @@ public class PlayerFactory {
         switch (gameType)
         {
             case LMH:
-                player=new LMH_Player(isPCPlayer,game);
-                player.setName(playerName);
+                player=new LMH_Player(isPCPlayer,playerName,game);
                 break;
             default:
                 player=null;

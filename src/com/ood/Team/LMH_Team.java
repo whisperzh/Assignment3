@@ -15,12 +15,27 @@ public class LMH_Team extends Team<LMH_Player>{
 
     }
 
+    public void playerChooseHero() {
+        getPlayerCollection().playerChooseHero();
+    }
+
     @Override
     public void move() {
         for(int i=0;i<getPlayerSize();i++)
         {
-            ((LMH_Player)getPlayerAt(i)).chooseActionAndMove();
+            if(getGame().getJudge().judgeGameOver())
+                return;
+            getPlayerAt(i).chooseActionAndMove();
         }
     }
 
+    @Override
+    public boolean getIsActive() {
+        for(int i=0;i<getPlayerSize();i++)
+        {
+            if (getPlayerAt(i).isActive()==false)
+                return false;
+        }
+        return true;
+    }
 }

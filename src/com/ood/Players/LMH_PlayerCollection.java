@@ -23,11 +23,11 @@ public class LMH_PlayerCollection extends PlayerCollection<LMH_Player>{
         view= ViewFactory.createGameView(GameEnum.LMH);
         if(!isPCPlayer)
             playersName=view.collectPlayersName(getPlayerSize());
-        initPlayerList();
+
     }
 
     @Override
-    void initPlayerList() {
+    public void initPlayerList() {
         playerList=new ArrayList<>();
         for(int i = 0; i< getPlayerSize(); i++)
         {
@@ -38,6 +38,11 @@ public class LMH_PlayerCollection extends PlayerCollection<LMH_Player>{
                 playerName=playersName.get(i);
             playerList.add((LMH_Player) PlayerFactory.spawnPlayer(GameEnum.LMH,playerName,getIsPCPlayer(),getGame()));
         }
+    }
+
+    @Override
+    public void playerChooseHero() {
+        initPlayerList();
     }
 
 }

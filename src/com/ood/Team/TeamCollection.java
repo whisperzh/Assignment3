@@ -3,7 +3,7 @@ package com.ood.Team;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TeamCollection<T extends ITeam> {
+public abstract class TeamCollection<T extends ITeam> {
 
     private List<T> teamList;
 
@@ -43,5 +43,7 @@ public class TeamCollection<T extends ITeam> {
     public int size(){
         return teamList.size();
     }
+
+    public abstract void teamsChooseHero();
 
 }

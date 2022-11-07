@@ -10,6 +10,7 @@ import com.ood.Factories.ViewFactory;
 import com.ood.Judge.IGameJudge;
 import com.ood.Judge.LMH_Judge;
 import com.ood.Team.LMH_Team;
+import com.ood.Team.LMH_TeamCollection;
 import com.ood.Util.ParseCollection;
 
 import java.util.Arrays;
@@ -17,7 +18,7 @@ import java.util.Arrays;
 /**
  * concrete class of LMH game
  */
-public class LMH_Game extends BoardGame{
+public class LMH_Game extends BoardGame<LMH_Team>{
 
     private final GameEnum type=GameEnum.LMH;
 
@@ -34,17 +35,19 @@ public class LMH_Game extends BoardGame{
         setBoard(GameBoardFactory.createGameBoard(type));
         //get how many players
         sizeOfATeam=getView().collectPlayersCount(LMH_Constant.PLAYER_COUNT_LOWER_BOUND, LMH_Constant.PLAYER_COUNT_UPPER_BOUND);
-        ((LMH_board)getBoard()).setMonsterCount(sizeOfATeam);
 
         initConfiguration();
-
-        getView().displayParserInfo(heroParseCollection,true);
-
+//        getView().displayParserInfo(heroParseCollection,true);//delete
         getTeamCollection().addTeam(new LMH_Team("PLAYER_TEAM", sizeOfATeam,false,this));
-        getTeamCollection().addTeam(new LMH_Team("MONSTER_TEAM",sizeOfATeam,true,this));//Computer Player
-
+        getView().displayParserInfo(heroParseCollection,true);
+        getTeamCollection().teamsChooseHero();
         getBoard().show();
 
+    }
+
+    @Override
+    public void initTeamCollection() {
+        teamCollection=new LMH_TeamCollection();
     }
 
     @Override
@@ -59,14 +62,6 @@ public class LMH_Game extends BoardGame{
         MonsterEnum[] monsterEnums=new MonsterEnum[]{MonsterEnum.SPIRIT,MonsterEnum.EXOSKELETON,MonsterEnum.DRAGON};
 
         monsterParseCollection.AddParsers(Arrays.asList(mparsePaths),Arrays.asList(monsterEnums));
-//        iConfigParsers.add(new AttributeParser(LMH_Constant.WARRIORS_Path));
-//        iConfigParsers.add(new AttributeParser(LMH_Constant.PALADINS_Path));
-//        iConfigParsers.add(new AttributeParser(LMH_Constant.SORCERERS_Path));
-//        int startIndex=0;
-//        for(var par: iConfigParsers)
-//        {
-//            startIndex=par.setIndexForData(startIndex);
-//        }
     }
 
 
@@ -85,7 +80,8 @@ public class LMH_Game extends BoardGame{
         while (!judge.judgeGameOver())
         {
             getTeamCollection().getTeamAt(0).move();
-//            getTeamCollection().getTeamAt(1).move();
+            if(judge.judgeGameOver())
+                break;
 
         }
         getView().displayPlayerScoreTable();

@@ -1,6 +1,7 @@
 package com.ood.Players;
 
 import com.ood.AttributesItems.Dice;
+import com.ood.Characters.ICharacter;
 import com.ood.Game.IGame;
 import com.ood.Team.ITeam;
 
@@ -23,4 +24,6 @@ public interface IPlayer {
     void setIsPCPlayer(boolean isPCPlayer);
     void setGame(IGame game);
     IGame getGame();
+    ICharacter getMyCharacter();
+    void chooseActionAndMove();
 }

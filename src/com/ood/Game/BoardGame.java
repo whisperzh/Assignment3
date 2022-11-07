@@ -2,6 +2,8 @@ package com.ood.Game;
 
 import com.ood.Board.IBoard;
 import com.ood.Judge.IGameJudge;
+import com.ood.Players.IPlayer;
+import com.ood.Team.ITeam;
 import com.ood.Team.LMH_Team;
 import com.ood.Team.TeamCollection;
 import com.ood.Views.AbsGameView;
@@ -9,14 +11,14 @@ import com.ood.Views.AbsGameView;
 /**
  * abstract  board game class
  */
-public abstract class BoardGame implements IGame{
+public abstract class BoardGame<T extends ITeam> implements IGame{
     private int playerNums;
 
     private int teamNums;
 
     private IBoard board;
 
-    private TeamCollection<LMH_Team> teamCollection;
+    protected TeamCollection<T> teamCollection;
 
     protected static IGameJudge judge;
 
@@ -26,7 +28,7 @@ public abstract class BoardGame implements IGame{
         initTeamCollection();
     }
 
-    public TeamCollection<LMH_Team> getTeamCollection() {
+    public TeamCollection<T> getTeamCollection() {
         return teamCollection;
     }
 
@@ -36,9 +38,10 @@ public abstract class BoardGame implements IGame{
     }
 
     @Override
-    public void initTeamCollection() {
-        teamCollection=new TeamCollection<>();
-    }
+    public abstract void initTeamCollection();
+//    {
+//        teamCollection=new TeamCollection<>();
+//    }
 
     @Override
     public void setView(AbsGameView view) {
@@ -72,7 +75,7 @@ public abstract class BoardGame implements IGame{
         return teamNums;
     }
 
-    public void setTeamCollection(TeamCollection<LMH_Team> teamCollection) {
+    public void setTeamCollection(TeamCollection<T> teamCollection) {
         this.teamCollection = teamCollection;
     }
 

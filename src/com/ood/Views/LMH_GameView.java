@@ -1,6 +1,9 @@
 package com.ood.Views;
 
+import com.ood.Characters.GeneralHero;
 import com.ood.Characters.ICharacter;
+import com.ood.Inventory.IInventory;
+import com.ood.Item.IItem;
 import com.ood.Util.ParseCollection;
 
 import java.util.ArrayList;
@@ -97,8 +100,8 @@ public class LMH_GameView extends AbsGameView {
     }
 
     @Override
-    public int displayPlayerChooseCharacter(int bound) {
-        jout("Please choose your hero!");
+    public int displayPlayerChooseCharacter(int bound, String name) {
+        jout(name+", Please choose your hero!");
         int ans= jin_BorderedInt(0,bound);
         return ans;
     }
@@ -122,5 +125,24 @@ public class LMH_GameView extends AbsGameView {
     @Override
     public void showMarketView() {
 
+    }
+
+    @Override
+    public void displayHeroInventory(GeneralHero hero) {
+        IInventory<IItem> inv=hero.getInventory();
+        for(int i=0;i<inv.getSize();i++)
+        {
+            jout("["+i+"]"+inv.get(i).getName());
+        }
+    }
+
+    public void displayHeroFaintMessage(ICharacter character) {
+        joutDivider();
+        jout(character.getName()+" fainted!");
+    }
+
+    public void displayCannotEquipMessage() {
+        joutDivider();
+        jout("You cannot equip this item!");
     }
 }

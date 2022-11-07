@@ -100,4 +100,5 @@ public abstract class Team<T extends IPlayer> implements ITeam<IPlayer> {
         playerCollection.setGame(game);
     }
 
+//
 }

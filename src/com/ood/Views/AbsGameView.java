@@ -1,6 +1,5 @@
 package com.ood.Views;
 
-import com.ood.AttributesItems.LMH_Constant;
 import com.ood.AttributesItems.Vector2;
 import com.ood.Characters.GeneralHero;
 import com.ood.Characters.ICharacter;
@@ -35,7 +34,7 @@ public abstract class AbsGameView extends View{
 
     public abstract void displayParserInfo(ParseCollection parseCollection, boolean showIndex);
 
-    public abstract int displayPlayerChooseCharacter(int bound);
+    public abstract int displayPlayerChooseCharacter(int bound, String name);
 
     public abstract void displayCharacterInfo(ICharacter hero);
 
@@ -67,6 +66,14 @@ public abstract class AbsGameView extends View{
     {
         joutDivider();
         jout(name+", It's your turn!");
+        joutDivider();
+    }
+
+    public abstract void displayHeroInventory(GeneralHero customer);
+
+    public void displayEmptyInventoryMessage() {
+        joutDivider();
+        jout("Your inventory is empty!");
         joutDivider();
     }
 }

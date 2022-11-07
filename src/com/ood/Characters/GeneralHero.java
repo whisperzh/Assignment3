@@ -1,5 +1,6 @@
 package com.ood.Characters;
 
+import com.ood.AttributesItems.Equipment;
 import com.ood.AttributesItems.LMH_HeroSkill;
 import com.ood.AttributesItems.Vector2;
 import com.ood.AttributesItems.Wallet;
@@ -7,10 +8,14 @@ import com.ood.Enums.HeroEnum;
 import com.ood.Inventory.CharacterInventory;
 import com.ood.Inventory.IInventory;
 import com.ood.Item.IItem;
+import com.ood.Item.Potion;
+import com.ood.Item.Spell;
+import com.ood.Views.LMH_GameView;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 /**
  * an abstract hero
@@ -28,21 +33,14 @@ public abstract class GeneralHero implements ICharacter{
     private float agility;
     private String icon;
     private Wallet myWallet;
+    protected Equipment equipment;
     private IInventory<IItem> inventory;
     protected LMH_HeroSkill skills;
-
-
-    public HeroEnum getType() {
-        return type;
-    }
-
-    public void setType(HeroEnum type) {
-        this.type = type;
-    }
-
     private HeroEnum type;
+    private LMH_GameView view;
 
     public GeneralHero(List<String> attributes) {
+        view=new LMH_GameView();
         inventory=new CharacterInventory();
         level=1;
         HP=100;
@@ -55,6 +53,15 @@ public abstract class GeneralHero implements ICharacter{
         myWallet.setAmount(Float.valueOf(attributes.get(5)));
         experience=Float.valueOf(attributes.get(6));
     }
+
+    public HeroEnum getType() {
+        return type;
+    }
+
+    public void setType(HeroEnum type) {
+        this.type = type;
+    }
+
 
     @Override
     public void levelUp() {
@@ -72,6 +79,8 @@ public abstract class GeneralHero implements ICharacter{
 
     @Override
     public float getDamageVal() {
+        if(equipment.equippedWeapon())
+            return (strength+equipment.getWeaponDamage())*0.05f;
         return strength;
     }
 
@@ -199,10 +208,6 @@ public abstract class GeneralHero implements ICharacter{
         return spellBaseDamage+spellBaseDamage*dexterity/10000f;
     }
 
-    abstract void attack();
-
-    abstract void faint();
-
     @Override
     public String getIcon() {
         return icon;
@@ -257,4 +262,87 @@ public abstract class GeneralHero implements ICharacter{
         if(experience>=level*10)
             levelUp();
     }
+
+    @Override
+    public void recover() {
+        float hpLimit=level*100;
+        setHP(hpLimit/2.0f);
+    }
+
+    @Override
+    public float takeDamage(float damage) {
+        Random random=new Random();
+        int dodge=random.nextInt((int) agility);
+        if(dodge<=0.002f*agility)
+        {
+            //dodged!
+            return 0f;
+        }
+        float realDamage=Math.max(0,damage-equipment.getArmorVal());
+        float originalHP=HP;
+        float hp=Math.max(0,HP-realDamage);
+        setHP(hp);
+        if(HP==0f)
+        {
+            faint();
+            return originalHP;
+        }
+        return realDamage;
+    }
+
+    @Override
+    public boolean isAlive() {
+        return HP>0;
+    }
+
+    @Override
+    public float physicalAttack(ICharacter character) {
+        float damval=getDamageVal();
+        float dmg = character.takeDamage(damval);
+        if(!character.isAlive())
+        {
+            myWallet.gain(character.getLevel()*100);
+            addExperience(2);
+        }
+        return dmg;
+    }
+
+    @Override
+    public void use(int input) {
+        IItem item=inventory.get(input);
+        if (item instanceof Spell) {
+            Spell spell = (Spell) item;
+
+        }else if(item instanceof Potion){
+            Potion potion = (Potion) item;
+
+        }else {//equipment
+            if(equipment.canEquip(item))
+            {
+                equipment.equip(item);
+            }else
+            {
+                if(equipment.canReplace(item))
+                {
+                    view.jout("Do you want to replace one of your equipment with this item?");
+                    boolean choice=view.jin_YesOrNo();
+                    if(choice) {
+                        IItem i1=equipment.replace(item);
+                        if(i1!=null)
+                            inventory.add(i1);
+                    }else
+                        return;
+                }else
+                {
+                    view.displayCannotEquipMessage();
+                }
+            }
+        }
+    }
+
+
+    public void faint(){
+        view.displayHeroFaintMessage(this);
+    }
+
 }

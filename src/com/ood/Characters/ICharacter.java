@@ -24,22 +24,12 @@ public interface ICharacter extends IGridContent {
     void move(int row, int col);
     Vector2 getCurrentPosition();
     void addExperience(float exp);
+    void recover();
+    boolean isAlive();
+    float takeDamage(float damage);
     Map<String, String> getAllAttribute();
+    float physicalAttack(ICharacter character);
+    void use(int input);
 
-//    • A name
-//    • A level with an amount of experience points
-//    • HP (hit points, the hero’s in battle)
-//    • MP (mana or magic points, for casting spells)
-//    • A strength value
-//    • A dexterity value
-//    • An agility value
-//    • An amount of gold
-//    • An inventory of items
 
-//    • A name
-//    • A level
-//    • HP
-//    • A base damage value
-//    • A defense value
-//    • A dodge ability
 }

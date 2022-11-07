@@ -1,6 +1,7 @@
 package com.ood.AttributesItems;
 
 import com.ood.Enums.HeroEnum;
+import com.ood.Enums.MonsterEnum;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -55,5 +56,10 @@ public class LMH_DataCenter {
     public static HeroEnum getHeroType(int heroNum) {
         var line=heroData.get(heroNum);
         return HeroEnum.stringToEnum(line.get(line.size()-1));
+    }
+
+    public static MonsterEnum getMonsterType(int monsterNum) {
+        var line=monsterData.get(monsterNum);
+        return MonsterEnum.stringToEnum(line.get(line.size()-1));
     }
 }

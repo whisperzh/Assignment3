@@ -11,11 +11,14 @@ import com.ood.Characters.GeneralHero;
 import com.ood.Characters.ICharacter;
 import com.ood.Enums.GameEnum;
 import com.ood.Enums.HeroEnum;
+import com.ood.Enums.MonsterEnum;
 import com.ood.Factories.HeroFactory;
 import com.ood.Factories.MonsterFactory;
 import com.ood.Factories.ViewFactory;
 import com.ood.Game.IGame;
 import com.ood.Market.IMarket;
+
+import java.util.Random;
 
 /**
  * Concrete class of Board Game PLayer
@@ -34,21 +37,25 @@ public class LMH_Player extends BoardGamePlayer{
         placeHero();
     }
 
-    public LMH_Player(boolean isPCPlayer, IGame game) {
-        super(isPCPlayer,game);
+    public LMH_Player(boolean isPCPlayer,String name, IGame game) {
+        super(isPCPlayer,name,game);
         dice=new Dice(2);//initialize Dice
         gameType= GameEnum.LMH;
         view= ViewFactory.createGameView(gameType);
         if(isPCPlayer)
-            chooseMonster();
+            chooseRandomMonster();
         else {
             chooseYourHero();
             placeHero();
         }
     }
 
-    private void chooseMonster() {
-            myCharacter = MonsterFactory.createMonster();
+    private void chooseRandomMonster() {
+        Random random=new Random();
+        int range=LMH_DataCenter.getMonsterData().size();
+        int monsterNum=random.nextInt(range);
+        MonsterEnum m = LMH_DataCenter.getMonsterType(monsterNum);
+        myCharacter = MonsterFactory.createMonster(m,LMH_DataCenter.getMonsterData().get(monsterNum));
     }
 
 
@@ -69,7 +76,7 @@ public class LMH_Player extends BoardGamePlayer{
     }
 
     private void chooseYourHero(){
-        int heroNum=view.displayPlayerChooseCharacter(LMH_DataCenter.getHeroData().size()-1);
+        int heroNum=view.displayPlayerChooseCharacter(LMH_DataCenter.getHeroData().size()-1, getName());
         HeroEnum h = LMH_DataCenter.getHeroType(heroNum);
         try {
             myCharacter = HeroFactory.createHero(h,LMH_DataCenter.getHeroData().get(heroNum));
@@ -78,6 +85,10 @@ public class LMH_Player extends BoardGamePlayer{
             e.printStackTrace();
         }
 
+    }
+
+    public ICharacter getMyCharacter() {
+        return myCharacter;
     }
 
     public void chooseActionAndMove(){
@@ -170,16 +181,23 @@ public class LMH_Player extends BoardGamePlayer{
             default:
                 return;
         }
+        if(getGame().getJudge().judgeGameOver())
+            return;
     }
 
     public void getInfo(){
         getView().displayCharacterInfo(myCharacter);
     }
 
+    @Override
+    public boolean isActive() {
+        return myCharacter.isAlive();
+    }
 
     @Override
     public void reset() {
 
     }
+
 
 }

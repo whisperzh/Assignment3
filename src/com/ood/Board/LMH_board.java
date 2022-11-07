@@ -10,8 +10,6 @@ import com.ood.Views.LMH_BoardView;
  */
 public class LMH_board extends MovableBoard{
 
-    private int monsterCount=1;
-
     public LMH_board() {
         super();
         generateObstacles();
@@ -43,14 +41,6 @@ public class LMH_board extends MovableBoard{
             GridSpace gridSpace = getGrid(LMH_Constant.MARKET_LIST.get(i));
             gridSpace.setMarket();
         }
-    }
-
-    public int getMonsterCount() {
-        return monsterCount;
-    }
-
-    public void setMonsterCount(int monsterCount) {
-        this.monsterCount = monsterCount;
     }
 
     @Override

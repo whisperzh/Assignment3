@@ -46,7 +46,7 @@ public class MarketView extends AbsGameView{
         jout(name+" spend "+price+", and got "+checkoutItem.getName());
     }
 
-    public void displayCustomerInventory(GeneralHero customer){
+    public void displayHeroInventory(GeneralHero customer){
         IInventory<IItem> inv=customer.getInventory();
         for(int i=0;i<inv.getSize();i++)
         {
@@ -75,7 +75,7 @@ public class MarketView extends AbsGameView{
     }
 
     @Override
-    public int displayPlayerChooseCharacter(int bound) {
+    public int displayPlayerChooseCharacter(int bound, String name) {
         return 0;
     }
 

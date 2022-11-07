@@ -63,4 +63,6 @@ public abstract class PlayerCollection <T extends IPlayer>{
     public IGame getGame(){
         return game;
     }
+
+    public abstract void playerChooseHero();
 }

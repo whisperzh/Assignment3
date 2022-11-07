@@ -20,7 +20,18 @@ public enum MonsterEnum {
             case 2:
                 return SPIRIT;
             default:
-                return DRAGON;
+                return null;
         }
+    }
+
+    public static MonsterEnum stringToEnum(String s) {
+        if(s.contains("DRAGON"))
+            return DRAGON;
+        else if (s.contains("EXOSKELETON"))
+            return EXOSKELETON;
+        else if(s.contains("SPIRIT"))
+            return SPIRIT;
+        else
+            return null;
     }
 }

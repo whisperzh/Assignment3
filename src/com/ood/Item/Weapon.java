@@ -28,4 +28,7 @@ public class Weapon extends UnwearableItem {
         this.damageVal = damageVal;
     }
 
+    public int getRequiredHands() {
+        return requiredHands;
+    }
 }

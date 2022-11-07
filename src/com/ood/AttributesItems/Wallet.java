@@ -31,7 +31,7 @@ public class Wallet {
         }
         return false;
     }
-    public void get(float amt){
+    public void gain(float amt){
         amount+=amt;
     }
 }

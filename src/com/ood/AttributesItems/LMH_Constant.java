@@ -18,7 +18,7 @@ public class LMH_Constant {
     public static final int BOARD_ROW=8;
     public static final int BOARD_COL=8;
     public static final int DICE_COUNT=2;
-    public static final int BATTLE_CONSTRAINT=6;
+    public static final int BATTLE_CONSTRAINT=10;
     public static final float HERO_FAVORED_SKILL_ORIGINAL_VAL=50;
 
     //Icons
@@ -46,6 +46,8 @@ public class LMH_Constant {
     public static final float SHOP_DEFAULT_GOLD = 10000;
     public static char[] VALID_ACTIONS_ONMAP =new char[]{'w','a','s','d','W','A','S','D','Q','q','I','i','m','M'};
     public static char[] VALID_ACTIONS_INMARKET =new char[]{'B','S','E','Q','b','s','q','e'};
+    public static char[] VALID_ACTIONS_INBATTLE={'A','a','I','i','V','v','Q','q'};
+
     public static final String ACTION_HELP_ONMAP ="W/w: move up\n" +
             "A/a: move left\n" +
             "S/s: move down\n" +
@@ -58,6 +60,12 @@ public class LMH_Constant {
             "S/s: enter sell mode\n" +
             "Q/q: quit game\n" +
             "E/e: exit market";
+
+    public static final String ACTION_HELP_INBATTLE =
+            "A/a: Attack!\n" +
+                    "I/i: Open your inventory\n" +
+                    "Q/q: quit game\n" +
+                    "V/v: view Statistics";
 
     //Maps
     public static final List<Vector2> OBSTACLE_LIST=new ArrayList<>(Arrays.asList(

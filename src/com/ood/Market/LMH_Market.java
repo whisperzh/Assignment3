@@ -3,18 +3,14 @@ package com.ood.Market;
 import com.ood.AttributesItems.LMH_Constant;
 import com.ood.AttributesItems.Wallet;
 import com.ood.Characters.GeneralHero;
-import com.ood.Characters.ICharacter;
 import com.ood.Enums.ItemEnum;
 import com.ood.Enums.ViewEnum;
 import com.ood.Factories.ViewFactory;
-import com.ood.Game.IGame;
 import com.ood.Inventory.IInventory;
 import com.ood.Inventory.MarketInventory;
 import com.ood.Item.IItem;
 import com.ood.Judge.IGameJudge;
 import com.ood.Judge.LMH_Judge;
-import com.ood.Util.AttributeParser;
-import com.ood.Util.IConfigParser;
 import com.ood.Util.ItemParser;
 import com.ood.Util.ParseCollection;
 import com.ood.Views.MarketView;
@@ -107,13 +103,13 @@ public class LMH_Market implements IMarket<IItem> {
                     marketView.disPlayCannotSellInfo();
                     chooseActionAndDo();
                 }else {
-                    marketView.displayCustomerInventory(customer);
+                    marketView.displayHeroInventory(customer);
                     int sellItemIndex = marketView.collectCustomersChoice(customerInvSize-1);
                     IItem tobeSoldItem = customer.getInventory().get(sellItemIndex);
                     marketInventory.add(tobeSoldItem);
                     customer.getInventory().remove(tobeSoldItem);
-                    customer.getMyWallet().get(tobeSoldItem.getSellPrice());
-                    marketView.displayCustomerInventory(customer);
+                    customer.getMyWallet().gain(tobeSoldItem.getSellPrice());
+                    marketView.displayHeroInventory(customer);
                 }
                 break;
             case 'Q'|'q'://quit
