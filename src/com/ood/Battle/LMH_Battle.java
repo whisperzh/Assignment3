@@ -1,8 +1,6 @@
 package com.ood.Battle;
 
 import com.ood.AttributesItems.LMH_Constant;
-import com.ood.Characters.GeneralHero;
-import com.ood.Characters.GeneralMonster;
 import com.ood.Characters.ICharacter;
 import com.ood.Enums.ViewEnum;
 import com.ood.Factories.ViewFactory;
@@ -11,16 +9,13 @@ import com.ood.Team.LMH_Team;
 import com.ood.Team.Team;
 import com.ood.Views.LMH_BattleView;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NavigableMap;
-import java.util.Stack;
+import java.util.*;
 
 public class LMH_Battle implements IBattle{
 
-    private List<GeneralHero> heros;
+    private List<ICharacter> heros;
 
-    private List<GeneralMonster> monsters;
+    private List<ICharacter> monsters;
 
     private LMH_Judge judge;
 
@@ -36,6 +31,7 @@ public class LMH_Battle implements IBattle{
         this.humanPlayers = (LMH_Team) team;
         judge=new LMH_Judge();
         monsterTeam=new LMH_Team("MONSTER_TEAM",team.size(),true,team.getGame());//Computer Player
+        monsterTeam.getPlayerCollection().setCharacterPerPlayer(team.getPlayerAt(0).getCharacterCount());
         monsterTeam.playerChooseHero();
         view= ViewFactory.createView(ViewEnum.BATTLEFIELD);
         initPlayerCollection();
@@ -47,12 +43,12 @@ public class LMH_Battle implements IBattle{
 
         for (int j = 0; j<humanPlayers.size(); j++)
         {
-            heros.add((GeneralHero) humanPlayers.getPlayerAt(j).getMyCharacter());
+            heros.addAll(humanPlayers.getPlayerAt(j).getAllCharacters());
         }
 
         for(int j = 0; j<monsterTeam.size(); j++)
         {
-            monsters.add((GeneralMonster) monsterTeam.getPlayerAt(j).getMyCharacter());
+            monsters.addAll(monsterTeam.getPlayerAt(j).getAllCharacters());
         }
 
     }
@@ -64,7 +60,7 @@ public class LMH_Battle implements IBattle{
         int mindex=0;
         while(!judge.battleOver(heros,monsters))
         {
-            GeneralHero h=heros.get(hindex);
+            ICharacter h=heros.get(hindex);
             while (!h.isAlive())
             {
                 hindex++;
@@ -76,7 +72,7 @@ public class LMH_Battle implements IBattle{
             chooseActionAndDo(h);
             if(judge.battleOver(heros,monsters))
                 break;
-            GeneralMonster m=monsters.get(hindex);
+            ICharacter m=monsters.get(hindex);
             while (!m.isAlive())
             {
                 mindex++;
@@ -89,21 +85,21 @@ public class LMH_Battle implements IBattle{
         view.displayFightOverMessage();
     }
 
-    private void chooseActionAndDo(GeneralHero hero){
+    private void chooseActionAndDo(ICharacter hero){
         //get player's choice.
         char action=view.collectPlayersAction(LMH_Constant.VALID_ACTIONS_INBATTLE, LMH_Constant.ACTION_HELP_INBATTLE);
         switch (action)
         {
             case 'A'|'a':
                 view.displayAttackMonsterChoices(monsterTeam);//display choice
-                int num=view.jin_BorderedInt(0,monsterTeam.size()-1);
-                GeneralMonster tobeAttacked= monsters.get(num);
+                int num=view.jin_BorderedInt(0,monsters.size()-1);
+                ICharacter tobeAttacked= monsters.get(num);
                 float dmg=hero.physicalAttack(tobeAttacked);
                 view.displayAttackInfo(hero, tobeAttacked, dmg);
                 break;
             case 'I'|'i':
                 if(hero.getInventory().getSize()!=0){
-                    view.displayHeroInventory(hero);
+                    view.displayCharacterInventory(hero);
                     int input=view.jin_Int("Please input a num to equip/use");
                     hero.use(input);
                 }else
@@ -112,7 +108,10 @@ public class LMH_Battle implements IBattle{
                     chooseActionAndDo(hero);
                 }
                 break;
-            case 'V'|'v':           //view statistics
+            case 'V'|'v':
+                view.displayEveryBodyInfo(heros,monsters);
+                chooseActionAndDo(hero);
+                //view statistics
                 break;
             case 'Q'|'q':
                 view.displayGoodByeMessage();
@@ -123,7 +122,7 @@ public class LMH_Battle implements IBattle{
 
     }
 
-    private void attackRandomLivingHero(GeneralMonster monster){
+    private void attackRandomLivingHero(ICharacter monster){
 
         for(int i=0;i<heros.size();i++)
         {

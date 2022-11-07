@@ -4,11 +4,15 @@ import com.ood.Characters.GeneralHero;
 import com.ood.Characters.ICharacter;
 import com.ood.Inventory.IInventory;
 import com.ood.Item.IItem;
+import com.ood.Team.SimpleCollection;
 import com.ood.Util.ParseCollection;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * view component for market
+ */
 public class MarketView extends AbsGameView{
     public void showMenu(List<List<List<String>>> data){
         int index=0;
@@ -45,13 +49,22 @@ public class MarketView extends AbsGameView{
         float price=checkoutItem.getOriginalPrice();
         jout(name+" spend "+price+", and got "+checkoutItem.getName());
     }
-
-    public void displayHeroInventory(GeneralHero customer){
+    @Override
+    public void displayCharacterInventory(ICharacter customer){
         IInventory<IItem> inv=customer.getInventory();
         for(int i=0;i<inv.getSize();i++)
         {
             jout("["+i+"]"+inv.get(i).getName()+" sell price: "+inv.get(i).getSellPrice());
         }
+    }
+
+    /**
+     * do nothing
+     * @return
+     */
+    @Override
+    public int collectCharactersCount() {
+        return 0;
     }
 
     @Override
@@ -80,7 +93,7 @@ public class MarketView extends AbsGameView{
     }
 
     @Override
-    public void displayCharacterInfo(ICharacter hero) {
+    public void displayCharactersInfo(SimpleCollection<ICharacter> characterCollection) {
 
     }
 
@@ -95,6 +108,7 @@ public class MarketView extends AbsGameView{
 
     }
 
+
     public void disPlayCannotSellInfo() {
         joutDivider();
         jout("You got nothing to sell!");
@@ -105,5 +119,10 @@ public class MarketView extends AbsGameView{
         joutDivider();
         jout("You don't have enough money!");
         joutDivider();
+    }
+
+
+    public void displayMarketWelcomeMessage(String name) {
+        jout(name+", Welcome!");
     }
 }

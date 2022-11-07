@@ -4,6 +4,7 @@ import com.ood.AttributesItems.LMH_Constant;
 import com.ood.AttributesItems.Vector2;
 import com.ood.Characters.GeneralHero;
 import com.ood.Characters.GeneralMonster;
+import com.ood.Characters.ICharacter;
 import com.ood.Enums.LMHGridEnum;
 import com.ood.Game.IGame;
 import com.ood.Item.IItem;
@@ -35,6 +36,11 @@ public class LMH_Judge extends BoardGameJudge{
     }
 
     @Override
+    public void reset() {
+        isGameOver=false;
+    }
+
+    @Override
     public boolean isEncounterMonster(List<Integer> rollDice) {
         int sum=0;
         for(int i=0;i< rollDice.size();i++)
@@ -52,7 +58,7 @@ public class LMH_Judge extends BoardGameJudge{
         return false;
     }
 
-    public boolean battleOver(List<GeneralHero> heroes,List<GeneralMonster> monsters)
+    public boolean battleOver(List<ICharacter> heroes, List<ICharacter> monsters)
     {
         int herosAlive=0;
         for(int i=0;i<heroes.size();i++)

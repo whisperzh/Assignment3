@@ -76,6 +76,7 @@ public class LMH_Market implements IMarket<IItem> {
     public void enterMarket(GeneralHero hero) {
         customer=hero;
         showMenu();
+        marketView.displayMarketWelcomeMessage(hero.getName());
         chooseActionAndDo();
     }
 
@@ -103,13 +104,13 @@ public class LMH_Market implements IMarket<IItem> {
                     marketView.disPlayCannotSellInfo();
                     chooseActionAndDo();
                 }else {
-                    marketView.displayHeroInventory(customer);
+                    marketView.displayCharacterInventory(customer);
                     int sellItemIndex = marketView.collectCustomersChoice(customerInvSize-1);
                     IItem tobeSoldItem = customer.getInventory().get(sellItemIndex);
                     marketInventory.add(tobeSoldItem);
                     customer.getInventory().remove(tobeSoldItem);
                     customer.getMyWallet().gain(tobeSoldItem.getSellPrice());
-                    marketView.displayHeroInventory(customer);
+                    marketView.displayCharacterInventory(customer);
                 }
                 break;
             case 'Q'|'q'://quit

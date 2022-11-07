@@ -2,11 +2,12 @@ package com.ood.Board;
 
 import com.ood.AttributesItems.LMH_Constant;
 import com.ood.AttributesItems.Vector2;
-import com.ood.Characters.ICharacter;
 import com.ood.Grid.GridCollections;
 import com.ood.Grid.GridSpace;
 import com.ood.Grid.LMH_Grid;
 import com.ood.Grid.LMH_GridCollections;
+import com.ood.Players.IPlayer;
+import com.ood.Players.LMH_Player;
 import com.ood.Views.BoardView;
 
 /**
@@ -74,10 +75,10 @@ public abstract class MovableBoard implements IBoard{
         return getGrid(position.getRow(),position.getCol());
     }
 
-    public void movePiece(ICharacter character,int row,int col){
-        Vector2 originalPos=character.getCurrentPosition();
+    public void movePiece(IPlayer player, int row, int col){
+        Vector2 originalPos= ((LMH_Player)player).getPosition();
         getGrid(originalPos).setDefaultIcon();
-        character.move(row,col);
-        getGrid(row,col).setCharacter(character);
+        ((LMH_Player)player).setPosition(row,col);
+        getGrid(row,col).setPlayer(player);
     }
 }

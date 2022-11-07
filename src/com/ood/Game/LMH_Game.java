@@ -1,6 +1,7 @@
 package com.ood.Game;
 
 import com.ood.AttributesItems.LMH_Constant;
+import com.ood.AttributesItems.LMH_DataCenter;
 import com.ood.Enums.GameEnum;
 import com.ood.Enums.HeroEnum;
 import com.ood.Enums.MonsterEnum;
@@ -36,6 +37,8 @@ public class LMH_Game extends BoardGame<LMH_Player>{
         team=new LMH_Team("PLAYER_TEAM", sizeOfATeam,false,this);
         initConfiguration();
         getView().displayParserInfo(heroParseCollection,true);
+        int characterPerPlayer=getView().collectCharactersCount();
+        team.getPlayerCollection().setCharacterPerPlayer(characterPerPlayer);
         team.getPlayerCollection().playerChooseHero();
         getBoard().show();
 
@@ -64,6 +67,9 @@ public class LMH_Game extends BoardGame<LMH_Player>{
                 break;
 
         }
+        getView().displayGameOver();
+        getJudge().reset();
+        LMH_DataCenter.reset();
         getView().displayPlayerScoreTable();
     }
 

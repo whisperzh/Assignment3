@@ -62,4 +62,9 @@ public class LMH_DataCenter {
         var line=monsterData.get(monsterNum);
         return MonsterEnum.stringToEnum(line.get(line.size()-1));
     }
+
+    public static void reset(){
+        monsterData.clear();
+        heroData.clear();
+    }
 }

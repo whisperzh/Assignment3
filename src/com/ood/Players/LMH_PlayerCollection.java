@@ -49,4 +49,9 @@ public class LMH_PlayerCollection extends PlayerCollection<LMH_Player>{
 
     }
 
+    @Override
+    public void setCharacterPerPlayer(int count) {
+        for(var p:playerList)
+            p.setCharacterCount(count);
+    }
 }

@@ -12,7 +12,7 @@ public abstract class SimpleCollection<T> {
         //need to set team size and add teams into teamCollection Now
     }
 
-    public T getTeamAt(int index){
+    public T getItemAt(int index){
         return itemList.get(index);
     }
 

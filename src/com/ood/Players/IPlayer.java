@@ -5,6 +5,8 @@ import com.ood.Characters.ICharacter;
 import com.ood.Game.IGame;
 import com.ood.Team.ITeam;
 
+import java.util.List;
+
 /**
  * player interface
  */
@@ -24,6 +26,8 @@ public interface IPlayer {
     void setIsPCPlayer(boolean isPCPlayer);
     void setGame(IGame game);
     IGame getGame();
-    ICharacter getMyCharacter();
+    int getCharacterCount();
+    List<ICharacter> getAllCharacters();
+    ICharacter getMyCharacterAt(int index);
     void chooseActionAndMove();
 }

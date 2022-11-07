@@ -14,6 +14,7 @@ public interface IGameJudge {
     boolean judgeGameOver();
     boolean canEnterMarket(Vector2 currentPosition);
     boolean boardCanPassAt(IBoard board, int row, int col);
+    void reset();
     boolean isEncounterMonster(List<Integer> rollDice);
     boolean transancationValid(GeneralHero customer, IItem item);
 }

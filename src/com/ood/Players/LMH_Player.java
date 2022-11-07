@@ -7,6 +7,7 @@ import com.ood.AttributesItems.Vector2;
 import com.ood.Battle.IBattle;
 import com.ood.Battle.LMH_Battle;
 import com.ood.Board.MovableBoard;
+import com.ood.Characters.CharacterCollection;
 import com.ood.Characters.GeneralHero;
 import com.ood.Characters.ICharacter;
 import com.ood.Enums.GameEnum;
@@ -20,6 +21,7 @@ import com.ood.Market.IMarket;
 import com.ood.Team.LMH_CharacterCollection;
 import com.ood.Team.SimpleCollection;
 
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -27,75 +29,76 @@ import java.util.Random;
  */
 public class LMH_Player extends BoardGamePlayer{
 
-    private ICharacter myCharacter;
-
     private SimpleCollection<ICharacter> characterCollection;
 
+    private int characterCount;
+
+    private Vector2 position;
+
+    private String icon=LMH_Constant.HERO_ICON;
 
     public LMH_Player(boolean isPCPlayer,String name, IGame game) {
         super(isPCPlayer,name,game);
         dice=new Dice(2);//initialize Dice
         gameType= GameEnum.LMH;
         view= ViewFactory.createGameView(gameType);
+        placeMyselfOnBoard();
         characterCollection=new LMH_CharacterCollection();
-        if(isPCPlayer)
-            chooseRandomMonster();
     }
 
     private void chooseRandomMonster() {
         Random random=new Random();
-        int range=LMH_DataCenter.getMonsterData().size();
-        int monsterNum=random.nextInt(range);
-        MonsterEnum m = LMH_DataCenter.getMonsterType(monsterNum);
-        myCharacter = MonsterFactory.createMonster(m,LMH_DataCenter.getMonsterData().get(monsterNum));
+        for(int i=0;i<characterCount;i++)
+        {
+            int range=LMH_DataCenter.getMonsterData().size();
+            int monsterNum=random.nextInt(range);
+            MonsterEnum m = LMH_DataCenter.getMonsterType(monsterNum);
+            characterCollection.addItem(MonsterFactory.createMonster(m,LMH_DataCenter.getMonsterData().get(monsterNum)));
+        }
+
     }
 
+    public int getCharacterCount() {
+        return characterCount;
+    }
 
-    private void placeHero() {
-        MovableBoard board=(MovableBoard) getGame().getBoard();
-        for(int i=0;i<board.getRowNum();i++)
+    public void setCharacterCount(int characterCount) {
+        this.characterCount = characterCount;
+    }
+
+    public void chooseYourHero(){
+        if(getIsPCPlayer()) {
+            chooseRandomMonster();
+            return;
+        }
+        int heroSize= characterCount;
+        while (heroSize!=0)
         {
-            for(int j=0;j< board.getColNum();j++)
-            {
-                if(getGame().getJudge().boardCanPassAt(getGame().getBoard(),i,j ))
-                {
-                    board.getGrid(i,j).setCharacter(myCharacter);
-                    myCharacter.move(i, j);
-                    return;
-                }
+            heroSize--;
+            int heroNum=view.displayPlayerChooseCharacter(LMH_DataCenter.getHeroData().size()-1, getName());
+            HeroEnum h = LMH_DataCenter.getHeroType(heroNum);
+            try {
+                characterCollection.addItem(HeroFactory.createHero(h,LMH_DataCenter.getHeroData().get(heroNum)));
+            }
+            catch (Exception e){
+                e.printStackTrace();
             }
         }
     }
 
-    public void chooseYourHero(){
-        if(getIsPCPlayer())
-            return;
-        int heroNum=view.displayPlayerChooseCharacter(LMH_DataCenter.getHeroData().size()-1, getName());
-        HeroEnum h = LMH_DataCenter.getHeroType(heroNum);
-        try {
-            myCharacter = HeroFactory.createHero(h,LMH_DataCenter.getHeroData().get(heroNum));
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
-        placeHero();
-
-    }
-
-    public ICharacter getMyCharacter() {
-        return myCharacter;
+    public ICharacter getMyCharacterAt(int index) {
+        return characterCollection.getItemAt(index);
     }
 
     public void chooseActionAndMove(){
-        getView().displayYourLocation(myCharacter.getCurrentPosition());
+        getView().displayYourLocation(position);
         getView().displayPlayersTurn(getName());
         char action=getView().collectPlayersAction(LMH_Constant.VALID_ACTIONS_ONMAP,LMH_Constant.ACTION_HELP_ONMAP);
-        Vector2 p=myCharacter.getCurrentPosition();
         switch (action)
         {
             case 'a'|'A':
-                if(getGame().getJudge().boardCanPassAt(getGame().getBoard(),p.getRow(),p.getCol()-1)){
-                    getGame().getBoard().movePiece(myCharacter,p.getRow(),p.getCol()-1);
+                if(getGame().getJudge().boardCanPassAt(getGame().getBoard(),position.getRow(),position.getCol()-1)){
+                    getGame().getBoard().movePiece(this,position.getRow(),position.getCol()-1);
                     getGame().getBoard().show();
                     if(getGame().getJudge().isEncounterMonster(rollDice()))
                     {
@@ -109,8 +112,8 @@ public class LMH_Player extends BoardGamePlayer{
                 }
                 break;
             case 'w'|'W':
-                if(getGame().getJudge().boardCanPassAt(getGame().getBoard(), p.getRow()-1,p.getCol())) {
-                    getGame().getBoard().movePiece(myCharacter,p.getRow()-1,p.getCol());
+                if(getGame().getJudge().boardCanPassAt(getGame().getBoard(), position.getRow()-1,position.getCol())) {
+                    getGame().getBoard().movePiece(this,position.getRow()-1,position.getCol());
                     getGame().getBoard().show();
                     if(getGame().getJudge().isEncounterMonster(rollDice()))
                     {
@@ -124,8 +127,8 @@ public class LMH_Player extends BoardGamePlayer{
                 }
                 break;
             case 's'|'S':
-                if(getGame().getJudge().boardCanPassAt(getGame().getBoard(),p.getRow()+1,p.getCol())) {
-                    getGame().getBoard().movePiece(myCharacter,p.getRow()+1,p.getCol());
+                if(getGame().getJudge().boardCanPassAt(getGame().getBoard(),position.getRow()+1,position.getCol())) {
+                    getGame().getBoard().movePiece(this,position.getRow()+1,position.getCol());
                     getGame().getBoard().show();
                     if(getGame().getJudge().isEncounterMonster(rollDice()))
                     {
@@ -139,8 +142,8 @@ public class LMH_Player extends BoardGamePlayer{
                 }
                 break;
             case 'd'|'D':
-                if(getGame().getJudge().boardCanPassAt(getGame().getBoard(),p.getRow(),p.getCol()+1)){
-                    getGame().getBoard().movePiece(myCharacter,p.getRow(),p.getCol()+1);
+                if(getGame().getJudge().boardCanPassAt(getGame().getBoard(),position.getRow(),position.getCol()+1)){
+                    getGame().getBoard().movePiece(this,position.getRow(),position.getCol()+1);
                     getGame().getBoard().show();
                     if(getGame().getJudge().isEncounterMonster(rollDice()))
                     {
@@ -163,10 +166,12 @@ public class LMH_Player extends BoardGamePlayer{
                 chooseActionAndMove();
                 break;
             case 'm'|'M':
-                if(getGame().getJudge().canEnterMarket(p))
+                if(getGame().getJudge().canEnterMarket(position))
                 {
-                    IMarket m=getGame().getBoard().getGrid(p).getMarket();
-                    m.enterMarket((GeneralHero) myCharacter);
+                    IMarket m=getGame().getBoard().getGrid(position).getMarket();
+                    for(int i=0;i<characterCollection.size();i++){
+                        m.enterMarket((GeneralHero) characterCollection.getItemAt(i));
+                    }
                 }
                 else {
                     getView().displayInvalidInputMessage();
@@ -181,12 +186,15 @@ public class LMH_Player extends BoardGamePlayer{
     }
 
     public void getInfo(){
-        getView().displayCharacterInfo(myCharacter);
+        getView().displayCharactersInfo(characterCollection);
     }
 
     @Override
     public boolean isActive() {
-        return myCharacter.isAlive();
+        for(int i=0;i<characterCollection.size();i++)
+            if(characterCollection.getItemAt(i).isAlive())
+                return true;
+        return false;
     }
 
     @Override
@@ -194,5 +202,31 @@ public class LMH_Player extends BoardGamePlayer{
 
     }
 
+    private void placeMyselfOnBoard(){
+        MovableBoard board=(MovableBoard) getGame().getBoard();
+        for(int i=0;i<board.getRowNum();i++)
+        {
+            for(int j=0;j< board.getColNum();j++)
+            {
+                if(getGame().getJudge().boardCanPassAt(getGame().getBoard(),i,j ))
+                {
+                    board.getGrid(i,j).setPlayer(this);
+                    position=new Vector2(i,j);
+                    return;
+                }
+            }
+        }
+    }
 
+    public List<ICharacter> getAllCharacters(){
+        return characterCollection.getItemList();
+    }
+
+    public Vector2 getPosition() {
+        return position;
+    }
+
+    public void setPosition(int row,int col) {
+        this.position = new Vector2(row,col);
+    }
 }

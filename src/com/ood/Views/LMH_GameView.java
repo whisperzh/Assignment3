@@ -1,9 +1,9 @@
 package com.ood.Views;
 
-import com.ood.Characters.GeneralHero;
 import com.ood.Characters.ICharacter;
 import com.ood.Inventory.IInventory;
 import com.ood.Item.IItem;
+import com.ood.Team.SimpleCollection;
 import com.ood.Util.ParseCollection;
 
 import java.util.ArrayList;
@@ -107,33 +107,40 @@ public class LMH_GameView extends AbsGameView {
     }
 
     @Override
-    public void displayCharacterInfo(ICharacter hero) {
-        Map<String ,String> attri=hero.getAllAttribute();
-        jout("This is your hero's info:");
-        joutDivider();
-        List<List<String>> row=new ArrayList();
-        for(String key : attri.keySet())
-        {
-            List<String> l=new ArrayList<>();
-            l.add(key);
-            l.add(attri.get(key));
-            row.add(l);
-        }
-        joutAsTable(row);
-    }
+    public void displayCharactersInfo(SimpleCollection<ICharacter> characterCollection) {
+        jout("These are your heroes info:");
+        for (int i = 0; i < characterCollection.size(); i++) {
+            Map<String, String> attri = characterCollection.getItemAt(i).getAllAttribute();
+            joutDivider();
+            List<List<String>> row = new ArrayList();
+            for (String key : attri.keySet()) {
+                List<String> l = new ArrayList<>();
+                l.add(key);
+                l.add(attri.get(key));
+                row.add(l);
+            }
+            joutAsTable(row);
 
+        }
+    }
     @Override
     public void showMarketView() {
 
     }
 
     @Override
-    public void displayHeroInventory(GeneralHero hero) {
+    public void displayCharacterInventory(ICharacter hero) {
         IInventory<IItem> inv=hero.getInventory();
         for(int i=0;i<inv.getSize();i++)
         {
             jout("["+i+"]"+inv.get(i).getName());
         }
+    }
+
+    @Override
+    public int collectCharactersCount() {
+        jout("How many Characters can a player have?");
+        return jin_BorderedInt(1,3);
     }
 
     public void displayHeroFaintMessage(ICharacter character) {

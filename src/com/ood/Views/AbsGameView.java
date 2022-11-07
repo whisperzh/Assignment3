@@ -1,8 +1,8 @@
 package com.ood.Views;
 
 import com.ood.AttributesItems.Vector2;
-import com.ood.Characters.GeneralHero;
 import com.ood.Characters.ICharacter;
+import com.ood.Team.SimpleCollection;
 import com.ood.Util.ParseCollection;
 
 import java.util.HashSet;
@@ -36,7 +36,7 @@ public abstract class AbsGameView extends View{
 
     public abstract int displayPlayerChooseCharacter(int bound, String name);
 
-    public abstract void displayCharacterInfo(ICharacter hero);
+    public abstract void displayCharactersInfo(SimpleCollection<ICharacter> characterCollection);
 
     public char collectPlayersAction(char[] validActions,String  correspondentHelp) {
         char action=' ';
@@ -69,11 +69,13 @@ public abstract class AbsGameView extends View{
         joutDivider();
     }
 
-    public abstract void displayHeroInventory(GeneralHero customer);
+    public abstract void displayCharacterInventory(ICharacter customer);
 
     public void displayEmptyInventoryMessage() {
         joutDivider();
         jout("Your inventory is empty!");
         joutDivider();
     }
+
+    public abstract int collectCharactersCount();
 }

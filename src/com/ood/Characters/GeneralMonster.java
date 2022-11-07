@@ -2,6 +2,8 @@ package com.ood.Characters;
 
 import com.ood.AttributesItems.Vector2;
 import com.ood.Enums.MonsterEnum;
+import com.ood.Inventory.IInventory;
+import com.ood.Item.IItem;
 
 import java.util.HashMap;
 import java.util.List;
@@ -16,7 +18,6 @@ public abstract class GeneralMonster implements ICharacter{
     private float HP;
     private float strength;   //damage value
     private float defense;
-    private String icon;
     private MonsterEnum type;
     private float agility;   //Dodge ability
 
@@ -130,6 +131,7 @@ public abstract class GeneralMonster implements ICharacter{
     @Override
     public Map<String, String> getAllAttribute() {
         Map<String,String > map=new HashMap<>();
+        map.put("name",getName());
         map.put("level",Integer.toString(level));
         map.put("hp",String.format("%.2f",getHP()));
         map.put("damage",String.format("%.2f",strength));
@@ -175,26 +177,12 @@ public abstract class GeneralMonster implements ICharacter{
         return;
     }
 
-    @Override
-    public void recover() {
-        return;
-    }
-    /**
-     * monster don't need position!
-     * @return
-     */
-    @Override
-    public Vector2 getCurrentPosition() {
+    public IInventory<IItem> getInventory() {
         return null;
     }
 
-    /**
-     * monster cannot move
-     * @param row
-     * @param col
-     */
     @Override
-    public void move(int row, int col) {
+    public void recover() {
         return;
     }
 
@@ -204,17 +192,6 @@ public abstract class GeneralMonster implements ICharacter{
     @Override
     public void refillHP() {
         return;
-    }
-
-
-    @Override
-    public String getIcon() {
-        return icon;
-    }
-
-    @Override
-    public void setIcon(String icon) {
-        this.icon=icon;
     }
     ///////////////////////
 

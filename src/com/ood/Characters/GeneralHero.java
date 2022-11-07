@@ -29,9 +29,7 @@ public abstract class GeneralHero implements ICharacter{
     private int level;
     private float dexterity;
     private float defense;
-    private Vector2 currentPosition;
     private float agility;
-    private String icon;
     private Wallet myWallet;
     protected Equipment equipment;
     private IInventory<IItem> inventory;
@@ -165,11 +163,8 @@ public abstract class GeneralHero implements ICharacter{
         this.myWallet = myWallet;
     }
 
-    public void setCurrentPosition(Vector2 currentPosition) {
-        this.currentPosition = currentPosition;
-    }
 
-    public IInventory getInventory() {
+    public IInventory<IItem> getInventory() {
         return inventory;
     }
 
@@ -209,16 +204,6 @@ public abstract class GeneralHero implements ICharacter{
     }
 
     @Override
-    public String getIcon() {
-        return icon;
-    }
-
-    @Override
-    public void setIcon(String icon) {
-        this.icon=icon;
-    }
-
-    @Override
     public boolean isObstacle() {
         return false;
     }
@@ -229,18 +214,9 @@ public abstract class GeneralHero implements ICharacter{
     }
 
     @Override
-    public void move(int row, int col) {
-        currentPosition=new Vector2(row,col);
-    }
-
-    @Override
-    public Vector2 getCurrentPosition() {
-        return currentPosition;
-    }
-
-    @Override
     public Map<String, String> getAllAttribute() {
         Map<String ,String > ans=new HashMap<>();
+        ans.put("name",getName());
         ans.put("level",Integer.toString(getLevel()));
         ans.put("hp",String.format("%.2f",getHP()));
         ans.put("mana",String.format("%.2f",getMP()));

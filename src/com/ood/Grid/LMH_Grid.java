@@ -1,14 +1,13 @@
 package com.ood.Grid;
 
 import com.ood.AttributesItems.LMH_Constant;
-import com.ood.AttributesItems.Vector2;
 import com.ood.Characters.ICharacter;
 import com.ood.Enums.LMHGridEnum;
 import com.ood.FunctionInterfaces.IGridContent;
-import com.ood.Game.IGame;
 import com.ood.Item.IItem;
 import com.ood.Market.IMarket;
 import com.ood.Market.LMH_Market;
+import com.ood.Players.IPlayer;
 
 /**
  * concrete class of grid, used for LMH
@@ -25,7 +24,7 @@ public class LMH_Grid implements GridSpace<LMHGridEnum>{
 
     private String icon;
 
-    private ICharacter character=null;
+    private IPlayer player =null;
 
     public LMH_Grid() {
         canPass=true;
@@ -38,13 +37,13 @@ public class LMH_Grid implements GridSpace<LMHGridEnum>{
     }
 
     @Override
-    public void setCharacter(ICharacter character) {
-        this.character=character;
+    public void setPlayer(IPlayer player) {
+        this.player = player;
         setIcon(LMH_Constant.HERO_ICON);
     }
 
-    public ICharacter getCharacter(){
-        return character;
+    public IPlayer getPlayer(){
+        return player;
     }
 
     @Override
@@ -66,7 +65,7 @@ public class LMH_Grid implements GridSpace<LMHGridEnum>{
     }
 
     public boolean isCanPass() {
-        return canPass&&character==null;
+        return canPass&& player ==null;
     }
 
     public void setCanPass(boolean canPass) {
@@ -79,7 +78,7 @@ public class LMH_Grid implements GridSpace<LMHGridEnum>{
     }
 
     public void setDefaultIcon(){
-        character=null;
+        player =null;
         if(type==null)
         {
             String space="";

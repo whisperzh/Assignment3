@@ -6,11 +6,15 @@ import com.ood.Characters.ICharacter;
 import com.ood.Players.IPlayer;
 import com.ood.Players.LMH_Player;
 import com.ood.Team.LMH_Team;
+import com.ood.Team.SimpleCollection;
 import com.ood.Util.ParseCollection;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * view component for Battle
+ */
 public class LMH_BattleView extends AbsGameView{
     @Override
     public void displayGameTitle() {
@@ -53,7 +57,7 @@ public class LMH_BattleView extends AbsGameView{
     }
 
     @Override
-    public void displayCharacterInfo(ICharacter hero) {
+    public void displayCharactersInfo(SimpleCollection<ICharacter> characterCollection) {
 
     }
 
@@ -63,8 +67,17 @@ public class LMH_BattleView extends AbsGameView{
     }
 
     @Override
-    public void displayHeroInventory(GeneralHero customer) {
+    public void displayCharacterInventory(ICharacter customer) {
 
+    }
+
+    /**
+     * do nothing
+     * @return
+     */
+    @Override
+    public int collectCharactersCount() {
+        return 0;
     }
 
     public void displayFight(){
@@ -84,14 +97,16 @@ public class LMH_BattleView extends AbsGameView{
         for(int i = 0; i<mon_team.size(); i++)
         {
             IPlayer player=mon_team.getPlayerAt(i);
-            GeneralMonster monster=(GeneralMonster) ((LMH_Player)player).getMyCharacter();
-            List<String > line=new ArrayList<>();
-            line.add("["+i+"]");
-            line.add(monster.getName());
-            line.add(Float.toString(monster.getHP()));
-            line.add(Float.toString(monster.getDefense()));
-            rows.add(line);
-
+            for(int j=0;j<player.getCharacterCount();j++)
+            {
+                GeneralMonster monster=(GeneralMonster) ((LMH_Player)player).getMyCharacterAt(j);
+                List<String > line=new ArrayList<>();
+                line.add("["+ (i*player.getCharacterCount()+j) +"]");
+                line.add(monster.getName());
+                line.add(Float.toString(monster.getHP()));
+                line.add(Float.toString(monster.getDefense()));
+                rows.add(line);
+            }
         }
         joutAsTable(rows);
     }
@@ -109,5 +124,38 @@ public class LMH_BattleView extends AbsGameView{
 
     public void displayFightOverMessage() {
         jout("The Battle is over");
+    }
+
+    public void displayEveryBodyInfo(List<ICharacter> heros, List<ICharacter> monsters) {
+        jout("HEROES");
+        List<List<String>> row1=new ArrayList<>();
+        List<String> title=new ArrayList<>(heros.get(0).getAllAttribute().keySet());
+        row1.add(title);
+        for (int i=0;i<heros.size();i++)
+        {
+            List<String > line=new ArrayList<>();
+            for(int j=0;j<title.size();j++)
+            {
+                line.add(heros.get(i).getAllAttribute().get(title.get(j)));
+            }
+            row1.add(line);
+        }
+        joutAsTable(row1);
+        jout("MONSTERS");
+        row1.clear();
+        title.clear();
+        title=new ArrayList<>(monsters.get(0).getAllAttribute().keySet());
+        row1.add(title);
+        for (int i=0;i<monsters.size();i++)
+        {
+            List<String > line=new ArrayList<>();
+            for(int j=0;j<title.size();j++)
+            {
+                line.add(monsters.get(i).getAllAttribute().get(title.get(j)));
+            }
+            row1.add(line);
+        }
+        joutAsTable(row1);
+
     }
 }
