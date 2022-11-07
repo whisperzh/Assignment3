@@ -7,6 +7,7 @@ public enum CharacterAttributeEnum {
     MANA,
     AGILITY,
     DEXTERITY,
+    DAMAGE,
     DEFENSE;
     public static CharacterAttributeEnum stringToEnum(String s){
         //All Health/Mana/Strength/Dexterity/Defense/Agility
@@ -30,7 +31,7 @@ public enum CharacterAttributeEnum {
             return DEFENSE;
         }
         else {
-            return AGILITY;
+            return DAMAGE;
         }
     }
 }

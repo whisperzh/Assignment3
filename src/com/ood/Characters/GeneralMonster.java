@@ -1,6 +1,5 @@
 package com.ood.Characters;
 
-import com.ood.AttributesItems.Vector2;
 import com.ood.Enums.MonsterEnum;
 import com.ood.Inventory.IInventory;
 import com.ood.Item.IItem;
@@ -71,11 +70,13 @@ public abstract class GeneralMonster implements ICharacter{
         this.defense = defense;
     }
 
+    @Override
     public float getAgility() {
         return agility;
     }
 
-    public void setAgility(int agility) {
+    @Override
+    public void setAgility(float agility) {
         this.agility = agility;
     }
 
@@ -99,7 +100,7 @@ public abstract class GeneralMonster implements ICharacter{
     }
 
     @Override
-    public void setStrength(int strength) {
+    public void setStrength(float strength) {
         this.strength = strength;
     }
 
@@ -193,7 +194,29 @@ public abstract class GeneralMonster implements ICharacter{
     public void refillHP() {
         return;
     }
+
+    @Override
+    public float getDexterity() {
+        return 0;
+    }
+
+    @Override
+    public void setDexterity(float dexterity) {
+        return;
+    }
+
+    @Override
+    public float getMP() {
+        return 0;
+    }
+
+    @Override
+    public void setMP(float mp) {
+        return;
+    }
+
     ///////////////////////
+
 
 
 }

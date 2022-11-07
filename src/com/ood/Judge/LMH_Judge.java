@@ -8,6 +8,7 @@ import com.ood.Characters.ICharacter;
 import com.ood.Enums.LMHGridEnum;
 import com.ood.Game.IGame;
 import com.ood.Item.IItem;
+import com.ood.Item.Spell;
 
 import java.util.List;
 
@@ -53,7 +54,7 @@ public class LMH_Judge extends BoardGameJudge{
 
     @Override
     public boolean transancationValid(GeneralHero customer, IItem item) {
-        if(customer.getMyWallet().getAmount()>=item.getOriginalPrice())
+        if(customer.getMyWallet().getAmount()>=item.getOriginalPrice()&&customer.getLevel()>=item.getLevel())
             return true;
         return false;
     }
@@ -82,6 +83,12 @@ public class LMH_Judge extends BoardGameJudge{
         return false;
 
 
+    }
+
+    public boolean canUseSpell(ICharacter character, Spell spell){
+        if(character.getMP()<spell.getManaCost())
+            return false;
+        return true;
     }
 
 }

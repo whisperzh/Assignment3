@@ -1,7 +1,6 @@
 package com.ood.Characters;
 
 import com.ood.FunctionInterfaces.IGridContent;
-import com.ood.AttributesItems.Vector2;
 import com.ood.Inventory.IInventory;
 import com.ood.Item.IItem;
 
@@ -16,11 +15,17 @@ public interface ICharacter extends IGridContent {
     float getHP();
     void setHP(float HP);
     float getDamageVal();
+    float getDexterity();
+    void setDexterity(float dexterity);
+    float getAgility();
+    void setAgility(float agility);
+    float getMP();
+    void setMP(float mp);
     void refillHP();
     float getDefense();
     void setDefense(float defense);
     float getStrength();
-    void setStrength(int strength);
+    void setStrength(float strength);
     void addExperience(float exp);
     void recover();
     boolean isAlive();

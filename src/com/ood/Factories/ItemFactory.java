@@ -1,10 +1,7 @@
 package com.ood.Factories;
 
 import com.ood.Enums.ItemEnum;
-import com.ood.Item.Armor;
-import com.ood.Item.IItem;
-import com.ood.Item.Potion;
-import com.ood.Item.Weapon;
+import com.ood.Item.*;
 
 import java.util.Map;
 
@@ -24,6 +21,15 @@ public class ItemFactory {
                 break;
             case WEAPONRY:
                 item=new Weapon(itemAttributes);
+                break;
+            case FIRE_SPELL:
+                item=new FireSpell(itemAttributes);
+                break;
+            case ICE_SPELL:
+                item=new IceSpell(itemAttributes);
+                break;
+            case LIGHTENING_SPELL:
+                item=new LighteningSpell(itemAttributes);
                 break;
 
         }

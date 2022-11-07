@@ -8,7 +8,6 @@ public interface IItem {
     int getLevel();
     String getName();
     void setName(String name);
-    void setOriginalPrice(int price);
     void setLevel(int level);
     float getSellPrice();
 }

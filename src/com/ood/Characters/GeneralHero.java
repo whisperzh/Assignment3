@@ -2,7 +2,6 @@ package com.ood.Characters;
 
 import com.ood.AttributesItems.Equipment;
 import com.ood.AttributesItems.LMH_HeroSkill;
-import com.ood.AttributesItems.Vector2;
 import com.ood.AttributesItems.Wallet;
 import com.ood.Enums.HeroEnum;
 import com.ood.Inventory.CharacterInventory;
@@ -88,7 +87,7 @@ public abstract class GeneralHero implements ICharacter{
     }
 
     @Override
-    public void setStrength(int strength) {
+    public void setStrength(float strength) {
         this.strength = strength;
     }
 
@@ -135,7 +134,7 @@ public abstract class GeneralHero implements ICharacter{
         return MP;
     }
 
-    public void setMP(int MP) {
+    public void setMP(float MP) {
         this.MP = MP;
     }
 
@@ -291,7 +290,7 @@ public abstract class GeneralHero implements ICharacter{
 
         }else if(item instanceof Potion){
             Potion potion = (Potion) item;
-
+            potion.addBuff(this);
         }else {//equipment
             if(equipment.canEquip(item))
             {

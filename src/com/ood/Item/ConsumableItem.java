@@ -64,4 +64,5 @@ public abstract class ConsumableItem implements IItem{
     public float getSellPrice() {
         return getOriginalPrice()/2;
     }
+
 }

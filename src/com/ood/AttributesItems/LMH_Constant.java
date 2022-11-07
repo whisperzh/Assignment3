@@ -20,6 +20,7 @@ public class LMH_Constant {
     public static final int DICE_COUNT=2;
     public static final int BATTLE_CONSTRAINT=10;
     public static final float HERO_FAVORED_SKILL_ORIGINAL_VAL=50;
+    public static final float DEBUFF_DECREMENT_FACTOR=0.8f;
 
     //Icons
     public static final String DRAGON=" \uD83D\uDC09";
@@ -73,7 +74,7 @@ public class LMH_Constant {
             new Vector2(0,2),new Vector2(1,2),new Vector2(2,6),new Vector2(4,5),new Vector2(5,5),
             new Vector2(5,1),new Vector2(5,2),new Vector2(4,4))
     );
-    public static final List<Vector2> MARKET_LIST=new ArrayList<>(Arrays.asList(
+    public static final List<Vector2> MARKET_LIST=new ArrayList<>(Arrays.asList(new Vector2(0,0),
             new Vector2(0,5),new Vector2(0,6),new Vector2(0,7),new Vector2(1,7),new Vector2(2,2),
             new Vector2(2,3),new Vector2(3,1),new Vector2(3,6),new Vector2(4,1),new Vector2(4,6),
             new Vector2(4,7),new Vector2(5,2),new Vector2(5,3),new Vector2(6,0),new Vector2(6,6),
