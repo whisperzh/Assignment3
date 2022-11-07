@@ -1,16 +1,14 @@
 package com.ood.Game;
 
 import com.ood.AttributesItems.LMH_Constant;
-import com.ood.Board.LMH_board;
 import com.ood.Enums.GameEnum;
 import com.ood.Enums.HeroEnum;
 import com.ood.Enums.MonsterEnum;
 import com.ood.Factories.GameBoardFactory;
 import com.ood.Factories.ViewFactory;
-import com.ood.Judge.IGameJudge;
 import com.ood.Judge.LMH_Judge;
+import com.ood.Players.LMH_Player;
 import com.ood.Team.LMH_Team;
-import com.ood.Team.LMH_TeamCollection;
 import com.ood.Util.ParseCollection;
 
 import java.util.Arrays;
@@ -18,7 +16,7 @@ import java.util.Arrays;
 /**
  * concrete class of LMH game
  */
-public class LMH_Game extends BoardGame<LMH_Team>{
+public class LMH_Game extends BoardGame<LMH_Player>{
 
     private final GameEnum type=GameEnum.LMH;
 
@@ -35,19 +33,12 @@ public class LMH_Game extends BoardGame<LMH_Team>{
         setBoard(GameBoardFactory.createGameBoard(type));
         //get how many players
         sizeOfATeam=getView().collectPlayersCount(LMH_Constant.PLAYER_COUNT_LOWER_BOUND, LMH_Constant.PLAYER_COUNT_UPPER_BOUND);
-
+        team=new LMH_Team("PLAYER_TEAM", sizeOfATeam,false,this);
         initConfiguration();
-//        getView().displayParserInfo(heroParseCollection,true);//delete
-        getTeamCollection().addTeam(new LMH_Team("PLAYER_TEAM", sizeOfATeam,false,this));
         getView().displayParserInfo(heroParseCollection,true);
-        getTeamCollection().teamsChooseHero();
+        team.getPlayerCollection().playerChooseHero();
         getBoard().show();
 
-    }
-
-    @Override
-    public void initTeamCollection() {
-        teamCollection=new LMH_TeamCollection();
     }
 
     @Override
@@ -64,22 +55,11 @@ public class LMH_Game extends BoardGame<LMH_Team>{
         monsterParseCollection.AddParsers(Arrays.asList(mparsePaths),Arrays.asList(monsterEnums));
     }
 
-
-
-
-    /**
-     * do Nothing for LMH_Game
-     */
-    @Override
-    public void initPlayers() {
-        //no players Here
-    }
-
     @Override
     public void start() {
         while (!judge.judgeGameOver())
         {
-            getTeamCollection().getTeamAt(0).move();
+            team.move();
             if(judge.judgeGameOver())
                 break;
 

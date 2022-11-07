@@ -17,6 +17,8 @@ import com.ood.Factories.MonsterFactory;
 import com.ood.Factories.ViewFactory;
 import com.ood.Game.IGame;
 import com.ood.Market.IMarket;
+import com.ood.Team.LMH_CharacterCollection;
+import com.ood.Team.SimpleCollection;
 
 import java.util.Random;
 
@@ -27,27 +29,17 @@ public class LMH_Player extends BoardGamePlayer{
 
     private ICharacter myCharacter;
 
+    private SimpleCollection<ICharacter> characterCollection;
 
-    public LMH_Player() {
-        super();
-        dice=new Dice(2);//initialize Dice
-        gameType= GameEnum.LMH;
-        view= ViewFactory.createGameView(gameType);
-        chooseYourHero();
-        placeHero();
-    }
 
     public LMH_Player(boolean isPCPlayer,String name, IGame game) {
         super(isPCPlayer,name,game);
         dice=new Dice(2);//initialize Dice
         gameType= GameEnum.LMH;
         view= ViewFactory.createGameView(gameType);
+        characterCollection=new LMH_CharacterCollection();
         if(isPCPlayer)
             chooseRandomMonster();
-        else {
-            chooseYourHero();
-            placeHero();
-        }
     }
 
     private void chooseRandomMonster() {
@@ -75,7 +67,9 @@ public class LMH_Player extends BoardGamePlayer{
         }
     }
 
-    private void chooseYourHero(){
+    public void chooseYourHero(){
+        if(getIsPCPlayer())
+            return;
         int heroNum=view.displayPlayerChooseCharacter(LMH_DataCenter.getHeroData().size()-1, getName());
         HeroEnum h = LMH_DataCenter.getHeroType(heroNum);
         try {
@@ -84,6 +78,7 @@ public class LMH_Player extends BoardGamePlayer{
         catch (Exception e){
             e.printStackTrace();
         }
+        placeHero();
 
     }
 
@@ -104,7 +99,7 @@ public class LMH_Player extends BoardGamePlayer{
                     getGame().getBoard().show();
                     if(getGame().getJudge().isEncounterMonster(rollDice()))
                     {
-                        IBattle b=new LMH_Battle(getGame().getTeamCollection());
+                        IBattle b=new LMH_Battle(getGame().getTeam());
                         b.fight();
                     }
                 }else
@@ -119,7 +114,7 @@ public class LMH_Player extends BoardGamePlayer{
                     getGame().getBoard().show();
                     if(getGame().getJudge().isEncounterMonster(rollDice()))
                     {
-                        IBattle b=new LMH_Battle(getGame().getTeamCollection());
+                        IBattle b=new LMH_Battle(getGame().getTeam());
                         b.fight();
                     }
                 }else
@@ -134,7 +129,7 @@ public class LMH_Player extends BoardGamePlayer{
                     getGame().getBoard().show();
                     if(getGame().getJudge().isEncounterMonster(rollDice()))
                     {
-                        IBattle b=new LMH_Battle(getGame().getTeamCollection());
+                        IBattle b=new LMH_Battle(getGame().getTeam());
                         b.fight();
                     }
                 }else
@@ -149,7 +144,7 @@ public class LMH_Player extends BoardGamePlayer{
                     getGame().getBoard().show();
                     if(getGame().getJudge().isEncounterMonster(rollDice()))
                     {
-                        IBattle b=new LMH_Battle(getGame().getTeamCollection());
+                        IBattle b=new LMH_Battle(getGame().getTeam());
                         b.fight();
                     }
                 }else

@@ -2,13 +2,11 @@ package com.ood.Judge;
 
 import com.ood.AttributesItems.LMH_Constant;
 import com.ood.AttributesItems.Vector2;
-import com.ood.Board.IBoard;
 import com.ood.Characters.GeneralHero;
 import com.ood.Characters.GeneralMonster;
 import com.ood.Enums.LMHGridEnum;
 import com.ood.Game.IGame;
 import com.ood.Item.IItem;
-import com.ood.Team.TeamCollection;
 
 import java.util.List;
 
@@ -80,13 +78,4 @@ public class LMH_Judge extends BoardGameJudge{
 
     }
 
-    public boolean allTeamAlive(TeamCollection teamCollection) {
-        for(int i=0;i<teamCollection.size();i++)
-        {
-            if(!teamCollection.getTeamAt(i).getIsActive())
-                return false;
-        }
-
-        return true;
-    }
 }

@@ -2,17 +2,14 @@ package com.ood.Game;
 
 import com.ood.Board.IBoard;
 import com.ood.Judge.IGameJudge;
-import com.ood.Team.TeamCollection;
+import com.ood.Team.Team;
 import com.ood.Views.AbsGameView;
-import com.ood.Views.View;
 
 /**
  * game interface
  */
 public interface IGame <T1 extends IBoard,T2 extends AbsGameView>{
     void initConfiguration();
-    void initPlayers();
-    void initTeamCollection();
     void setView(T2 view);
     void setBoard(T1 board);
     IGameJudge getJudge();
@@ -20,5 +17,5 @@ public interface IGame <T1 extends IBoard,T2 extends AbsGameView>{
     T1 getBoard();
     T2 getView();
     void start();
-    TeamCollection getTeamCollection();
+    Team getTeam();
 }

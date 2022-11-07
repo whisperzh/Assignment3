@@ -23,7 +23,7 @@ public class LMH_PlayerCollection extends PlayerCollection<LMH_Player>{
         view= ViewFactory.createGameView(GameEnum.LMH);
         if(!isPCPlayer)
             playersName=view.collectPlayersName(getPlayerSize());
-
+        initPlayerList();
     }
 
     @Override
@@ -42,7 +42,11 @@ public class LMH_PlayerCollection extends PlayerCollection<LMH_Player>{
 
     @Override
     public void playerChooseHero() {
-        initPlayerList();
+        for(var p: playerList)
+        {
+            p.chooseYourHero();
+        }
+
     }
 
 }

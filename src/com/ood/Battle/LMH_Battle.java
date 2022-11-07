@@ -7,9 +7,8 @@ import com.ood.Characters.ICharacter;
 import com.ood.Enums.ViewEnum;
 import com.ood.Factories.ViewFactory;
 import com.ood.Judge.LMH_Judge;
-import com.ood.Team.ITeam;
 import com.ood.Team.LMH_Team;
-import com.ood.Team.TeamCollection;
+import com.ood.Team.Team;
 import com.ood.Views.LMH_BattleView;
 
 import java.util.ArrayList;
@@ -18,8 +17,6 @@ import java.util.NavigableMap;
 import java.util.Stack;
 
 public class LMH_Battle implements IBattle{
-
-    private TeamCollection teamCollection;
 
     private List<GeneralHero> heros;
 
@@ -31,12 +28,14 @@ public class LMH_Battle implements IBattle{
 
     private LMH_Team monsterTeam;
 
+    private LMH_Team humanPlayers;
+
     private Stack<NavigableMap<String ,String >> battleStack;
 
-    public LMH_Battle(TeamCollection teamCollection) {
-        this.teamCollection = teamCollection;
+    public LMH_Battle(Team team) {
+        this.humanPlayers = (LMH_Team) team;
         judge=new LMH_Judge();
-        monsterTeam=new LMH_Team("MONSTER_TEAM",teamCollection.getTeamAt(0).size(),true,teamCollection.getTeamAt(0).getGame());//Computer Player
+        monsterTeam=new LMH_Team("MONSTER_TEAM",team.size(),true,team.getGame());//Computer Player
         monsterTeam.playerChooseHero();
         view= ViewFactory.createView(ViewEnum.BATTLEFIELD);
         initPlayerCollection();
@@ -46,27 +45,16 @@ public class LMH_Battle implements IBattle{
         heros=new ArrayList<>();
         monsters=new ArrayList<>();
 
-        for (int i = 0; i < teamCollection.getTeamList().size(); i++) {
-            ITeam team=teamCollection.getTeamAt(i);
-            for (int j = 0; j<team.size(); j++)
-            {
-                heros.add((GeneralHero) team.getPlayerAt(j).getMyCharacter());
-            }
+        for (int j = 0; j<humanPlayers.size(); j++)
+        {
+            heros.add((GeneralHero) humanPlayers.getPlayerAt(j).getMyCharacter());
         }
+
         for(int j = 0; j<monsterTeam.size(); j++)
         {
             monsters.add((GeneralMonster) monsterTeam.getPlayerAt(j).getMyCharacter());
         }
 
-    }
-
-
-    public TeamCollection getTeamCollection() {
-        return teamCollection;
-    }
-
-    public void setTeamCollection(TeamCollection teamCollection) {
-        this.teamCollection = teamCollection;
     }
 
     @Override
