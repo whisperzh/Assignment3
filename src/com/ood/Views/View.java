@@ -1,5 +1,7 @@
 package com.ood.Views;
 
+import com.ood.AttributesItems.Color;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -41,6 +43,7 @@ public abstract class View implements VisualModule{
 
     @Override
     public int jin_Int() {
+
         while (!getScanner().hasNextInt())
         {
             displayInvalidInputMessage();
@@ -58,11 +61,11 @@ public abstract class View implements VisualModule{
     }
 
     public int jin_BorderedInt(int lowerBound,int upperBound){
-        int pc=jin_Int("Please input a number between [ "+lowerBound+ " ~ "+upperBound +"] ");
+        int pc=jin_Int("Please input a number between [ "+lowerBound+ " ~ "+upperBound +" ] ");
         while(pc<lowerBound||pc>upperBound)
         {
             displayInvalidInputMessage();
-            pc=jin_Int("Please input a number between [ "+lowerBound+ " ~ "+upperBound +"] ");
+            pc=jin_Int("Please input a number between [ "+lowerBound+ " ~ "+upperBound +" ] ");
         }
         return pc;
     }
@@ -91,20 +94,20 @@ public abstract class View implements VisualModule{
 
     public void displayWelcomeMessage(){
         joutDivider();
-        jout("--------------WELCOME--------------");
+        jout(Color.BLUE+"--------------WELCOME--------------"+Color.BLUE);
         joutDivider();
     }
 
     public void displayGoodByeMessage(){
         joutDivider();
-        jout("-------------------------BYE-------------------------");}
+        jout(Color.BLUE+"-------------------------BYE-------------------------"+Color.BLUE);}
 
     public void displayInvalidInputMessage(){
-        jout("Your Input is Invalid Please Input Again!");
+        jout(Color.RED+"Your Input is Invalid Please Input Again!"+Color.RED);
     }
 
     public void displayInvalidInputMessage(String message){
-        jout(message);
+        jout(Color.RED+message+Color.RED);
     }
 
     /**

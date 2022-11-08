@@ -47,9 +47,9 @@ public class LMH_Market implements IMarket<IItem> {
         parseCollection.AddParser(new ItemParser(LMH_Constant.WEAPONRY_Path, ItemEnum.WEAPONRY));
         parseCollection.AddParser(new ItemParser(LMH_Constant.POTIONS_Path, ItemEnum.POTIONS));
 
-        parseCollection.AddParser(new ItemParser(LMH_Constant.FIRESPELL_Path,ItemEnum.FIRE_SPELL));
-        parseCollection.AddParser(new ItemParser(LMH_Constant.ICESPELL_Path,ItemEnum.ICE_SPELL));
-        parseCollection.AddParser(new ItemParser(LMH_Constant.LIGHTNINGSPELL_Path,ItemEnum.LIGHTENING_SPELL));
+//        parseCollection.AddParser(new ItemParser(LMH_Constant.FIRESPELL_Path,ItemEnum.FIRE_SPELL));
+//        parseCollection.AddParser(new ItemParser(LMH_Constant.ICESPELL_Path,ItemEnum.ICE_SPELL));
+//        parseCollection.AddParser(new ItemParser(LMH_Constant.LIGHTNINGSPELL_Path,ItemEnum.LIGHTENING_SPELL));
 
     }
 

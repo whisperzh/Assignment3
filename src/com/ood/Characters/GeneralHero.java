@@ -142,7 +142,8 @@ public abstract class GeneralHero implements ICharacter{
         return dexterity;
     }
 
-    public void setDexterity(int dexterity) {
+    @Override
+    public void setDexterity(float dexterity) {
         this.dexterity = dexterity;
     }
 
@@ -150,7 +151,8 @@ public abstract class GeneralHero implements ICharacter{
         return agility;
     }
 
-    public void setAgility(int agility) {
+    @Override
+    public void setAgility(float agility) {
         this.agility = agility;
     }
 

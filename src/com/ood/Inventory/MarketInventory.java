@@ -7,10 +7,7 @@ import com.ood.Util.IConfigParser;
 import com.ood.Util.ItemParser;
 import com.ood.Util.ParseCollection;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class MarketInventory implements IInventory<IItem> {
     private List<IItem> items;
@@ -42,9 +39,13 @@ public class MarketInventory implements IInventory<IItem> {
     }
 
     public void addParserCollection(ParseCollection pc){
+        Random r=new Random();
         for(int i=0;i<pc.getParserSize();i++)
         {
-            decodeParser(pc.getParserAt(i));
+            int execute=r.nextInt(2);
+            if(execute==1){
+                decodeParser(pc.getParserAt(i));
+            }
         }
     }
 

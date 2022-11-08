@@ -21,6 +21,7 @@ public class LMH_Constant {
     public static final int BATTLE_CONSTRAINT=10;
     public static final float HERO_FAVORED_SKILL_ORIGINAL_VAL=50;
     public static final float DEBUFF_DECREMENT_FACTOR=0.8f;
+    public static final int ITEM_USE_TIME=3;
 
     //Icons
     public static final String DRAGON=" \uD83D\uDC09";
