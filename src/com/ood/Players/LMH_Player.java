@@ -94,9 +94,10 @@ public class LMH_Player extends BoardGamePlayer{
         getView().displayYourLocation(position);
         getView().displayPlayersTurn(getName());
         char action=getView().collectPlayersAction(LMH_Constant.VALID_ACTIONS_ONMAP,LMH_Constant.ACTION_HELP_ONMAP);
+        action=Character.toLowerCase(action);
         switch (action)
         {
-            case 'a'|'A':
+            case 'a':
                 if(getGame().getJudge().boardCanPassAt(getGame().getBoard(),position.getRow(),position.getCol()-1)){
                     getGame().getBoard().movePiece(this,position.getRow(),position.getCol()-1);
                     getGame().getBoard().show();
@@ -111,7 +112,7 @@ public class LMH_Player extends BoardGamePlayer{
                     chooseActionAndMove();
                 }
                 break;
-            case 'w'|'W':
+            case 'w':
                 if(getGame().getJudge().boardCanPassAt(getGame().getBoard(), position.getRow()-1,position.getCol())) {
                     getGame().getBoard().movePiece(this,position.getRow()-1,position.getCol());
                     getGame().getBoard().show();
@@ -126,7 +127,7 @@ public class LMH_Player extends BoardGamePlayer{
                     chooseActionAndMove();
                 }
                 break;
-            case 's'|'S':
+            case 's':
                 if(getGame().getJudge().boardCanPassAt(getGame().getBoard(),position.getRow()+1,position.getCol())) {
                     getGame().getBoard().movePiece(this,position.getRow()+1,position.getCol());
                     getGame().getBoard().show();
@@ -141,7 +142,7 @@ public class LMH_Player extends BoardGamePlayer{
                     chooseActionAndMove();
                 }
                 break;
-            case 'd'|'D':
+            case 'd':
                 if(getGame().getJudge().boardCanPassAt(getGame().getBoard(),position.getRow(),position.getCol()+1)){
                     getGame().getBoard().movePiece(this,position.getRow(),position.getCol()+1);
                     getGame().getBoard().show();
@@ -156,16 +157,16 @@ public class LMH_Player extends BoardGamePlayer{
                     chooseActionAndMove();
                 }
                 break;
-            case 'q'|'Q':
+            case 'q':
                 getView().displayGameOver();
                 getView().displayGoodByeMessage();
                 System.exit(0);
                 break;
-            case 'i'|'I':
+            case 'i':
                 getInfo();
                 chooseActionAndMove();
                 break;
-            case 'm'|'M':
+            case 'm':
                 if(getGame().getJudge().canEnterMarket(position))
                 {
                     IMarket m=getGame().getBoard().getGrid(position).getMarket();

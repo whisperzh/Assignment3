@@ -3,6 +3,8 @@ package com.ood.Inventory;
 import com.ood.Item.IItem;
 import com.ood.Util.ParseCollection;
 
+import java.util.List;
+
 /**
  * inventory interface
  */
@@ -13,4 +15,6 @@ public interface IInventory<T extends IItem> {
     void addParserCollection(ParseCollection pc);
     int getSize();
     T get(int index);
+    void clearTrash();
+    List<List<List<String>>> getAllItemsWithTitle();
 }

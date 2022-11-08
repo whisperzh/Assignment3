@@ -3,6 +3,7 @@ package com.ood.Characters;
 import com.ood.Enums.MonsterEnum;
 import com.ood.Inventory.IInventory;
 import com.ood.Item.IItem;
+import com.ood.Item.Spell;
 
 import java.util.HashMap;
 import java.util.List;
@@ -213,6 +214,10 @@ public abstract class GeneralMonster implements ICharacter{
     @Override
     public void setMP(float mp) {
         return;
+    }
+    @Override
+    public float magicalAttack(ICharacter character, Spell spell) {
+        return 0;
     }
 
     ///////////////////////

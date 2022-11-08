@@ -117,7 +117,7 @@ public class MarketView extends AbsGameView{
 
     public void disPlayCannotBuyInfo() {
         joutDivider();
-        jout("You don't have enough money!");
+        jout("You cannot buy this item!");
         joutDivider();
     }
 

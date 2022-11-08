@@ -88,9 +88,10 @@ public class LMH_Market implements IMarket<IItem> {
     @Override
     public void chooseActionAndDo() {
         char action=getView().collectPlayersAction(LMH_Constant.VALID_ACTIONS_INMARKET,LMH_Constant.ACTION_HELP_INMARKET);
+        action=Character.toLowerCase(action);
         switch (action)
         {
-            case 'B'|'b'://buy
+            case 'b'://buy
                 int itemIndex=marketView.collectCustomersChoice(marketInventory.getSize()-1);
                 IItem checkoutItem = marketInventory.get(itemIndex);
                 if(getJudge().transancationValid(customer,checkoutItem)) {
@@ -103,7 +104,7 @@ public class LMH_Market implements IMarket<IItem> {
                     chooseActionAndDo();
                 }
                 break;
-            case 'S'|'s'://sell
+            case 's'://sell
                 int customerInvSize=customer.getInventory().getSize();
                 if(customerInvSize==0) {
                     marketView.disPlayCannotSellInfo();
@@ -118,18 +119,18 @@ public class LMH_Market implements IMarket<IItem> {
                     marketView.displayCharacterInventory(customer);
                 }
                 break;
-            case 'Q'|'q'://quit
+            case 'q'://quit
                 marketView.displayGoodByeMessage();
                 System.exit(0);
                 break;
-            case 'E'|'e'://exit market
+            case 'e'://exit market
                 customer=null;
                 //we do nothing here
                 break;
         }
     }
     private void showMenu(){
-        List<List<List<String>>> info=parseCollection.getAllItemsWithTitle();
+        List<List<List<String>>> info=.getAllItemsWithTitle();
         marketView.showMenu(info);
     }
 

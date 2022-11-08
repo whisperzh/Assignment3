@@ -76,4 +76,15 @@ public class MarketInventory implements IInventory<IItem> {
         return items.get(index);
     }
 
+    @Override
+    public void clearTrash() {
+
+    }
+
+    @Override
+    public List<List<List<String>>> getAllItemsWithTitle() {
+        for()
+        return
+    }
+
 }

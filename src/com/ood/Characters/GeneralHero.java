@@ -28,6 +28,7 @@ public abstract class GeneralHero implements ICharacter{
     private int level;
     private float dexterity;
     private float defense;
+    private int spellIndexRam=-1;
     private float agility;
     private Wallet myWallet;
     protected Equipment equipment;
@@ -283,13 +284,32 @@ public abstract class GeneralHero implements ICharacter{
         }
         return dmg;
     }
+    @Override
+    public float magicalAttack(ICharacter character,Spell spell){
+        float damval=spell.getDamage()+dexterity/10000*spell.getDamage();
+        float dmg = character.takeDamage(damval);
+        if(!character.isAlive())
+        {
+            myWallet.gain(character.getLevel()*100);
+            addExperience(2);
+        }
+        return dmg;
+    }
+
+    public int getSpellRam() {
+        return spellIndexRam;
+    }
+
+    public void setSpellRam(int spellRam) {
+        this.spellIndexRam = spellRam;
+    }
 
     @Override
     public void use(int input) {
         IItem item=inventory.get(input);
         if (item instanceof Spell) {
             Spell spell = (Spell) item;
-
+            spellIndexRam=input;
         }else if(item instanceof Potion){
             Potion potion = (Potion) item;
             potion.addBuff(this);

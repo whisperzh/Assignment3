@@ -1,9 +1,11 @@
 package com.ood.Battle;
 
 import com.ood.AttributesItems.LMH_Constant;
+import com.ood.Characters.GeneralHero;
 import com.ood.Characters.ICharacter;
 import com.ood.Enums.ViewEnum;
 import com.ood.Factories.ViewFactory;
+import com.ood.Item.Spell;
 import com.ood.Judge.LMH_Judge;
 import com.ood.Team.LMH_Team;
 import com.ood.Team.Team;
@@ -87,33 +89,43 @@ public class LMH_Battle implements IBattle{
 
     private void chooseActionAndDo(ICharacter hero){
         //get player's choice.
-        char action=view.collectPlayersAction(LMH_Constant.VALID_ACTIONS_INBATTLE, LMH_Constant.ACTION_HELP_INBATTLE);
+        char action=Character.toLowerCase(view.collectPlayersAction(LMH_Constant.VALID_ACTIONS_INBATTLE, LMH_Constant.ACTION_HELP_INBATTLE));
         switch (action)
         {
-            case 'A'|'a':
+            case 'a':
                 view.displayAttackMonsterChoices(monsterTeam);//display choice
                 int num=view.jin_BorderedInt(0,monsters.size()-1);
                 ICharacter tobeAttacked= monsters.get(num);
                 float dmg=hero.physicalAttack(tobeAttacked);
                 view.displayAttackInfo(hero, tobeAttacked, dmg);
                 break;
-            case 'I'|'i':
+            case 'i':
                 if(hero.getInventory().getSize()!=0){
                     view.displayCharacterInventory(hero);
                     int input=view.jin_Int("Please input a num to equip/use");
                     hero.use(input);
+                    if(((GeneralHero)hero).getSpellRam()!=-1)
+                    {
+                        view.displayAttackMonsterChoices(monsterTeam);//display choice
+                        int num1=view.jin_BorderedInt(0,monsters.size()-1);
+                        ICharacter tobeSpellAttacked= monsters.get(num1);
+                        ((Spell) hero.getInventory().get(((GeneralHero) hero).getSpellRam())).doEffect(tobeSpellAttacked);
+                        hero.magicalAttack(tobeSpellAttacked, (Spell) hero.getInventory().get(((GeneralHero) hero).getSpellRam()));
+                        hero.getInventory().clearTrash();
+                        ((GeneralHero) hero).setSpellRam(-1);
+                    }
                 }else
                 {
                     view.displayEmptyInventoryMessage();
                     chooseActionAndDo(hero);
                 }
                 break;
-            case 'V'|'v':
+            case 'v':
                 view.displayEveryBodyInfo(heros,monsters);
                 chooseActionAndDo(hero);
                 //view statistics
                 break;
-            case 'Q'|'q':
+            case 'q':
                 view.displayGoodByeMessage();
                 System.exit(0);
                 break;

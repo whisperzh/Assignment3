@@ -19,6 +19,8 @@ public class Equipment {
     public Equipment(int handConstrains, int armorConstrains) {
         weapons=new ArrayList<>();
         armors=new ArrayList<>();
+        this.handConstrains=handConstrains;
+        this.armorConstrains=armorConstrains;
     }
 
     public boolean canEquip(IItem item)
@@ -46,7 +48,7 @@ public class Equipment {
 
     public IItem equip(IItem item){
         if (item instanceof Weapon) {
-
+            weapons.add((Weapon) item);
         }else
         {
             if(armors.size()<armorConstrains)
