@@ -112,7 +112,7 @@ public class LMH_GameView extends AbsGameView {
         for (int i = 0; i < characterCollection.size(); i++) {
             Map<String, String> attri = characterCollection.getItemAt(i).getAllAttribute();
             joutDivider();
-            List<List<String>> row = new ArrayList();
+            List<List<String>> row = new ArrayList<>();
             for (String key : attri.keySet()) {
                 List<String> l = new ArrayList<>();
                 l.add(key);

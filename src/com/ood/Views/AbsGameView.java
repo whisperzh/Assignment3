@@ -41,7 +41,7 @@ public abstract class AbsGameView extends View{
     public char collectPlayersAction(char[] validActions,String  correspondentHelp) {
         char action=' ';
         String reminder="Please input an action\n";
-        Set<Character> validSet=new HashSet();
+        Set<Character> validSet=new HashSet<>();
         for(var v : validActions)
             validSet.add(v);
         do {

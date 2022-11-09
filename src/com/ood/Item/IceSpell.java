@@ -14,7 +14,7 @@ import java.util.Map;
 public class IceSpell extends Spell{
     public IceSpell(Map<String, String> attributes) {
         super(attributes);
-        List<CharacterAttributeEnum> attri=new ArrayList();
+        List<CharacterAttributeEnum> attri=new ArrayList<>();
         attri.add(CharacterAttributeEnum.DAMAGE);
         buff=new Debuff(attri);
     }

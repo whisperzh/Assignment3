@@ -1,5 +1,5 @@
 # CS611-Assignment #3
-## Legend: Monster and Heros
+## Legend: Monster and Heroes
 ---------------------------------------------------------------------------
 Name: Renming Zhang
 Buid: U97677301
@@ -150,7 +150,7 @@ Email: rmzhang@bu.edu
 ---------------------------------------------------------------------------
 1. Navigate to the directory `src` after unzipping the files
 2. Run the following instructions:
->`javac -d bin com\Trianta_Ena\Main.java` \
+>`javac -d bin com\Trianta_Ena\Main.java`
 >`java -cp bin com.Trianta_Ena.Main`
 
 ## Input/Output Example

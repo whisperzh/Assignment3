@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * negative buff
  */
-public class Debuff implements IBuff {
+public class Debuff implements IBuff<ICharacter> {
 
     private List<CharacterAttributeEnum> attributeAffected;
 

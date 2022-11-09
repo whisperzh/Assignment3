@@ -9,6 +9,7 @@ import com.ood.Views.AbsGameView;
 /**
  * The abstract board game class
  */
+
 public abstract class BoardGame<T extends IPlayer> implements IGame{
     private int playerNums;
 

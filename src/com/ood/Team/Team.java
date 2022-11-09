@@ -16,7 +16,7 @@ public abstract class Team<T extends IPlayer> implements ITeam<IPlayer> {
 
     private IGame game;
 
-    private PlayerCollection<T> playerCollection;
+    protected PlayerCollection<IPlayer> playerCollection;
 
     private int points;
 
@@ -31,11 +31,11 @@ public abstract class Team<T extends IPlayer> implements ITeam<IPlayer> {
         playerSize=size;
         this.isPCPlayer=isPCPlayer;
     }
-    public PlayerCollection<T> getPlayerCollection() {
+    public PlayerCollection<IPlayer> getPlayerCollection() {
         return playerCollection;
     }
 
-    public void setPlayerCollection(PlayerCollection<T> playerCollection) {
+    public void setPlayerCollection(PlayerCollection<IPlayer> playerCollection) {
         this.playerCollection = playerCollection;
     }
 
@@ -69,7 +69,7 @@ public abstract class Team<T extends IPlayer> implements ITeam<IPlayer> {
 
     @Override
     public void addPlayer(IPlayer player) {
-        playerCollection.addPlayer((T) player);
+        playerCollection.addPlayer( player);
     }
 
     @Override

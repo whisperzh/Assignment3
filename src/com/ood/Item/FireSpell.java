@@ -14,7 +14,7 @@ import java.util.Map;
 public class FireSpell extends Spell{
     public FireSpell(Map<String, String> attributes) {
         super(attributes);
-        List<CharacterAttributeEnum> attributeEnums=new ArrayList();
+        List<CharacterAttributeEnum> attributeEnums=new ArrayList<>();
         attributeEnums.add(CharacterAttributeEnum.DEFENSE);
         buff=new Debuff(attributeEnums);
     }

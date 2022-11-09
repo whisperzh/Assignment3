@@ -11,7 +11,7 @@ public class LMH_Team extends Team<LMH_Player>{
 
     public LMH_Team(String name, int size, boolean isPCPlayer, IGame game) {
         super(name, size, isPCPlayer, game);
-        setPlayerCollection(new LMH_PlayerCollection(size(),isPCPlayer,game));
+        playerCollection = new LMH_PlayerCollection(size(),isPCPlayer,game);
 
     }
 

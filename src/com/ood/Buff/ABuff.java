@@ -9,7 +9,7 @@ import java.util.Map;
 /**
  * Buff which gives positive feedback
  */
-public class ABuff implements IBuff {
+public class ABuff implements IBuff<ICharacter> {
 
     private float attributeIncrement;
 
