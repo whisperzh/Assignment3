@@ -23,9 +23,7 @@ public class LMH_Game extends BoardGame<LMH_Player>{
 
     private int sizeOfATeam =3;
     //by default is 3
-    private ParseCollection heroParseCollection;
 
-    private ParseCollection monsterParseCollection;
 
     public LMH_Game() {
         super();
@@ -35,27 +33,13 @@ public class LMH_Game extends BoardGame<LMH_Player>{
         //get how many players
         sizeOfATeam=getView().collectPlayersCount(LMH_Constant.PLAYER_COUNT_LOWER_BOUND, LMH_Constant.PLAYER_COUNT_UPPER_BOUND);
         team=new LMH_Team("PLAYER_TEAM", sizeOfATeam,false,this);
-        initConfiguration();
-        getView().displayParserInfo(heroParseCollection,true);
+        var dataCenter=GameController.getDataCenterInstance();
+        getView().displayParserInfo(dataCenter.getHeroParseCollection(),true);
         int characterPerPlayer=getView().collectCharactersCount();
         team.getPlayerCollection().setCharacterPerPlayer(characterPerPlayer);
         team.getPlayerCollection().playerChooseHero();
         getBoard().show();
-
-    }
-
-    @Override
-    public void initConfiguration() {
-        heroParseCollection =new ParseCollection(true);
-        String[] hparsePaths=new String[]{LMH_Constant.PALADINS_Path,LMH_Constant.SORCERERS_Path,LMH_Constant.WARRIORS_Path};
-        HeroEnum[] heroEnums=new HeroEnum[]{HeroEnum.PALADIN,HeroEnum.SORCERER,HeroEnum.WARRIOR};
-        heroParseCollection.AddParsers(Arrays.asList(hparsePaths),Arrays.asList(heroEnums));
-
-        monsterParseCollection=new ParseCollection(false);
-        String[] mparsePaths=new String[]{LMH_Constant.SPIRITS_Path,LMH_Constant.EXOSKELETONS_Path,LMH_Constant.DRAGONS_Path};
-        MonsterEnum[] monsterEnums=new MonsterEnum[]{MonsterEnum.SPIRIT,MonsterEnum.EXOSKELETON,MonsterEnum.DRAGON};
-
-        monsterParseCollection.AddParsers(Arrays.asList(mparsePaths),Arrays.asList(monsterEnums));
+        getView().jout(LMH_Constant.MAP_RULE);
     }
 
     @Override
@@ -69,7 +53,7 @@ public class LMH_Game extends BoardGame<LMH_Player>{
         }
         getView().displayGameOver();
         getJudge().reset();
-        LMH_DataCenter.reset();
+        GameController.getDataCenterInstance().reset();
         getView().displayPlayerScoreTable();
     }
 

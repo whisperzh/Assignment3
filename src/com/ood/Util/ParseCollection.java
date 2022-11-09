@@ -1,7 +1,6 @@
 package com.ood.Util;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -11,23 +10,17 @@ public class ParseCollection {
 
     private List<IConfigParser> parsers;
 
-    private int totalDataCount=0;
 
-    private boolean isHeroParser;
-
-    public ParseCollection(boolean isHeroParser) {
+    public ParseCollection() {
         parsers=new ArrayList<>();
-        this.isHeroParser=isHeroParser;
     }
     public void AddParser(String parserPath, Enum anEnum){
-        IConfigParser p=new AttributeParser(parserPath,totalDataCount,isHeroParser,anEnum);
+        IConfigParser p=new CharacterAttributeParser(parserPath,anEnum);
         parsers.add(p);
-        totalDataCount+=p.getLineOfData();
     }
 
     public void AddParser(IConfigParser parser){
         parsers.add(parser);
-        totalDataCount+=parser.getLineOfData();
     }
 
     public void AddParsers(List<String> parserPaths,List<Enum> characterEnum)
@@ -43,12 +36,11 @@ public class ParseCollection {
         return parsers;
     }
 
-    public void setParsers(List<IConfigParser> parsers) {
-        this.parsers = parsers;
-    }
-
-    public int getTotalDataCount() {
-        return totalDataCount;
+    public int dataSize() {
+        int sum=0;
+        for(var p:parsers)
+            sum+=p.size();
+        return sum;
     }
 
     public IConfigParser getParserAt(int index){
@@ -59,10 +51,6 @@ public class ParseCollection {
         return parsers.size();
     }
 
-    public void setTotalDataCount(int totalDataCount) {
-        this.totalDataCount = totalDataCount;
-    }
-
     public List<List<List<String>>> getAllItemsWithTitle() {
         List<List<List<String>>> ans=new ArrayList<>();
         for (int i=0;i<parsers.size();i++)
@@ -70,5 +58,30 @@ public class ParseCollection {
             ans.add(parsers.get(i).getItemsWithTitle());
         }
         return ans;
+    }
+
+    public List<List<String>> getTitles() {
+        List<List<String>> ans=new ArrayList<>();
+        for (int i=0;i<parsers.size();i++)
+        {
+            ans.add(parsers.get(i).getTitle());
+        }
+        return ans;
+    }
+
+    public List<String> getItemsAt(int index)
+    {
+        int i=0;
+       for(;i<getParserSize();i++)
+       {
+           if(index>=getParserAt(i).size())
+           {
+               index-=getParserAt(i).size();
+           }else {
+               break;
+           }
+       }
+
+        return getParserAt(i).getItemAtIndexWithTitle(index).get(1);
     }
 }

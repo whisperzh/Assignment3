@@ -1,5 +1,10 @@
 package com.ood.Item;
 
+import com.ood.Enums.CharacterAttributeEnum;
+import com.ood.Enums.ItemEnum;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -10,6 +15,8 @@ public class Weapon extends UnwearableItem {
     private float damageVal;
 
     private int requiredHands;
+
+
 
     public Weapon(Map<String, String> attributes) {
         super();
@@ -30,5 +37,18 @@ public class Weapon extends UnwearableItem {
 
     public int getRequiredHands() {
         return requiredHands;
+    }
+
+    @Override
+    public List<String> getAllAttribute() {
+        //Name/cost/level/damage/required hands
+        List<String> ans=new ArrayList<>();
+        ans.add(getName());
+        ans.add(String.valueOf(getOriginalPrice()));
+        ans.add(String.valueOf(getLevel()));
+        ans.add(String.valueOf(getDamageVal()));
+        ans.add(String.valueOf(getRequiredHands()));
+        ans.add(ItemEnum.WEAPONRY.toString());
+        return ans;
     }
 }

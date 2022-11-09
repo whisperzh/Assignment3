@@ -18,7 +18,7 @@ public class LMH_Constant {
     public static final int BOARD_ROW=8;
     public static final int BOARD_COL=8;
     public static final int DICE_COUNT=2;
-    public static final int BATTLE_CONSTRAINT=10;
+    public static final int BATTLE_CONSTRAINT=6;
     public static final float HERO_FAVORED_SKILL_ORIGINAL_VAL=50;
     public static final float DEBUFF_DECREMENT_FACTOR=0.8f;
     public static final int ITEM_USE_TIME=3;
@@ -27,9 +27,9 @@ public class LMH_Constant {
     public static final String DRAGON=" \uD83D\uDC09";
     public static final String SKELETON=" \uD83D\uDC80";
     public static final String SPIRIT=" \uD83D\uDC7B";
-    public static final String OBSTACLE=" ⛰";
-    public static final String MARKET=" \uD83D\uDED2";
-    public static final String HERO_ICON=" \uD83E\uDDD4";
+    public static final String OBSTACLE=" \uD83C\uDF0B ";
+    public static final String MARKET=" \uD83D\uDED2 ";
+    public static final String PLAYER_ICON =" \uD83E\uDDD4";
 
     //Paths
     public static final String ARMORY_Path= "Legends_Monsters_and_Heroes/Armory.txt";
@@ -45,6 +45,11 @@ public class LMH_Constant {
     public static final String WARRIORS_Path= "Legends_Monsters_and_Heroes/Warriors.txt";
     public static final String WEAPONRY_Path= "Legends_Monsters_and_Heroes/Weaponry.txt";
     public static final String LMH_PATTERN_Path= "Legends_Monsters_and_Heroes/dragonAscii.txt";
+    public static final String MAP_RULE="On this map\n" +
+            OBSTACLE+" stands for OBSATACLES\n" +
+            MARKET+" stands for MARKET\n" +
+            PLAYER_ICON+" stands for PLAYER_ICON\n";
+
     public static final float SHOP_DEFAULT_GOLD = 10000;
     public static char[] VALID_ACTIONS_ONMAP =new char[]{'w','a','s','d','W','A','S','D','Q','q','I','i','m','M'};
     public static char[] VALID_ACTIONS_INMARKET =new char[]{'B','S','E','Q','b','s','q','e'};
@@ -81,4 +86,5 @@ public class LMH_Constant {
             new Vector2(4,7),new Vector2(5,2),new Vector2(5,3),new Vector2(6,0),new Vector2(6,6),
             new Vector2(7,5),new Vector2(7,6))
     );
+
 }

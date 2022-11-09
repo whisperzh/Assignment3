@@ -110,9 +110,10 @@ public class LMH_Battle implements IBattle{
                         int num1=view.jin_BorderedInt(0,monsters.size()-1);
                         ICharacter tobeSpellAttacked= monsters.get(num1);
                         ((Spell) hero.getInventory().get(((GeneralHero) hero).getSpellRam())).doEffect(tobeSpellAttacked);
-                        hero.magicalAttack(tobeSpellAttacked, (Spell) hero.getInventory().get(((GeneralHero) hero).getSpellRam()));
+                        dmg=hero.magicalAttack(tobeSpellAttacked, (Spell) hero.getInventory().get(((GeneralHero) hero).getSpellRam()));
                         hero.getInventory().clearTrash();
                         ((GeneralHero) hero).setSpellRam(-1);
+                        view.displayAttackInfo(hero, tobeSpellAttacked, dmg);
                     }
                 }else
                 {

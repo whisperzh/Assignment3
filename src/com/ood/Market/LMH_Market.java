@@ -6,6 +6,7 @@ import com.ood.Characters.GeneralHero;
 import com.ood.Enums.ItemEnum;
 import com.ood.Enums.ViewEnum;
 import com.ood.Factories.ViewFactory;
+import com.ood.Game.GameController;
 import com.ood.Inventory.IInventory;
 import com.ood.Inventory.MarketInventory;
 import com.ood.Item.IItem;
@@ -15,6 +16,7 @@ import com.ood.Util.ItemParser;
 import com.ood.Util.ParseCollection;
 import com.ood.Views.MarketView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,29 +30,14 @@ public class LMH_Market implements IMarket<IItem> {
 
     private Wallet myWallet;
 
-    private ParseCollection parseCollection;
-
     private GeneralHero customer;
 
     public LMH_Market() {
         marketView= ViewFactory.createView(ViewEnum.MARKET);
-        initParserCollection();
+
         marketInventory=new MarketInventory();
-        marketInventory.addParserCollection(parseCollection);
+        marketInventory.addParserCollection(GameController.getDataCenterInstance().getMarketParseCollection());
         myWallet=new Wallet(LMH_Constant.SHOP_DEFAULT_GOLD);
-    }
-
-    private void initParserCollection(){
-        parseCollection=new ParseCollection(false);
-
-        parseCollection.AddParser(new ItemParser(LMH_Constant.ARMORY_Path, ItemEnum.ARMORY));
-        parseCollection.AddParser(new ItemParser(LMH_Constant.WEAPONRY_Path, ItemEnum.WEAPONRY));
-        parseCollection.AddParser(new ItemParser(LMH_Constant.POTIONS_Path, ItemEnum.POTIONS));
-
-//        parseCollection.AddParser(new ItemParser(LMH_Constant.FIRESPELL_Path,ItemEnum.FIRE_SPELL));
-//        parseCollection.AddParser(new ItemParser(LMH_Constant.ICESPELL_Path,ItemEnum.ICE_SPELL));
-//        parseCollection.AddParser(new ItemParser(LMH_Constant.LIGHTNINGSPELL_Path,ItemEnum.LIGHTENING_SPELL));
-
     }
 
     @Override
@@ -117,6 +104,7 @@ public class LMH_Market implements IMarket<IItem> {
                     customer.getInventory().remove(tobeSoldItem);
                     customer.getMyWallet().gain(tobeSoldItem.getSellPrice());
                     marketView.displayCharacterInventory(customer);
+                    marketView.disPlayCheckInInfo(customer,tobeSoldItem);
                 }
                 break;
             case 'q'://quit
@@ -130,7 +118,8 @@ public class LMH_Market implements IMarket<IItem> {
         }
     }
     private void showMenu(){
-        List<List<List<String>>> info=.getAllItemsWithTitle();
+        List<List<String>> info=marketInventory.getAllItemsWithoutTitle();
+
         marketView.showMenu(info);
     }
 

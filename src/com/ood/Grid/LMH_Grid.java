@@ -1,7 +1,6 @@
 package com.ood.Grid;
 
 import com.ood.AttributesItems.LMH_Constant;
-import com.ood.Characters.ICharacter;
 import com.ood.Enums.LMHGridEnum;
 import com.ood.FunctionInterfaces.IGridContent;
 import com.ood.Item.IItem;
@@ -39,7 +38,7 @@ public class LMH_Grid implements GridSpace<LMHGridEnum>{
     @Override
     public void setPlayer(IPlayer player) {
         this.player = player;
-        setIcon(LMH_Constant.HERO_ICON);
+        setIcon(LMH_Constant.PLAYER_ICON);
     }
 
     public IPlayer getPlayer(){

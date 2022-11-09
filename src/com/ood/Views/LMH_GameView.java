@@ -70,21 +70,21 @@ public class LMH_GameView extends AbsGameView {
             jout(fileName);
 
             List<List<String >> rows=new ArrayList<>();
-            List<String> schema = new ArrayList<>(parser.getOrderedSchema());
+            List<String> schema = new ArrayList<>(parser.getTitle());
 
             if (showIndex)
                 schema.add(0,"index");
             rows.add(schema);
 
-            for(int j=0;j<parser.getAttributeDataBase().size();j++)
+            for(int j = 0; j<parser.getAllData().size(); j++)
             {
-                List<String> attr=new ArrayList<>(parser.getAttributeDataBase().get(j));
+                List<String> attr=new ArrayList<>(parser.getAllData().get(j));
                 if(showIndex)
                     attr.add(0,new String("["+Integer.toString(j+startIndex)+"]"));
                 rows.add(attr);
 
             }
-            startIndex+=parser.getAttributeDataBase().size();
+            startIndex+=parser.getAllData().size();
             joutAsTable(rows);
             jout("\n");
         }

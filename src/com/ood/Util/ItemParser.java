@@ -10,7 +10,7 @@ import java.util.List;
 public class ItemParser implements IConfigParser{
     private String filePath;
 
-    private List<List<String >> items;
+    private List<List<String>> allData;
 
     private List<String> orderedSchema;
 
@@ -18,7 +18,7 @@ public class ItemParser implements IConfigParser{
 
 
     public ItemParser(String filePath,Enum itemEnum) {
-        this.items=new ArrayList<>();
+        this.allData =new ArrayList<>();
         this.itemEnum=itemEnum;
         this.filePath = filePath;
 
@@ -54,7 +54,7 @@ public class ItemParser implements IConfigParser{
         for(var st: titles)
             l.add(st);
         l.add(itemEnum.toString());
-        items.add(l);
+        allData.add(l);
     }
 
     @Override
@@ -69,27 +69,18 @@ public class ItemParser implements IConfigParser{
     }
 
     @Override
-    public List<List<String>> getAttributeDataBase() {
-        return null;
+    public List<List<String>> getAllData() {
+        return allData;
     }
 
     @Override
-    public List<String> getOrderedSchema(){
+    public List<String> getTitle(){
         return orderedSchema;
     }
 
     @Override
-    public void reset() {
-
-    }
-
-    @Override
-    public int getLineOfData() {
-        return items.size();
-    }
-
-    public List<List<String>> getItems(){
-        return items;
+    public int size() {
+        return allData.size();
     }
 
     @Override
@@ -101,8 +92,13 @@ public class ItemParser implements IConfigParser{
     public List<List<String>> getItemsWithTitle() {
         List<List<String>> ans=new ArrayList<>();
         ans.add(orderedSchema);
-        ans.addAll(items);
+        ans.addAll(allData);
         return ans;
+    }
+
+    @Override
+    public List<List<String>> getItemAtIndexWithTitle(int index) {
+        return null;
     }
 
     public void createSchema(String s){
@@ -110,5 +106,11 @@ public class ItemParser implements IConfigParser{
         orderedSchema=new ArrayList<>();
         orderedSchema.addAll((List<String>) Arrays.asList(titles));
         orderedSchema.add("Item type");
+    }
+
+    @Override
+    public void reset() {
+        orderedSchema.clear();
+        allData.clear();
     }
 }

@@ -140,6 +140,44 @@ public abstract class View implements VisualModule{
 
     }
 
+    public void joutAsTableIrregular(List<List<String>> data)
+    {
+        joutDivider();
+        int maxlen=0;
+        for(var l:data)
+        {
+            maxlen=Math.max(maxlen,l.size());
+        }
+
+        int[] len=new int[maxlen];
+
+
+        for(int i=0;i<len.length;i++)
+        {
+            for(int j=0;j<data.size();j++)
+            {
+                if(i<data.get(j).size())
+                    len[i]=Math.max(len[i],data.get(j).get(i).length());
+            }
+        }
+        String format="";
+        for(int i=0;i<len.length;i++)
+        {
+            format+="%-"+Integer.toString((int)(len[i]+3))+"s";
+        }
+
+        for (List<String> d : data)
+        {
+            while(d.size()<maxlen)
+                d.add(" ");
+            String line=String.format(format,d.toArray());
+            jout(line);
+        }
+        joutDivider();
+
+    }
+
+
     public boolean jin_YesOrNo() {
         jout("Please input [y/n]");
         String str=getScanner().next();

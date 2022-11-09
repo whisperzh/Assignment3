@@ -7,11 +7,11 @@ public interface IConfigParser {
     void readFile() throws IOException;
     String getFileName();
     String getFilePath();
-    public List<List<String>> getAttributeDataBase();
-    List<String> getOrderedSchema();
+    List<List<String>> getAllData();
+    List<String> getTitle();
     void reset();
-//    int setIndexForData(int startIndex);
-    int getLineOfData();
+    int size();
     String getPattern();
     List<List<String>> getItemsWithTitle();
+    List<List<String>> getItemAtIndexWithTitle(int index);
 }

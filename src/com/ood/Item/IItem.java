@@ -1,5 +1,7 @@
 package com.ood.Item;
 
+import java.util.List;
+
 /**
  * interface of Item
  */
@@ -10,4 +12,5 @@ public interface IItem {
     void setName(String name);
     void setLevel(int level);
     float getSellPrice();
+    List<String> getAllAttribute();
 }

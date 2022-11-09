@@ -2,7 +2,10 @@ package com.ood.Item;
 
 import com.ood.Buff.IBuff;
 import com.ood.Characters.ICharacter;
+import com.ood.Enums.ItemEnum;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -43,4 +46,15 @@ public class Spell extends ConsumableItem {
         buff.doEffect(character);
     }
 
+    @Override
+    public List<String> getAllAttribute() {
+        List<String> ans=new ArrayList<>();
+        ans.add(getName());
+        ans.add(String.valueOf(getOriginalPrice()));
+        ans.add(String.valueOf(getLevel()));
+        ans.add(String.valueOf(getDamage()));
+        ans.add(String.valueOf(getManaCost()));
+        ans.add(ItemEnum.FIRE_SPELL.toString());
+        return ans;
+    }
 }

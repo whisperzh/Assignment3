@@ -16,5 +16,5 @@ public interface IInventory<T extends IItem> {
     int getSize();
     T get(int index);
     void clearTrash();
-    List<List<List<String>>> getAllItemsWithTitle();
+    List<List<String>> getAllItemsWithoutTitle();
 }

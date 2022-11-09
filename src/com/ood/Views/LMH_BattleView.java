@@ -68,7 +68,13 @@ public class LMH_BattleView extends AbsGameView{
 
     @Override
     public void displayCharacterInventory(ICharacter customer) {
-
+        List<List<String>> inv=customer.getInventory().getAllItemsWithoutTitle();
+        int index=0;
+        for(var lines:inv)
+        {
+            lines.add(0,"index:"+index++);
+        }
+        joutAsTableIrregular(inv);
     }
 
     /**
@@ -87,6 +93,7 @@ public class LMH_BattleView extends AbsGameView{
     }
 
     public void displayAttackMonsterChoices(LMH_Team mon_team){
+        jout("Please choose a monster to attack");
         List<List<String >> rows=new ArrayList<>();
         List<String > title=new ArrayList<>();
         title.add("index");

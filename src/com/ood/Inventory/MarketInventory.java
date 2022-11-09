@@ -2,7 +2,8 @@ package com.ood.Inventory;
 
 import com.ood.Enums.ItemEnum;
 import com.ood.Factories.ItemFactory;
-import com.ood.Item.IItem;
+import com.ood.Game.GameController;
+import com.ood.Item.*;
 import com.ood.Util.IConfigParser;
 import com.ood.Util.ItemParser;
 import com.ood.Util.ParseCollection;
@@ -35,34 +36,43 @@ public class MarketInventory implements IInventory<IItem> {
 
     @Override
     public void add(IItem item) {
-
+        items.add(item);
     }
 
     public void addParserCollection(ParseCollection pc){
-        Random r=new Random();
         for(int i=0;i<pc.getParserSize();i++)
         {
-            int execute=r.nextInt(2);
-            if(execute==1){
-                decodeParser(pc.getParserAt(i));
-            }
+            decodeParser(pc.getParserAt(i));
         }
     }
 
-    public void decodeParser(IConfigParser parser){
-        List<List<String>> info=((ItemParser)parser).getItems();
-        List<String> keys=parser.getOrderedSchema();
+    private List<String> combineDataAndTitle(List<String> data, List<String> title)
+    {
+        List<String > ans=new ArrayList<>();
+        for(int i=0;i<data.size();i++)
+        {
+            ans.add(title.get(i)+":"+data.get(i));
+        }
+        return ans;
+    }
 
+    public void decodeParser(IConfigParser parser){
+        List<List<String>> info=((ItemParser)parser).getAllData();
+        List<String> keys=parser.getTitle();
+        Random r=new Random();
         for(int i=0;i<info.size();i++)
         {
-            Map<String ,String> attri=new HashMap<>();
-            int j=0;
-            for(;j<keys.size()-1;j++)
-            {
-                attri.put(keys.get(j),info.get(i).get(j));
+            int exc=r.nextInt(5);
+            if(exc<=1){
+                Map<String ,String> attri=new HashMap<>();
+                int j=0;
+                for(;j<keys.size()-1;j++)
+                {
+                    attri.put(keys.get(j),info.get(i).get(j));
+                }
+                ItemEnum type=ItemEnum.stringToEnum(info.get(i).get(j));
+                items.add(ItemFactory.createItem(type,attri));
             }
-            ItemEnum type=ItemEnum.stringToEnum(info.get(i).get(j));
-            items.add(ItemFactory.createItem(type,attri));
         }
     }
 
@@ -82,9 +92,30 @@ public class MarketInventory implements IInventory<IItem> {
     }
 
     @Override
-    public List<List<List<String>>> getAllItemsWithTitle() {
-        for()
-        return
+    public List<List<String>> getAllItemsWithoutTitle() {
+        List<List<String>> ans = new ArrayList<>();
+
+        for(int i=0;i<items.size();i++)
+        {
+            String key="";
+            if(items.get(i) instanceof Armor)
+            {
+                key="ARMOR";
+            }else if(items.get(i) instanceof Weapon)
+            {
+                key="WEAPON";
+            }
+            else if(items.get(i) instanceof Potion)
+            {
+                key="POTION";
+            }else if(items.get(i) instanceof Spell)
+            {
+                key="SPELL";
+            }
+            ans.add(combineDataAndTitle(items.get(i).getAllAttribute(), GameController.getDataCenterInstance().getTitle(key)));
+        }
+
+        return ans;
     }
 
 }

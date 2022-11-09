@@ -1,7 +1,7 @@
 package com.ood.Inventory;
 
-import com.ood.Item.ConsumableItem;
-import com.ood.Item.IItem;
+import com.ood.Game.GameController;
+import com.ood.Item.*;
 import com.ood.Util.ParseCollection;
 
 import java.util.ArrayList;
@@ -55,5 +55,42 @@ public class CharacterInventory implements IInventory<IItem>{
                 if(((ConsumableItem)items.get(i)).getTimeOfUse()==0)
                     items.remove(i);
         }
+    }
+
+    @Override
+    public List<List<String>> getAllItemsWithoutTitle() {
+        List<List<String>> ans = new ArrayList<>();
+
+        for(int i=0;i<items.size();i++)
+        {
+            String key="";
+            if(items.get(i) instanceof Armor)
+            {
+                key="ARMOR";
+            }else if(items.get(i) instanceof Weapon)
+            {
+                key="WEAPON";
+            }
+            else if(items.get(i) instanceof Potion)
+            {
+                key="POTION";
+            }else if(items.get(i) instanceof Spell)
+            {
+                key="SPELL";
+            }
+            ans.add(combineDataAndTitle(items.get(i).getAllAttribute(), GameController.getDataCenterInstance().getTitle(key)));
+        }
+
+        return ans;
+    }
+
+    private List<String> combineDataAndTitle(List<String> data, List<String> title)
+    {
+        List<String > ans=new ArrayList<>();
+        for(int i=0;i<data.size();i++)
+        {
+            ans.add(title.get(i)+":"+data.get(i));
+        }
+        return ans;
     }
 }

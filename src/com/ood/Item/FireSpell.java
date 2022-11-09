@@ -2,6 +2,7 @@ package com.ood.Item;
 
 import com.ood.Buff.Debuff;
 import com.ood.Enums.CharacterAttributeEnum;
+import com.ood.Enums.ItemEnum;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,5 +14,16 @@ public class FireSpell extends Spell{
         List<CharacterAttributeEnum> attributeEnums=new ArrayList();
         attributeEnums.add(CharacterAttributeEnum.DEFENSE);
         buff=new Debuff(attributeEnums);
+    }
+    @Override
+    public List<String> getAllAttribute() {
+        List<String> ans=new ArrayList<>();
+        ans.add(getName());
+        ans.add(String.valueOf(getOriginalPrice()));
+        ans.add(String.valueOf(getLevel()));
+        ans.add(String.valueOf(getDamage()));
+        ans.add(String.valueOf(getManaCost()));
+        ans.add(ItemEnum.FIRE_SPELL.toString());
+        return ans;
     }
 }

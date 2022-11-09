@@ -2,12 +2,10 @@ package com.ood.Players;
 
 import com.ood.AttributesItems.Dice;
 import com.ood.AttributesItems.LMH_Constant;
-import com.ood.AttributesItems.LMH_DataCenter;
 import com.ood.AttributesItems.Vector2;
 import com.ood.Battle.IBattle;
 import com.ood.Battle.LMH_Battle;
 import com.ood.Board.MovableBoard;
-import com.ood.Characters.CharacterCollection;
 import com.ood.Characters.GeneralHero;
 import com.ood.Characters.ICharacter;
 import com.ood.Enums.GameEnum;
@@ -16,6 +14,7 @@ import com.ood.Enums.MonsterEnum;
 import com.ood.Factories.HeroFactory;
 import com.ood.Factories.MonsterFactory;
 import com.ood.Factories.ViewFactory;
+import com.ood.Game.GameController;
 import com.ood.Game.IGame;
 import com.ood.Market.IMarket;
 import com.ood.Team.LMH_CharacterCollection;
@@ -35,7 +34,7 @@ public class LMH_Player extends BoardGamePlayer{
 
     private Vector2 position;
 
-    private String icon=LMH_Constant.HERO_ICON;
+    private String icon=LMH_Constant.PLAYER_ICON;
 
     public LMH_Player(boolean isPCPlayer,String name, IGame game) {
         super(isPCPlayer,name,game);
@@ -50,10 +49,11 @@ public class LMH_Player extends BoardGamePlayer{
         Random random=new Random();
         for(int i=0;i<characterCount;i++)
         {
-            int range=LMH_DataCenter.getMonsterData().size();
+            int range=GameController.getDataCenterInstance().getMonsterParseCollection().dataSize();
             int monsterNum=random.nextInt(range);
-            MonsterEnum m = LMH_DataCenter.getMonsterType(monsterNum);
-            characterCollection.addItem(MonsterFactory.createMonster(m,LMH_DataCenter.getMonsterData().get(monsterNum)));
+            MonsterEnum monsterType = GameController.getDataCenterInstance().getMonsterType(monsterNum);
+            List<String> attributes=GameController.getDataCenterInstance().getMonsterParseCollection().getItemsAt(monsterNum);
+            characterCollection.addItem(MonsterFactory.createMonster(monsterType,attributes));
         }
 
     }
@@ -75,10 +75,11 @@ public class LMH_Player extends BoardGamePlayer{
         while (heroSize!=0)
         {
             heroSize--;
-            int heroNum=view.displayPlayerChooseCharacter(LMH_DataCenter.getHeroData().size()-1, getName());
-            HeroEnum h = LMH_DataCenter.getHeroType(heroNum);
+            int heroNum=view.displayPlayerChooseCharacter(GameController.getDataCenterInstance().getHeroParseCollection().dataSize()-1, getName());
+            HeroEnum heroType = GameController.getDataCenterInstance().getHeroType(heroNum);
+            List<String> attributes=GameController.getDataCenterInstance().getHeroParseCollection().getItemsAt(heroNum);
             try {
-                characterCollection.addItem(HeroFactory.createHero(h,LMH_DataCenter.getHeroData().get(heroNum)));
+                characterCollection.addItem(HeroFactory.createHero(heroType,attributes));
             }
             catch (Exception e){
                 e.printStackTrace();

@@ -14,19 +14,13 @@ import java.util.List;
  * view component for market
  */
 public class MarketView extends AbsGameView{
-    public void showMenu(List<List<List<String>>> data){
+    public void showMenu(List<List<String>> data){
         int index=0;
         for(var lines:data)
         {
-            List<List<String>> newLine=new ArrayList(lines);
-            newLine.get(0).add(0,"index");
-            for(int i=1;i<newLine.size();i++)
-            {
-                newLine.get(i).add(0,"["+index+"]");
-                index++;
-            }
-            joutAsTable(newLine);
+            lines.add(0,"index:"+index++);
         }
+        joutAsTableIrregular(data);
     }
 
     @Override
@@ -37,6 +31,16 @@ public class MarketView extends AbsGameView{
     @Override
     public void displayPlayerScoreTable() {
 
+    }
+
+    private List<String> combineDataAndTitle(List<String> data, List<String> title)
+    {
+        List<String > ans=new ArrayList<>();
+        for(int i=0;i<data.size();i++)
+        {
+            ans.add(title.get(i)+":"+data.get(i));
+        }
+        return ans;
     }
 
     @Override
@@ -124,5 +128,11 @@ public class MarketView extends AbsGameView{
 
     public void displayMarketWelcomeMessage(String name) {
         jout(name+", Welcome!");
+    }
+
+    public void disPlayCheckInInfo(GeneralHero customer, IItem tobeSoldItem) {
+        String name=customer.getName();
+        float price=tobeSoldItem.getSellPrice();
+        jout(name+" got "+price+" from selling "+tobeSoldItem.getName());
     }
 }

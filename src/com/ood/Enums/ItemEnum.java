@@ -14,7 +14,13 @@ public enum ItemEnum {
             return WEAPONRY;
         else if(str.contains("POTIONS"))
             return POTIONS;
-        else
-            return null;
+        else if(str.contains("FIRE_SPELL"))
+            return FIRE_SPELL;
+        else if(str.contains("ICE_SPELL"))
+            return ICE_SPELL;
+        else if(str.contains("LIGHTENING_SPELL"))
+            return LIGHTENING_SPELL;
+        return null;
+
     }
 }

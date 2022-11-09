@@ -31,6 +31,11 @@ public class ACSII_PatternParser implements IConfigParser{
     }
 
     @Override
+    public List<List<String>> getItemAtIndexWithTitle(int index) {
+        return null;
+    }
+
+    @Override
     public void readFile() throws IOException {
         String line=new String("\n");
         BufferedReader in = new BufferedReader(new FileReader(filePath));
@@ -53,12 +58,12 @@ public class ACSII_PatternParser implements IConfigParser{
     }
 
     @Override
-    public List<List<String>> getAttributeDataBase() {
+    public List<List<String>> getAllData() {
         return null;
     }
 
     @Override
-    public List<String> getOrderedSchema(){
+    public List<String> getTitle(){
         return null;
     }
 
@@ -68,7 +73,7 @@ public class ACSII_PatternParser implements IConfigParser{
     }
 
     @Override
-    public int getLineOfData() {
+    public int size() {
         return 0;
     }
 }
