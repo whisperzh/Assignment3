@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * An item used to read the info from the folder, especially for items
+ */
 public class ItemParser implements IConfigParser{
     private String filePath;
 

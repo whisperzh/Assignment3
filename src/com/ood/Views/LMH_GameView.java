@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * the concrete game view class for LMH
+ * The concrete game view class for LMH
  */
 public class LMH_GameView extends AbsGameView {
 

@@ -8,7 +8,7 @@ import com.ood.Item.IItem;
 import java.util.List;
 
 /**
- * Game judge interface
+ * The interface of game judge, do judge for transaction, game over and etc
  */
 public interface IGameJudge {
     boolean judgeGameOver();

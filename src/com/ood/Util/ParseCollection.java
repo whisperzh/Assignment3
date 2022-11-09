@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * collection for all same type parse(ENCAPSULATION)
+ * Collection for all same type parse, easy to maintain with
  */
 public class ParseCollection {
 

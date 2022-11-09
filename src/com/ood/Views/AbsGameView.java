@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * An abstract class used for displaying
+ * An abstract class used for displaying. Encapsulated tons of output Info.
  */
 public abstract class AbsGameView extends View{
 

@@ -3,6 +3,9 @@ package com.ood.Util;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * The Interface for all of my parsers(Encapsulation)
+ */
 public interface IConfigParser {
     void readFile() throws IOException;
     String getFileName();

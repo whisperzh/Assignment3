@@ -6,6 +6,10 @@ import com.ood.Inventory.IInventory;
 import com.ood.Item.IItem;
 import com.ood.Views.MarketView;
 
+/**
+ * The interface used to encapsulate all of the methods of market
+ * @param <T>
+ */
 public interface IMarket<T> extends IGridContent {
     void removeItem(T item);
     void setInventory(IInventory<IItem> inventory);
@@ -19,7 +23,7 @@ public interface IMarket<T> extends IGridContent {
 
     @Override
     default boolean isMarket() {
-        return true;
+        return false;
     }
 
     MarketView getView();

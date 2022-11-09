@@ -5,7 +5,7 @@ import com.ood.Players.IPlayer;
 import com.ood.Players.PlayerCollection;
 
 /**
- * Team Concrete class
+ * Team Concrete class, Only store Players
  * @param <T> player
  */
 public abstract class Team<T extends IPlayer> implements ITeam<IPlayer> {
@@ -100,5 +100,4 @@ public abstract class Team<T extends IPlayer> implements ITeam<IPlayer> {
         playerCollection.setGame(game);
     }
 
-//
 }

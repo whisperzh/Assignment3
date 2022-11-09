@@ -13,7 +13,7 @@ import com.ood.Item.Spell;
 import java.util.List;
 
 /**
- * do the judgment in LMH game
+ * The concrete class of judge in LMH game
  */
 public class LMH_Judge extends BoardGameJudge{
 

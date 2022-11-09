@@ -6,6 +6,9 @@ import com.ood.Grid.GridSpace;
 
 import java.util.Arrays;
 
+/**
+ * The view component of the board, used to show the board
+ */
 public class BoardView extends View{
     private char [][] boardGraphicalGrid;
 

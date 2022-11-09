@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * abstract class of player collection
+ * Abstract class of player collection, encapsulate all of the player, which is easy to maintain
  * @param <T>
  */
 public abstract class PlayerCollection <T extends IPlayer>{

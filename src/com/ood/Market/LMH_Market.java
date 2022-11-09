@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The concrete class for LMH game only.
+ * The concrete market class for LMH game only.
  */
 public class LMH_Market implements IMarket<IItem> {
 

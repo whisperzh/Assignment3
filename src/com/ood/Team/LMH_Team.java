@@ -5,7 +5,7 @@ import com.ood.Players.LMH_Player;
 import com.ood.Players.LMH_PlayerCollection;
 
 /**
- * concrete Team class of LMH
+ * Concrete team class of LMH
  */
 public class LMH_Team extends Team<LMH_Player>{
 

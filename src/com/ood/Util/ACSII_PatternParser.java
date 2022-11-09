@@ -5,6 +5,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * An parser used to parse ASCII art
+ */
 public class ACSII_PatternParser implements IConfigParser{
     private String filePath;
 

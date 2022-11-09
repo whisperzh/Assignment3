@@ -3,6 +3,10 @@ package com.ood.Team;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * An abstract collection class used for store Characters.
+ * @param <T>
+ */
 public abstract class SimpleCollection<T> {
 
     private List<T> itemList;

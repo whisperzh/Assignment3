@@ -10,7 +10,7 @@ import com.ood.Views.AbsGameView;
 import java.util.List;
 
 /**
- * abstract class of players
+ * The abstract class of players,and this class should be the player who play on board only
  */
 public abstract class BoardGamePlayer implements IPlayer{
     private String name;

@@ -7,7 +7,7 @@ import com.ood.Util.IConfigParser;
 import java.util.List;
 
 /**
- * View of GameController
+ * View component of GameController, do collect and show notifications for players to choose a game
  */
 public class GameControllerView extends View{
     String [] gameList={

@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.*;
 
 /**
- *  Character Attribute FileReader
+ * An item used to read the info from the folder, especially for Characters
  */
 public class CharacterAttributeParser implements IConfigParser{
     private String filePath;

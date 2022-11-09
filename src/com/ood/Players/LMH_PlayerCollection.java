@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * concrete class of LMH player collection
+ * Concrete class of LMH player collection, encapsulate all of the LMH player, which is easy to maintain
  */
 public class LMH_PlayerCollection extends PlayerCollection<LMH_Player>{
 

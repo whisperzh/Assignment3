@@ -8,7 +8,7 @@ import com.ood.Team.ITeam;
 import java.util.List;
 
 /**
- * player interface
+ * Encapsulate all of the Methods of a single player.
  */
 public interface IPlayer {
     String getName();

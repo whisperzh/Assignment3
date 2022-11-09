@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * view component for market
+ * The view component for market
  */
 public class MarketView extends AbsGameView{
     public void showMenu(List<List<String>> data){

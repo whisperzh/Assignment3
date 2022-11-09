@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * view component for Battle
+ * View component for Battle, show common notifications in battle
  */
 public class LMH_BattleView extends AbsGameView{
     @Override

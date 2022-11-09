@@ -5,7 +5,7 @@ import com.ood.Board.IBoard;
 import com.ood.Game.IGame;
 
 /**
- * abstract class of game Judgement
+ * An abstract class of board game Judgement
  */
 public abstract class BoardGameJudge implements IGameJudge{
     protected IGame game;
