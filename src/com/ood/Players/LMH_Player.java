@@ -102,7 +102,7 @@ public class LMH_Player extends BoardGamePlayer{
                 if(getGame().getJudge().boardCanPassAt(getGame().getBoard(),position.getRow(),position.getCol()-1)){
                     getGame().getBoard().movePiece(this,position.getRow(),position.getCol()-1);
                     getGame().getBoard().show();
-                    if(getGame().getJudge().isEncounterMonster(rollDice()))
+                    if(getGame().getJudge().isEncounterMonster(rollDice())&&!getGame().getJudge().canEnterMarket(this.position))
                     {
                         IBattle b=new LMH_Battle(getGame().getTeam());
                         b.fight();
@@ -117,7 +117,7 @@ public class LMH_Player extends BoardGamePlayer{
                 if(getGame().getJudge().boardCanPassAt(getGame().getBoard(), position.getRow()-1,position.getCol())) {
                     getGame().getBoard().movePiece(this,position.getRow()-1,position.getCol());
                     getGame().getBoard().show();
-                    if(getGame().getJudge().isEncounterMonster(rollDice()))
+                    if(getGame().getJudge().isEncounterMonster(rollDice())&&!getGame().getJudge().canEnterMarket(this.position))
                     {
                         IBattle b=new LMH_Battle(getGame().getTeam());
                         b.fight();
@@ -132,7 +132,7 @@ public class LMH_Player extends BoardGamePlayer{
                 if(getGame().getJudge().boardCanPassAt(getGame().getBoard(),position.getRow()+1,position.getCol())) {
                     getGame().getBoard().movePiece(this,position.getRow()+1,position.getCol());
                     getGame().getBoard().show();
-                    if(getGame().getJudge().isEncounterMonster(rollDice()))
+                    if(getGame().getJudge().isEncounterMonster(rollDice())&&!getGame().getJudge().canEnterMarket(this.position))
                     {
                         IBattle b=new LMH_Battle(getGame().getTeam());
                         b.fight();
@@ -147,7 +147,7 @@ public class LMH_Player extends BoardGamePlayer{
                 if(getGame().getJudge().boardCanPassAt(getGame().getBoard(),position.getRow(),position.getCol()+1)){
                     getGame().getBoard().movePiece(this,position.getRow(),position.getCol()+1);
                     getGame().getBoard().show();
-                    if(getGame().getJudge().isEncounterMonster(rollDice()))
+                    if(getGame().getJudge().isEncounterMonster(rollDice())&&!getGame().getJudge().canEnterMarket(this.position))
                     {
                         IBattle b=new LMH_Battle(getGame().getTeam());
                         b.fight();
