@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * heros/monsters' Inventory
+ * Character' Inventory, can store items
  */
 public class CharacterInventory implements IInventory<IItem>{
     private List<IItem> items;

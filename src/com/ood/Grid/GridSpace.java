@@ -6,7 +6,7 @@ import com.ood.Market.IMarket;
 import com.ood.Players.IPlayer;
 
 /**
- * the interface for all kinds of grids
+ * Encapsulated all of the Grid Space(cell) methods
  */
 public interface GridSpace<T extends Enum> {
     T getType();

@@ -4,6 +4,9 @@ import com.ood.Item.Spell;
 
 import java.util.List;
 
+/**
+ * monster ExoSkeletons
+ */
 public class ExoSkeleton extends GeneralMonster{
 
 

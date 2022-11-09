@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Dices, can be rowed
+ */
 public class Dice {
     private int diceCount;
     private Random randomGenerator;

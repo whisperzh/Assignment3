@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Potions
+ * Potions, can increase character's attributes
  */
 public class Potion extends SingleUsedItem{
     private float attrIncreaseVal;

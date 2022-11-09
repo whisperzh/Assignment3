@@ -3,7 +3,7 @@ package com.ood.Item;
 import java.util.List;
 
 /**
- * interface of Item
+ * Encapsulated all of the item methods
  */
 public interface IItem {
     float getOriginalPrice();

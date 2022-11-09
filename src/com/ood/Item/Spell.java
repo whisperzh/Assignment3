@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * spell concrete class
+ * The super class of specific spells
  */
 public class Spell extends ConsumableItem {
 

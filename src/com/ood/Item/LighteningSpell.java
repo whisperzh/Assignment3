@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The spell that will decrease the victim's agility
+ */
 public class LighteningSpell extends Spell{
     public LighteningSpell(Map<String, String> attributes) {
         super(attributes);

@@ -7,7 +7,7 @@ import com.ood.Game.LMH_Game;
 import com.ood.Views.LMH_GameView;
 
 /**
- * produce games
+ * Factory that produce Games
  */
 public class GameFactory {
     public static IGame createGame(GameEnum gameEnum) {

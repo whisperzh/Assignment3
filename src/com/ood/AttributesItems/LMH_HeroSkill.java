@@ -6,6 +6,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * Hero's attributes
+ */
 public class LMH_HeroSkill {
     private Map<CharacterAttributeEnum,Float> skills;
 

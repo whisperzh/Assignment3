@@ -9,6 +9,9 @@ import com.ood.Judge.BoardGameJudge;
 import com.ood.Judge.LMH_Judge;
 import com.ood.Views.GameControllerView;
 
+/**
+ * The controller of the game
+ */
 public class GameController {
 
     private GameControllerView gameControllerView;

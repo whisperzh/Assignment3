@@ -8,15 +8,13 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * General Weapons
+ * General Weapons class can be equipped by character
  */
 public class Weapon extends UnwearableItem {
 
     private float damageVal;
 
     private int requiredHands;
-
-
 
     public Weapon(Map<String, String> attributes) {
         super();

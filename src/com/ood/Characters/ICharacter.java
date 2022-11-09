@@ -7,6 +7,9 @@ import com.ood.Item.Spell;
 
 import java.util.Map;
 
+/**
+ * Encapsulated all of the Character methods
+ */
 public interface ICharacter extends IGridContent {
     String getName();
     void setName(String name);

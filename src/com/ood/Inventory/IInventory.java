@@ -6,7 +6,7 @@ import com.ood.Util.ParseCollection;
 import java.util.List;
 
 /**
- * inventory interface
+ * Encapsulated all of the inventory methods
  */
 public interface IInventory<T extends IItem> {
     T consume();

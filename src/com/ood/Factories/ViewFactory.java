@@ -5,7 +5,7 @@ import com.ood.Views.*;
 import com.ood.Enums.ViewEnum;
 
 /**
- * produce View
+ * Factory that produces views
  */
 public class ViewFactory {
 

@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * an abstract monster class
+ * An abstract monster class, with common monster attributes
  */
 public abstract class GeneralMonster implements ICharacter{
     private String name;

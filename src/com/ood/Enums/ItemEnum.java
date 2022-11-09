@@ -1,5 +1,8 @@
 package com.ood.Enums;
 
+/**
+ * All of the item types
+ */
 public enum ItemEnum {
     ARMORY,
     WEAPONRY,

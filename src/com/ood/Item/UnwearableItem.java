@@ -3,7 +3,7 @@ package com.ood.Item;
 import java.util.Map;
 
 /**
- * item cannot be used out
+ * Abstract class of items,which cannot be used out
  */
 public abstract class UnwearableItem implements IItem{
     protected float price;

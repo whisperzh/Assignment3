@@ -15,7 +15,7 @@ import com.ood.Util.ParseCollection;
 import java.util.Arrays;
 
 /**
- * concrete class of LMH game
+ * The concrete class of LMH game
  */
 public class LMH_Game extends BoardGame<LMH_Player>{
 

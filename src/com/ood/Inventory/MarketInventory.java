@@ -10,6 +10,9 @@ import com.ood.Util.ParseCollection;
 
 import java.util.*;
 
+/**
+ * Markets' Inventory, can store items, and can import items in batch
+ */
 public class MarketInventory implements IInventory<IItem> {
     private List<IItem> items;
 

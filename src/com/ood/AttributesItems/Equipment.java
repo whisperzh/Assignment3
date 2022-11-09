@@ -7,6 +7,9 @@ import com.ood.Item.Weapon;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Concrete class of a hero's equipment
+ */
 public class Equipment {
     private List<Weapon> weapons;
 

@@ -13,6 +13,9 @@ import com.ood.Views.LMH_BattleView;
 
 import java.util.*;
 
+/**
+ * concrete class of battle
+ */
 public class LMH_Battle implements IBattle{
 
     private List<ICharacter> heros;

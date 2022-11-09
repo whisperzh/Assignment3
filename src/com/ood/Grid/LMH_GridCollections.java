@@ -3,7 +3,7 @@ package com.ood.Grid;
 import com.ood.Enums.LMHGridEnum;
 
 /**
- * concrete grid collections
+ * The concrete grid collection class of LMH
  */
 public class LMH_GridCollections extends GridCollections<LMH_Grid>{
 

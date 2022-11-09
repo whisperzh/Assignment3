@@ -3,7 +3,7 @@ package com.ood.Enums;
 import java.util.Random;
 
 /**
- * type of monsters.
+ * All of the monster types
  */
 public enum MonsterEnum {
     DRAGON,

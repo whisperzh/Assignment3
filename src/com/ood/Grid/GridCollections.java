@@ -5,6 +5,9 @@ import com.ood.AttributesItems.Vector2;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *  The abstract class that store grids of a board game
+ */
 public abstract class GridCollections <T extends GridSpace>  {
 
     protected List<List<T>> grids;

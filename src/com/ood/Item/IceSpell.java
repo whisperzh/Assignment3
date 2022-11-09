@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The spell that will decrease the victim's damage
+ */
 public class IceSpell extends Spell{
     public IceSpell(Map<String, String> attributes) {
         super(attributes);

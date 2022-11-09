@@ -17,7 +17,7 @@ import java.util.Map;
 import java.util.Random;
 
 /**
- * an abstract hero
+ * An abstract Hero class, with common Hero attributes
  */
 public abstract class GeneralHero implements ICharacter{
     private String name;

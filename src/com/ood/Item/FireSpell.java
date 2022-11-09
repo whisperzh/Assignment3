@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The spell that will decrease the victim's defense
+ */
 public class FireSpell extends Spell{
     public FireSpell(Map<String, String> attributes) {
         super(attributes);

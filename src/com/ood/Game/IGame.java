@@ -6,7 +6,7 @@ import com.ood.Team.Team;
 import com.ood.Views.AbsGameView;
 
 /**
- * game interface
+ * Encapsulated all of the Game methods
  */
 public interface IGame <T1 extends IBoard,T2 extends AbsGameView>{
     void setView(T2 view);

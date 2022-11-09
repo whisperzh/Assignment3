@@ -6,7 +6,7 @@ import com.ood.Players.IPlayer;
 import com.ood.Views.BoardView;
 
 /**
- * board interface
+ *  Encapsulated all of the board methods
  */
 public interface IBoard {
     GridSpace getGrid(int row,int col);

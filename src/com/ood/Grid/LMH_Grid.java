@@ -9,7 +9,7 @@ import com.ood.Market.LMH_Market;
 import com.ood.Players.IPlayer;
 
 /**
- * concrete class of grid, used for LMH
+ * The concrete class of grid, used for LMH
  */
 public class LMH_Grid implements GridSpace<LMHGridEnum>{
 

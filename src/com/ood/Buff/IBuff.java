@@ -4,7 +4,7 @@ import com.ood.Characters.ICharacter;
 import com.ood.Players.IPlayer;
 
 /**
- * buff interface
+ * Encapsulated all of the Buff methods
  * @param <T>
  */
 public interface IBuff<T extends ICharacter> {

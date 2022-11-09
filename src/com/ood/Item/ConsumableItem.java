@@ -5,7 +5,7 @@ import com.ood.AttributesItems.LMH_Constant;
 import java.util.Map;
 
 /**
- * Consumable Items
+ * Abstract class of consumable items, contains time of use decrease method
  */
 public abstract class ConsumableItem implements IItem{
     private float price;

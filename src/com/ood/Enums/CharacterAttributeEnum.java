@@ -1,5 +1,8 @@
 package com.ood.Enums;
 
+/**
+ * All of the character attribute types
+ */
 public enum CharacterAttributeEnum {
     HEALTH,
     ALL_HEALTH,

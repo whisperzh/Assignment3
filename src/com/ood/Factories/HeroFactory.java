@@ -9,7 +9,7 @@ import com.ood.Enums.HeroEnum;
 import java.util.List;
 
 /**
- * Factory which produce heroes
+ * Factory that produces heroes
  */
 public class HeroFactory {
     public static GeneralHero createHero(HeroEnum heroType, List<String> attributes) throws Exception {
