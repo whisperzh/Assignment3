@@ -12,7 +12,7 @@ public interface GridSpace<T extends Enum> {
     T getType();
     void setPlayer(IPlayer player);
     void setMarket();
-    IMarket<IItem> getMarket();
+    IGridContent getMarket();
     void setObstacle();
     IPlayer getPlayer();
     boolean isCanPass();
@@ -20,5 +20,4 @@ public interface GridSpace<T extends Enum> {
     String getIcon();
     void setDefaultIcon();
     void setIcon(String icon);
-    IGridContent getGridContent();
 }

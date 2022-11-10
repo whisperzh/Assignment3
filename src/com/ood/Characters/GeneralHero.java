@@ -27,7 +27,7 @@ public abstract class GeneralHero implements ICharacter{
     private float strength;
     private int level;
     private float dexterity;
-    private float defense;
+
     private int spellIndexRam=-1;
     private float agility;
     private Wallet myWallet;
@@ -170,7 +170,7 @@ public abstract class GeneralHero implements ICharacter{
         return inventory;
     }
 
-    public void setInventory(IInventory inventory) {
+    public void setInventory(IInventory<IItem> inventory) {
         this.inventory = inventory;
     }
 
@@ -187,12 +187,14 @@ public abstract class GeneralHero implements ICharacter{
 
     @Override
     public float getDefense() {
-        return defense;
+        if(equipment==null)
+            return 0;
+        return equipment.getArmorVal();
     }
 
     @Override
     public void setDefense(float defense) {
-        this.defense=defense;
+        return;
     }
 
     @Override
@@ -224,6 +226,8 @@ public abstract class GeneralHero implements ICharacter{
         ans.put("mana",String.format("%.2f",getMP()));
         ans.put("experience",String.format("%.2f",getExperience()));
         ans.put("money",String.format("%.2f",myWallet.getAmount()));
+        ans.put("damage", String.valueOf(getDamageVal()));
+        ans.put("defense", String.valueOf(getDefense()));
         String skillLevel="";
         for(var c:skills.keySet())
         {
@@ -253,6 +257,7 @@ public abstract class GeneralHero implements ICharacter{
         int dodge=random.nextInt((int) agility);
         if(dodge<=0.002f*agility)
         {
+            view.displayCharacterDodgeMessage(this);
             //dodged!
             return 0f;
         }

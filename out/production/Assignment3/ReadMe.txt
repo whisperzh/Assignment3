@@ -150,7 +150,7 @@ Email: rmzhang@bu.edu
 ---------------------------------------------------------------------------
 1. Navigate to the directory `src` after unzipping the files
 2. Run the following instructions:
->`javac -d bin com\Trianta_Ena\Main.java` \
+>`javac -Xlint:unchecked -d bin com\ood\Main.java`
 >`java -cp bin com.Trianta_Ena.Main`
 
 ## Input/Output Example

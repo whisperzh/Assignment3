@@ -47,7 +47,7 @@ public class LMH_Judge extends BoardGameJudge{
         for(int i=0;i< rollDice.size();i++)
             sum+=rollDice.get(i);
         if(sum> LMH_Constant.BATTLE_CONSTRAINT)
-            return false;
+            return true;
         else
             return true;
     }

@@ -72,12 +72,12 @@ public class LMH_Grid implements GridSpace<LMHGridEnum>{
     }
 
     @Override
-    public IMarket<IItem> getMarket() {
-        return (IMarket<IItem>)content;
+    public IGridContent getMarket() {
+        return content;
     }
 
     public void setDefaultIcon(){
-        player =null;
+        player = null;
         if(type==null)
         {
             String space="";
@@ -116,10 +116,6 @@ public class LMH_Grid implements GridSpace<LMHGridEnum>{
         this.icon = icon;
     }
 
-    @Override
-    public IGridContent getGridContent() {
-        return content;
-    }
 
 
 }

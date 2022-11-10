@@ -8,6 +8,7 @@ import com.ood.Players.PlayerCollection;
  * Team Concrete class, Only store Players
  * @param <T> player
  */
+@SuppressWarnings("unchecked")
 public abstract class Team<T extends IPlayer> implements ITeam<IPlayer> {
 
     private String name;
@@ -16,7 +17,7 @@ public abstract class Team<T extends IPlayer> implements ITeam<IPlayer> {
 
     private IGame game;
 
-    protected PlayerCollection<IPlayer> playerCollection;
+    protected PlayerCollection<T> playerCollection;
 
     private int points;
 
@@ -31,11 +32,11 @@ public abstract class Team<T extends IPlayer> implements ITeam<IPlayer> {
         playerSize=size;
         this.isPCPlayer=isPCPlayer;
     }
-    public PlayerCollection<IPlayer> getPlayerCollection() {
+    public PlayerCollection<T> getPlayerCollection() {
         return playerCollection;
     }
 
-    public void setPlayerCollection(PlayerCollection<IPlayer> playerCollection) {
+    public void setPlayerCollection(PlayerCollection<T> playerCollection) {
         this.playerCollection = playerCollection;
     }
 
@@ -69,7 +70,7 @@ public abstract class Team<T extends IPlayer> implements ITeam<IPlayer> {
 
     @Override
     public void addPlayer(IPlayer player) {
-        playerCollection.addPlayer( player);
+        playerCollection.addPlayer((T) player);
     }
 
     @Override

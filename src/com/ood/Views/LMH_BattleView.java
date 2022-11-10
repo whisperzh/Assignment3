@@ -106,7 +106,7 @@ public class LMH_BattleView extends AbsGameView{
             IPlayer player=mon_team.getPlayerAt(i);
             for(int j=0;j<player.getCharacterCount();j++)
             {
-                GeneralMonster monster=(GeneralMonster) ((LMH_Player)player).getMyCharacterAt(j);
+                GeneralMonster monster=(GeneralMonster) player.getMyCharacterAt(j);
                 List<String > line=new ArrayList<>();
                 line.add("["+ (i*player.getCharacterCount()+j) +"]");
                 line.add(monster.getName());

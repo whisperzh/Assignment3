@@ -23,7 +23,7 @@ public class GameController {
     private static LMH_DataCenter dataCenter;
 
     public GameController() {
-        gameControllerView= ViewFactory.createView(ViewEnum.CONTROLLER);
+        gameControllerView= (GameControllerView) ViewFactory.createView(ViewEnum.CONTROLLER);
     }
 
     public void chooseGame(){

@@ -33,7 +33,7 @@ public class LMH_Market implements IMarket<IItem> {
     private GeneralHero customer;
 
     public LMH_Market() {
-        marketView= ViewFactory.createView(ViewEnum.MARKET);
+        marketView= (MarketView) ViewFactory.createView(ViewEnum.MARKET);
 
         marketInventory=new MarketInventory();
         marketInventory.addParserCollection(GameController.getDataCenterInstance().getMarketParseCollection());
@@ -51,7 +51,7 @@ public class LMH_Market implements IMarket<IItem> {
     }
 
     @Override
-    public IInventory getInventory() {
+    public IInventory<IItem> getInventory() {
         return marketInventory;
     }
 

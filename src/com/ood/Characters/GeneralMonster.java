@@ -4,10 +4,12 @@ import com.ood.Enums.MonsterEnum;
 import com.ood.Inventory.IInventory;
 import com.ood.Item.IItem;
 import com.ood.Item.Spell;
+import com.ood.Views.LMH_GameView;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 /**
  * An abstract monster class, with common monster attributes
@@ -19,10 +21,12 @@ public abstract class GeneralMonster implements ICharacter{
     private float strength;   //damage value
     private float defense;
     private MonsterEnum type;
+    private LMH_GameView view;
     private float agility;   //Dodge ability
 
 
     public GeneralMonster(List<String> attributes) {
+        view=new LMH_GameView();
         HP=100;
         //Name/level/damage/defense/dodge chance
         name=attributes.get(0);
@@ -65,10 +69,6 @@ public abstract class GeneralMonster implements ICharacter{
 
     public float getDefense() {
         return defense;
-    }
-
-    public void setDefense(int defense) {
-        this.defense = defense;
     }
 
     @Override
@@ -137,8 +137,8 @@ public abstract class GeneralMonster implements ICharacter{
         map.put("level",Integer.toString(level));
         map.put("hp",String.format("%.2f",getHP()));
         map.put("damage",String.format("%.2f",strength));
-        map.put("defense",String.format("%.2f",strength));
-        map.put("dodge",String.format("%.2f",strength));
+        map.put("defense",String.format("%.2f",defense));
+        map.put("dodge",String.format("%.2f",agility));
         return map;
         //their level, their hp, their damage, their defense, and their dodge chance
     }
@@ -150,11 +150,22 @@ public abstract class GeneralMonster implements ICharacter{
 
     @Override
     public float takeDamage(float damage) {
+        Random random=new Random();
+        int dodge=random.nextInt((int) agility);
+        if(dodge<=0.002f*agility)
+        {
+            view.displayCharacterDodgeMessage(this);
+            //dodged!
+            return 0f;
+        }
+
         float realDamage=Math.max(0,damage-defense);
         float originalHp=HP;
         HP=Math.max(0,HP-realDamage);
-        if(HP==0)
+        if(HP==0) {
+            die();
             return originalHp;
+        }
         return realDamage;
     }
 
@@ -218,6 +229,10 @@ public abstract class GeneralMonster implements ICharacter{
     @Override
     public float magicalAttack(ICharacter character, Spell spell) {
         return 0;
+    }
+
+    public void die(){
+        view.displayMonsterDieMessage(this);
     }
 
     ///////////////////////

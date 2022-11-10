@@ -38,7 +38,7 @@ public class LMH_Battle implements IBattle{
         monsterTeam=new LMH_Team("MONSTER_TEAM",team.size(),true,team.getGame());//Computer Player
         monsterTeam.getPlayerCollection().setCharacterPerPlayer(team.getPlayerAt(0).getCharacterCount());
         monsterTeam.playerChooseHero();
-        view= ViewFactory.createView(ViewEnum.BATTLEFIELD);
+        view= (LMH_BattleView) ViewFactory.createView(ViewEnum.BATTLEFIELD);
         initPlayerCollection();
     }
 

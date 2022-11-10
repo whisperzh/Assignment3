@@ -41,7 +41,8 @@ public class LMH_Player extends BoardGamePlayer{
         dice=new Dice(2);//initialize Dice
         gameType= GameEnum.LMH;
         view= ViewFactory.createGameView(gameType);
-        placeMyselfOnBoard();
+        if(!isPCPlayer)
+            placeMyselfOnBoard();
         characterCollection=new LMH_CharacterCollection();
     }
 
@@ -170,7 +171,7 @@ public class LMH_Player extends BoardGamePlayer{
             case 'm':
                 if(getGame().getJudge().canEnterMarket(position))
                 {
-                    IMarket m=getGame().getBoard().getGrid(position).getMarket();
+                    IMarket m= (IMarket) getGame().getBoard().getGrid(position).getMarket();
                     for(int i=0;i<characterCollection.size();i++){
                         m.enterMarket((GeneralHero) characterCollection.getItemAt(i));
                     }
@@ -205,6 +206,8 @@ public class LMH_Player extends BoardGamePlayer{
     }
 
     private void placeMyselfOnBoard(){
+        if(getIsPCPlayer())
+            return;
         MovableBoard board=(MovableBoard) getGame().getBoard();
         for(int i=0;i<board.getRowNum();i++)
         {

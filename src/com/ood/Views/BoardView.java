@@ -83,9 +83,10 @@ public class BoardView extends View{
         for(int i=0;i<row;i++)
         {
 //            String line= Arrays.toString(boardGraphicalGrid[i]);
+
             String line=new String(boardGraphicalGrid[i]);
             if (i>0&&i%2!=0)
-                line+="\t"+(i-1)/2;
+                line+="\t "+(i-1)/2;
             jout(line);
 
         }

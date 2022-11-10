@@ -6,7 +6,6 @@ import com.ood.Players.IPlayer;
 
 /**
  * Team interface,which contains all the common methods of a team (Encapsulation)
- * @param <T>
  */
 public interface ITeam<T extends IPlayer>{
     String getName();

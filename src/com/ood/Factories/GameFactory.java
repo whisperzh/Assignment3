@@ -11,15 +11,13 @@ import com.ood.Views.LMH_GameView;
  */
 public class GameFactory {
     public static IGame createGame(GameEnum gameEnum) {
-        IGame game=null;
         switch (gameEnum)
         {
             case LMH:
-                IGame<LMH_board,LMH_GameView> g = new LMH_Game();
-                return g;
+                return new LMH_Game();
             default:
                 break;
         }
-        return game;
+        return null;
     }
 }

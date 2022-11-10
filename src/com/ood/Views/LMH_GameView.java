@@ -152,4 +152,14 @@ public class LMH_GameView extends AbsGameView {
         joutDivider();
         jout("You cannot equip this item!");
     }
+
+    public void displayMonsterDieMessage(ICharacter character) {
+        joutDivider();
+        jout(character.getName()+" died ");
+    }
+
+    public void displayCharacterDodgeMessage(ICharacter character)
+    {
+        jout(character.getName()+" dodged the incoming attack!");
+    }
 }

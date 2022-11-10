@@ -27,9 +27,12 @@ public class LMH_Constant {
     public static final String DRAGON=" \uD83D\uDC09";
     public static final String SKELETON=" \uD83D\uDC80";
     public static final String SPIRIT=" \uD83D\uDC7B";
-    public static final String OBSTACLE=" \uD83C\uDF0B ";
-    public static final String MARKET=" \uD83D\uDED2 ";
-    public static final String PLAYER_ICON =" \uD83E\uDDD4";
+//    public static final String OBSTACLE=" \uD83C\uDF0B ";
+//    public static final String MARKET=" \uD83D\uDED2 ";
+//    public static final String PLAYER_ICON =" \uD83E\uDDD4";
+    public static final String OBSTACLE="OBS";
+    public static final String MARKET="MAR";
+    public static final String PLAYER_ICON ="PLY";
 
     //Paths
     public static final String ARMORY_Path= "Legends_Monsters_and_Heroes/Armory.txt";
